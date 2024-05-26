@@ -4,7 +4,7 @@ const textClassification = {
   label: "font-bold text-sm formkit-invalid:text-red-500",
 };
 const buttonClassification = {
-  input: "$reset btn btn-info",
+  input: "$reset btn btn-primary",
 };
 
 export default {
