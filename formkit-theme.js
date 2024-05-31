@@ -1,7 +1,7 @@
 const textClassification = {
   input:
     "$reset input input-bordered w-full max-w-xs focus-within:input-info formkit-invalid:input-error",
-  label: "font-bold text-sm formkit-invalid:text-red-500",
+  label: "text-sm formkit-invalid:text-red-500",
 };
 const buttonClassification = {
   input: "$reset btn btn-primary",
@@ -50,6 +50,8 @@ export default {
     input: `
       $reset
       textarea
+      w-full
+      max-w-xs
       input-bordered
       focus-within:input-info
       formkit-invalid:input-error
