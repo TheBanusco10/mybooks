@@ -1,5 +1,11 @@
+<script setup lang="ts">
+import type { Category } from "~/types/category";
+
+const selectedCategories = ref<Category[]>([]);
+</script>
+
 <template>
-  <FormKit type="form" submit-label="Añadir libro" :actions="false">
+  <FormKit type="form" submit-label="Añadir libro" form-class="w-[40%]">
     <FormKit
       type="url"
       name="image_url"
@@ -14,6 +20,9 @@
       name="description"
       label="Descripción"
       validation="required"
+    />
+    <GothamCategories
+      @on-select-category="(categories) => (selectedCategories = categories)"
     />
   </FormKit>
 </template>
