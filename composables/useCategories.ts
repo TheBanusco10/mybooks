@@ -1,6 +1,7 @@
 export default () => {
   const categories = [
     { value: "fiction", label: "Ficción" },
+    { value: "mystery", label: "Misterio" },
     { value: "autobiography", label: "Autobiografía" },
     { value: "history", label: "Historia" },
     { value: "science", label: "Ciencia" },
@@ -28,7 +29,15 @@ export default () => {
     { value: "interior_design", label: "Diseño de Interiores" },
   ];
 
+  const getCategory = (categoryValue: string) => {
+    return (
+      categories.find((category) => category.value === categoryValue) ||
+      categories.at(0)
+    );
+  };
+
   return {
     categories,
+    getCategory,
   };
 };

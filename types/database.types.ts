@@ -91,8 +91,8 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
-      status: "Reading" | "Paused" | "Finished"
-      type: "Paper" | "Kindle"
+      status: "reading" | "paused" | "finished"
+      type: "paper" | "kindle"
     }
     CompositeTypes: {
       [_ in never]: never

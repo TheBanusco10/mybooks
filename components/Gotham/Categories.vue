@@ -36,7 +36,9 @@ watch(selectedCategories, () => {
     multiple
     class="flex flex-col gap-2"
   >
-    <ComboboxLabel class="label-text">Categorías:</ComboboxLabel>
+    <ComboboxLabel id="category-label" class="label-text"
+      >Categorías:</ComboboxLabel
+    >
     <ul v-if="selectedCategories.length > 0" class="flex flex-row gap-1">
       <li v-for="category in selectedCategories" :key="category.value">
         <span class="badge badge-secondary badge-outline badge-md">{{
@@ -46,6 +48,7 @@ watch(selectedCategories, () => {
     </ul>
     <ComboboxInput
       class="border rounded shadow p-2"
+      id="category-input"
       @change="query = $event.target.value"
       placeholder="Buscar por nombre..."
     />
