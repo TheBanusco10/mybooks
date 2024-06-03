@@ -25,8 +25,21 @@ export const useBooksStore = defineStore("books", () => {
     return data;
   };
 
+  const getBookById = async (id: number): Promise<Row<"books">> => {
+    const { data, error } = await supabase
+      .from("books")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+    if (error) throw error;
+
+    return data;
+  };
+
   return {
     getBooks,
     addBook,
+    getBookById,
   };
 });
