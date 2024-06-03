@@ -30,6 +30,10 @@ const handleImagePreviewInput = () => {
 
 const handleAddBook = async (values: Exclude<Row<"books">, "id">) => {
   try {
+    values.categories = selectedCategories.value.map(
+      (category) => category.value
+    );
+
     await addBook(values);
 
     await navigateTo("/");
