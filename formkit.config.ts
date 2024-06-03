@@ -6,9 +6,6 @@ import { es } from "@formkit/i18n";
 import theme from "./formkit-theme.js";
 
 export default defaultConfig({
-  icons: {
-    ...genesisIcons,
-  },
   config: {
     classes: generateClasses(theme),
   },

@@ -1,6 +1,6 @@
 const textClassification = {
   input:
-    "$reset input input-bordered w-full max-w-xs focus-within:input-info formkit-invalid:input-error",
+    "$reset input input-bordered w-full focus-within:input-info formkit-invalid:input-error",
   label: "text-sm formkit-invalid:text-red-500",
 };
 const buttonClassification = {
@@ -43,7 +43,10 @@ export default {
     input: "$reset range range-secondary",
   },
   search: textClassification,
-  select: textClassification,
+  select: {
+    ...textClassification,
+    input: `${textClassification.input.toString() + " select"}`,
+  },
   submit: buttonClassification,
   tel: textClassification,
   text: textClassification,
@@ -52,7 +55,6 @@ export default {
       $reset
       textarea
       w-full
-      max-w-xs
       input-bordered
       focus-within:input-info
       formkit-invalid:input-error
