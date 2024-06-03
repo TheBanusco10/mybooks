@@ -41,7 +41,7 @@ watch(selectedCategories, () => {
     >
     <BooksCategoryBadgesList
       :categories="selectedCategories.map(({ value }) => value)"
-      span-classes="badge-secondary badge-outline badge-md"
+      span-classes="badge-secondary badge-outline"
     />
     <ComboboxInput
       class="border rounded shadow p-2"
