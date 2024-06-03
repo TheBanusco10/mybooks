@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@pinia/nuxt",
     "nuxt-lodash",
+    "@nuxt/image",
   ],
   formkit: {
     // Experimental support for auto loading (see note):
