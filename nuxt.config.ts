@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
     "nuxt-icon",
     "@pinia/nuxt",
+    "nuxt-lodash",
   ],
   formkit: {
     // Experimental support for auto loading (see note):
