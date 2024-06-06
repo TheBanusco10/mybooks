@@ -1,17 +1,19 @@
+import type { Status } from "~/types/books";
+
 export default () => {
   const STATUS_READING = "reading";
   const STATUS_FINISHED = "finished";
   const STATUS_PAUSED = "paused";
 
-  const statuses = [
+  const statuses: Status[] = [
     { value: STATUS_READING, label: "Leyendo" },
     { value: STATUS_FINISHED, label: "Terminado" },
     { value: STATUS_PAUSED, label: "Pausado" },
   ];
 
-  const getBookStatus = (statusValue: string) => {
+  const getBookStatus = (statusValue: string): Status => {
     return (
-      statuses.find((status) => status.value === statusValue) || statuses.at(0)
+      statuses.find((status) => status.value === statusValue) || statuses.at(0)!
     );
   };
 

@@ -37,9 +37,20 @@ export const useBooksStore = defineStore("books", () => {
     return data;
   };
 
+  const removeBook = async (id: number): Promise<void> => {
+    const { error } = await supabase
+      .from("books")
+      .delete()
+      .eq("id", id)
+      .single();
+
+    if (error) throw error;
+  };
+
   return {
     getBooks,
     addBook,
     getBookById,
+    removeBook,
   };
 });
