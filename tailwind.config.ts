@@ -1,8 +1,9 @@
 import daisyui from "daisyui";
+import flowbite from "flowbite/plugin";
 
 module.exports = {
-  content: ["./formkit-theme.js"],
-  plugins: [daisyui],
+  content: ["./formkit-theme.js", "./node_modules/flowbite/**/*.{js,ts}"],
+  plugins: [daisyui, flowbite],
   daisyui: {
     themes: [
       {
