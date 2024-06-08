@@ -2,6 +2,9 @@ import type { UserCredentials } from "~/types/auth";
 
 export const useAuthStore = defineStore("auth", () => {
   const supabase = useSupabaseClient();
+  const user = useSupabaseUser();
+
+  const isUserLoggedIn = computed(() => !isUndefined(user.value));
 
   const signIn = async (userCredentials: UserCredentials) => {
     const { error } = await supabase.auth.signInWithPassword(userCredentials);
@@ -22,5 +25,6 @@ export const useAuthStore = defineStore("auth", () => {
   return {
     signIn,
     signOut,
+    isUserLoggedIn,
   };
 });

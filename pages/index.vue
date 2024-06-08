@@ -7,9 +7,11 @@ const { signOut } = useAuthStore();
 <template>
   <main>
     <GothamContainer>
-      <button class="btn btn-primary" @click="signOut">Sign out</button>
-      <NuxtLink to="/books/add" class="btn btn-primary">Añadir libro</NuxtLink>
-      <p>Tus libros</p>
+      <p class="text-3xl">Tus libros</p>
+      <NuxtLink to="/books/add" class="btn btn-primary btn-sm my-4">
+        <Icon name="mdi:book-plus" />
+        Añadir libro
+      </NuxtLink>
       <BooksList />
     </GothamContainer>
   </main>

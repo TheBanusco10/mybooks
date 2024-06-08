@@ -21,6 +21,10 @@ const { getBookType, getTypeIcon } = useBookType();
 
 const bookMetaInfo = [
   {
+    icon: "mdi:star-outline",
+    value: `${book.value?.score}`,
+  },
+  {
     icon: "mdi:book-open-page-variant-outline",
     value: `${book.value?.number_pages} páginas`,
   },

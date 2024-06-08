@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <GothamNavbar>
     <NuxtPage />
-  </div>
+  </GothamNavbar>
 </template>

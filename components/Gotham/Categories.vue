@@ -58,7 +58,7 @@ watch(selectedCategories, () => {
       span-classes="badge-secondary badge-outline"
     />
     <ComboboxInput
-      class="border rounded shadow p-2"
+      class="input input-bordered rounded shadow p-2"
       id="category-input"
       @change="query = $event.target.value"
       placeholder="Buscar por nombre..."
