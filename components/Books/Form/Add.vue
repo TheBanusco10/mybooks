@@ -82,6 +82,14 @@ onMounted(() => {
       <div class="flex flex-row gap-4 gap-y-0 flex-wrap">
         <FormKit
           type="number"
+          name="score"
+          label="Puntuación"
+          validation="required|min:0|max:10|number"
+          value="0"
+          outer-class="grow"
+        />
+        <FormKit
+          type="number"
           name="number_pages"
           label="Número de páginas"
           validation="required|min:0|max:10000|number"

@@ -43,6 +43,7 @@ export interface Database {
           id: number
           image_url: string | null
           number_pages: number | null
+          score: number | null
           status: Database["public"]["Enums"]["status"] | null
           title: string | null
           type: Database["public"]["Enums"]["type"] | null
@@ -56,6 +57,7 @@ export interface Database {
           id?: number
           image_url?: string | null
           number_pages?: number | null
+          score?: number | null
           status?: Database["public"]["Enums"]["status"] | null
           title?: string | null
           type?: Database["public"]["Enums"]["type"] | null
@@ -69,6 +71,7 @@ export interface Database {
           id?: number
           image_url?: string | null
           number_pages?: number | null
+          score?: number | null
           status?: Database["public"]["Enums"]["status"] | null
           title?: string | null
           type?: Database["public"]["Enums"]["type"] | null
