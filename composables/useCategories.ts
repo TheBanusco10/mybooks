@@ -1,3 +1,5 @@
+import type { Category } from "~/types/category";
+
 export default () => {
   const categories = [
     { value: "fiction", label: "Ficción" },
@@ -29,10 +31,10 @@ export default () => {
     { value: "interior_design", label: "Diseño de Interiores" },
   ];
 
-  const getCategory = (categoryValue: string) => {
+  const getCategory = (categoryValue: string): Category => {
     return (
       categories.find((category) => category.value === categoryValue) ||
-      categories.at(0)
+      categories.at(0)!
     );
   };
 

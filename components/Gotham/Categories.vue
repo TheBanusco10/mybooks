@@ -8,11 +8,21 @@ import {
 } from "@headlessui/vue";
 import type { Category } from "~/types/category";
 
+interface Props {
+  defaultValues?: string[];
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  defaultValues: () => [],
+});
+
 const emits = defineEmits(["onSelectCategory"]);
 
-const { categories } = useCategories();
+const { categories, getCategory } = useCategories();
 
-const selectedCategories = ref<Category[]>([]);
+const selectedCategories = ref<Category[]>(
+  props.defaultValues.map((value) => getCategory(value))
+);
 
 const query = ref("");
 
@@ -23,6 +33,10 @@ const filteredCategories = computed(() =>
         return category.label.toLowerCase().includes(query.value.toLowerCase());
       })
 );
+
+if (props.defaultValues.length) {
+  emits("onSelectCategory", selectedCategories.value);
+}
 
 watch(selectedCategories, () => {
   emits("onSelectCategory", selectedCategories.value);

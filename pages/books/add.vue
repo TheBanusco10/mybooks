@@ -2,7 +2,7 @@
   <main>
     <GothamContainer>
       <NuxtLink to="/" class="btn btn-primary">Volver</NuxtLink>
-      <BooksAddForm />
+      <BooksFormAdd />
     </GothamContainer>
   </main>
 </template>

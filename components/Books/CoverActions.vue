@@ -31,7 +31,7 @@ const handleRemoveBook = async () => {
   <div
     class="absolute bottom-0 right-0 flex justify-between w-full items-center py-2 px-2"
   >
-    <NuxtLink to="/books/edit/" class="btn btn-circle btn-sm">
+    <NuxtLink :to="`/books/edit/${id}`" class="btn btn-circle btn-sm">
       <Icon name="mdi:pencil-outline" size="1rem" />
     </NuxtLink>
     <button class="btn btn-circle btn-sm" @click="removeModalRef?.showModal()">

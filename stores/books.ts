@@ -47,10 +47,24 @@ export const useBooksStore = defineStore("books", () => {
     if (error) throw error;
   };
 
+  const updateBook = async (
+    id: number,
+    book: Exclude<Row<"books">, "id">
+  ): Promise<void> => {
+    const { error } = await supabase
+      .from("books")
+      .update(book)
+      .eq("id", id)
+      .single();
+
+    if (error) throw error;
+  };
+
   return {
     getBooks,
     addBook,
     getBookById,
     removeBook,
+    updateBook,
   };
 });
