@@ -11,7 +11,16 @@ export const useAuthStore = defineStore("auth", () => {
     await navigateTo("/");
   };
 
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) throw error;
+
+    await navigateTo("/login");
+  };
+
   return {
     signIn,
+    signOut,
   };
 });

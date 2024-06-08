@@ -14,4 +14,12 @@ export default defineNuxtConfig({
     // Experimental support for auto loading (see note):
     autoImport: true,
   },
+  supabase: {
+    clientOptions: {
+      auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+      },
+    },
+  },
 });
