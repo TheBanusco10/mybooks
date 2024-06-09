@@ -16,6 +16,10 @@ if (!book.value) {
   });
 }
 
+useHead({
+  title: book.value?.title || "",
+});
+
 const { getBookStatus, getStatusBackgroundColor } = useBookStatus();
 const { getBookType, getTypeIcon } = useBookType();
 

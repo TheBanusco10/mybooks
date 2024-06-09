@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useAuthStore } from "~/stores/auth";
-
-const { signOut } = useAuthStore();
+useHead({
+  title: "Biblioteca",
+});
 </script>
 
 <template>

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useBooksStore } from "~/stores/books";
 
+useHead({
+  title: "Editar libro",
+});
+
 const { getBookById } = useBooksStore();
 
 const route = useRoute();
