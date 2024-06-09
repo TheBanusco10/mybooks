@@ -1,9 +1,10 @@
 import daisyui from "daisyui";
 import flowbite from "flowbite/plugin";
+import forms from "@tailwindcss/forms";
 
 module.exports = {
   content: ["./formkit-theme.js", "./node_modules/flowbite/**/*.{js,ts}"],
-  plugins: [daisyui, flowbite],
+  plugins: [daisyui, flowbite, forms],
   daisyui: {
     themes: [
       {
