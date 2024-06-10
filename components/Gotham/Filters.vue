@@ -156,8 +156,12 @@ const handleFilterBook = async (values: any) => {
                     />
                   </div>
                 </DisclosurePanel>
-                <FormKit type="submit" label="Aplicar filtros" />
               </Disclosure>
+              <FormKit
+                type="submit"
+                label="Aplicar filtros"
+                outer-class="px-4"
+              />
             </FormKit>
           </DialogPanel>
         </TransitionChild>
