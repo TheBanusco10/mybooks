@@ -71,7 +71,7 @@ onMounted(() => {
     aria-label="Sidebar"
   >
     <div
-      class="h-full px-3 py-4 overflow-y-auto justify-between bg-gray-200 dark:bg-gray-800"
+      class="flex flex-col h-full px-3 py-4 overflow-y-auto justify-between bg-gray-200 dark:bg-gray-800"
     >
       <ul class="space-y-2 font-medium">
         <li v-for="{ name, href, icon, show } in mainMenuItems">
@@ -89,7 +89,6 @@ onMounted(() => {
         </li>
       </ul>
       <ul class="space-y-2 font-medium">
-        <div class="divider"></div>
         <li v-for="{ name, href, icon, callback, show } in subMenuItems">
           <NuxtLink
             v-if="!callback && show"
