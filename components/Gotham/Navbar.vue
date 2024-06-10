@@ -71,7 +71,7 @@ onMounted(() => {
     aria-label="Sidebar"
   >
     <div
-      class="flex flex-col h-full px-3 py-4 overflow-y-auto justify-between bg-gray-200 dark:bg-gray-800"
+      class="flex flex-col justify-between h-full px-3 py-4 overflow-y-auto bg-gray-200 dark:bg-gray-800"
     >
       <ul class="space-y-2 font-medium">
         <li v-for="{ name, href, icon, show } in mainMenuItems">
@@ -102,7 +102,7 @@ onMounted(() => {
           </NuxtLink>
           <button
             v-else-if="callback && show"
-            class="w-full justify-start btn btn-outline dark:text-white dark:hover:bg-gray-700 group transition-all"
+            class="w-full justify-start btn btn-outline btn-sm dark:text-white dark:hover:bg-gray-700 group transition-all"
             @click="callback"
           >
             <Icon :name="icon" />
@@ -111,6 +111,10 @@ onMounted(() => {
             </span>
           </button>
         </li>
+        <img
+          src="/img/booksy-logo-black.webp"
+          class="w-28 h-auto object-cover mx-auto py-2"
+        />
       </ul>
     </div>
   </aside>
