@@ -12,12 +12,12 @@ const { getStatusBackgroundColor } = useBookStatus();
 
 <template>
   <div
-    class="absolute top-0 right-0 flex justify-between w-full items-center pt-1 px-2"
+    class="absolute top-0 right-0 flex justify-between w-full items-center py-1 px-2 bg-black bg-opacity-30"
   >
     <div
       class="w-3 h-3 rounded-full"
       :class="`${getStatusBackgroundColor(status)}`"
     ></div>
-    <Icon :name="getTypeIcon(type)" class="w-6 h-6 text-white" />
+    <Icon :name="getTypeIcon(type)" class="text-white" size="20px" />
   </div>
 </template>

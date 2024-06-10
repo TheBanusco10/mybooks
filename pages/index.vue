@@ -6,9 +6,9 @@ useHead({
 
 <template>
   <main>
-    <GothamContainer>
+    <GothamContainer class="max-md:p-0">
       <p class="text-3xl">Tus libros</p>
-      <section class="flex justify-between">
+      <section class="flex justify-between items-center">
         <NuxtLink to="/books/add" class="btn btn-primary btn-sm my-4">
           <Icon name="mdi:book-plus" />
           Añadir libro

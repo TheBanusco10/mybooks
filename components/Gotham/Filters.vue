@@ -10,14 +10,20 @@ import {
 } from "@headlessui/vue";
 import { useFiltersStore } from "~/stores/filters";
 import { reset } from "@formkit/core";
+import { FILTER_CATEGORIES_ID } from "~/types/filters";
 
 const { categories } = useCategories();
-const { filterBooks, resetFilteredBooks } = useFiltersStore();
+
+const filtersStore = useFiltersStore();
+const { filterBooks, resetFilteredBooks } = filtersStore;
+const { selectedFilters } = storeToRefs(filtersStore);
+
+const { getFilterLabel } = useBookFilters();
 
 const filters = [
   {
-    id: "categories",
-    name: "Categorías",
+    id: FILTER_CATEGORIES_ID,
+    name: getFilterLabel(FILTER_CATEGORIES_ID),
     options: categories,
   },
 ];
@@ -44,13 +50,17 @@ const handleFilterBook = async (values: any) => {
   <section>
     <button
       type="button"
-      class="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6"
+      class="btn text-gray-600 btn-outline btn-circle btn-sm -m-2 ml-4 p-2 sm:ml-6"
       @click="mobileFiltersOpen = true"
     >
       <span class="sr-only">Filtros</span>
-      <Icon name="mdi:filter" class="h-5 w-5" aria-hidden="true" />
+      <Icon name="mdi:filter" aria-hidden="true" />
     </button>
-    <button class="btn btn-sm btn-link" @click="handleResetFilters">
+    <button
+      v-if="selectedFilters.length"
+      class="btn btn-sm btn-link"
+      @click="handleResetFilters"
+    >
       Limpiar filtros
     </button>
   </section>
