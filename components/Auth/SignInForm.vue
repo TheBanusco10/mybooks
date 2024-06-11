@@ -29,7 +29,7 @@ const handleSignIn = async (values: UserCredentials) => {
         type="password"
         name="password"
         label="Contraseña"
-        validation="required"
+        validation="required|length:8,22"
         autocomplete="current-password"
       />
     </FormKit>
