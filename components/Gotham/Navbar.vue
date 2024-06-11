@@ -111,10 +111,11 @@ onMounted(() => {
             </span>
           </button>
         </li>
-        <img
-          src="/img/booksy-logo-black.webp"
+        <!-- Logo here -->
+        <!-- <img
+          src=""
           class="w-28 h-auto object-cover mx-auto py-2"
-        />
+        /> -->
       </ul>
     </div>
   </aside>
