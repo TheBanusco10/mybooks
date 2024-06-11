@@ -74,43 +74,47 @@ onMounted(() => {
       class="flex flex-col justify-between h-full px-3 py-4 overflow-y-auto bg-gray-200 dark:bg-gray-800"
     >
       <ul class="space-y-2 font-medium">
-        <li v-for="{ name, href, icon, show } in mainMenuItems">
-          <NuxtLink
-            v-if="show"
-            :to="href"
-            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition-all"
-            :class="{ 'bg-gray-100 dark:bg-gray-700': route.path === href }"
-          >
-            <Icon :name="icon" />
-            <span class="ms-3">
-              {{ name }}
-            </span>
-          </NuxtLink>
-        </li>
+        <ClientOnly>
+          <li v-for="{ name, href, icon, show } in mainMenuItems">
+            <NuxtLink
+              v-if="show"
+              :to="href"
+              class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition-all"
+              :class="{ 'bg-gray-100 dark:bg-gray-700': route.path === href }"
+            >
+              <Icon :name="icon" />
+              <span class="ms-3">
+                {{ name }}
+              </span>
+            </NuxtLink>
+          </li>
+        </ClientOnly>
       </ul>
       <ul class="space-y-2 font-medium">
-        <li v-for="{ name, href, icon, callback, show } in subMenuItems">
-          <NuxtLink
-            v-if="!callback && show"
-            :to="href"
-            class="w-full justify-start btn bg-primary dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition-all"
-          >
-            <Icon :name="icon" />
-            <span class="ms-3">
-              {{ name }}
-            </span>
-          </NuxtLink>
-          <button
-            v-else-if="callback && show"
-            class="w-full justify-start btn btn-outline btn-sm dark:text-white dark:hover:bg-gray-700 group transition-all"
-            @click="callback"
-          >
-            <Icon :name="icon" />
-            <span class="ms-3">
-              {{ name }}
-            </span>
-          </button>
-        </li>
+        <ClientOnly>
+          <li v-for="{ name, href, icon, callback, show } in subMenuItems">
+            <NuxtLink
+              v-if="!callback && show"
+              :to="href"
+              class="w-full justify-start btn bg-primary dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition-all"
+            >
+              <Icon :name="icon" />
+              <span class="ms-3">
+                {{ name }}
+              </span>
+            </NuxtLink>
+            <button
+              v-else-if="callback && show"
+              class="w-full justify-start btn btn-outline btn-sm dark:text-white dark:hover:bg-gray-700 group transition-all"
+              @click="callback"
+            >
+              <Icon :name="icon" />
+              <span class="ms-3">
+                {{ name }}
+              </span>
+            </button>
+          </li>
+        </ClientOnly>
         <!-- Logo here -->
         <!-- <img
           src=""
