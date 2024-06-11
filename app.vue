@@ -1,6 +1,7 @@
 <script setup lang="ts">
 useHead({
-  titleTemplate: (title) => (!isEmpty(title) ? `${title} - Booksy` : "Booksy"),
+  titleTemplate: (title) =>
+    !isEmpty(title) ? `${title} - MyBooks` : "MyBooks",
   link: [
     {
       rel: "apple-touch-icon",
@@ -23,8 +24,8 @@ useHead({
     { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#5bbad5" },
   ],
   meta: [
-    { name: "apple-mobile-web-app-title", content: "Booksy" },
-    { name: "application-name", content: "Booksy" },
+    { name: "apple-mobile-web-app-title", content: "MyBooks" },
+    { name: "application-name", content: "MyBooks" },
     { name: "msapplication-TileColor", content: "#da532c" },
     { name: "theme-color", content: "#ffffff" },
   ],

@@ -1,4 +1,4 @@
-# Booksy OpenSource
+# MyBooks OpenSource
 
 Gestiona tus libros de forma sencilla y gratuita.
 
