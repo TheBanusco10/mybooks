@@ -14,4 +14,11 @@ export default defineNuxtConfig({
     // Experimental support for auto loading (see note):
     autoImport: true,
   },
+  supabase: {
+    redirectOptions: {
+      login: "/login",
+      callback: "/confirm",
+      exclude: ["/login/confirm"],
+    },
+  },
 });
