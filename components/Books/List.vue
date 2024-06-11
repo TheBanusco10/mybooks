@@ -16,7 +16,13 @@ const { data: books } = await useAsyncData(() =>
     class="flex flex-wrap gap-4 justify-center md:justify-start"
     v-if="isNull(filteredBooks)"
   >
-    <BooksItem v-for="book in books" :key="book.id" :book="book" />
+    <BooksItem
+      v-if="books?.length"
+      v-for="book in books"
+      :key="book.id"
+      :book="book"
+    />
+    <p v-else>Aún no tienes ningún libro en tu biblioteca</p>
   </section>
   <section class="flex flex-col gap-4" v-else>
     <div v-if="selectedFilters.length" class="flex gap-2">
