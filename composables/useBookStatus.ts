@@ -20,13 +20,13 @@ export default () => {
   const getStatusBackgroundColor = (statusValue: string) => {
     switch (statusValue) {
       case STATUS_READING:
-        return "bg-primary";
+        return "bg-info";
       case STATUS_FINISHED:
         return "bg-success";
       case STATUS_PAUSED:
         return "bg-warning";
       default:
-        return "bg-error";
+        return "bg-info";
     }
   };
 
