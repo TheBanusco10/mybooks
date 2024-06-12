@@ -29,6 +29,12 @@ export default () => {
     { value: "business", label: "Negocios" },
     { value: "health", label: "Salud" },
     { value: "interior_design", label: "Diseño de Interiores" },
+    { value: "travel", label: "Viajes" },
+    { value: "adventure", label: "Aventura" },
+    { value: "thriller", label: "Suspense" },
+    { value: "crime_novel", label: "Novela negra" },
+    { value: "psychological thriller", label: "Suspense psicológico" },
+    { value: "tales_of_the_occult", label: "Historias de ocultismo" },
   ];
 
   const getCategory = (categoryValue: string): Category => {
