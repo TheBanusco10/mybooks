@@ -1,18 +1,28 @@
+import { BooksError } from "~/errors/books";
 import type { Row } from "~/interfaces/database";
+import type { BooksResult } from "~/types/books";
 import type { Database } from "~/types/database.types";
 
 export const useBooksStore = defineStore("books", () => {
   const supabase = useSupabaseClient<Database>();
 
-  const getBooks = async (): Promise<Row<"books">[]> => {
-    const { data, error } = await supabase
+  const getBooks = async (from: number, to: number): Promise<BooksResult> => {
+    const {
+      data: books,
+      error,
+      count,
+    } = await supabase
       .from("books")
-      .select("*")
-      .order("created_at", { ascending: false });
+      .select("*", { count: "exact" })
+      .order("created_at", { ascending: false })
+      .range(from, to);
 
-    if (error) throw error;
+    if (error) throw new BooksError(error.message, error.code);
 
-    return data;
+    return {
+      results: books,
+      total: count || 0,
+    };
   };
 
   const addBook = async (
