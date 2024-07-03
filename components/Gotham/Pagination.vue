@@ -39,7 +39,7 @@ const handleNextPage = () => {
 </script>
 
 <template>
-  <div class="join">
+  <div class="join justify-center">
     <button
       class="join-item btn"
       :disabled="currentPage === 1 || isFetching"
