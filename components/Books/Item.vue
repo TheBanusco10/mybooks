@@ -18,7 +18,6 @@ defineProps<Props>();
       :src="book.image_url!"
       :alt="book.title!"
     />
-    {{ book.title }}
     <BooksCoverInformation :status="book.status!" :type="book.type!" />
   </NuxtLink>
 </template>
