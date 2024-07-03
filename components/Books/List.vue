@@ -13,7 +13,7 @@ const { from, to } = getFromQueryParam();
 const { data: books } = await useAsyncData(() =>
   getBooks(from, to).catch(async (error: BooksError) => {
     if (error.code === BOOKS_RANGE_ERROR_CODE) {
-      // TODO: Change page to 1 and get books again
+      currentPage.value = DEFAULT_PAGE;
     }
   })
 );
