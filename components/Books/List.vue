@@ -36,7 +36,7 @@ watch(currentPage, async () => {
 
 <template>
   <section v-if="isNull(filteredBooks)">
-    <div v-if="books?.results.length" class="flex flex-col gap-4">
+    <div v-if="books?.results.length" class="flex flex-col gap-8">
       <div class="flex flex-wrap gap-4 justify-center md:justify-start">
         <BooksItem v-for="book in books.results" :key="book.id" :book="book" />
       </div>
