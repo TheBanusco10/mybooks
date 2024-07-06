@@ -39,23 +39,27 @@ const handleNextPage = () => {
 </script>
 
 <template>
-  <div class="join justify-center">
-    <button
-      class="join-item btn"
-      :disabled="currentPage === 1 || isFetching"
-      @click="handlePreviousPage"
-    >
-      «
-    </button>
-    <div class="join-item btn pointer-events-none">
-      Página {{ currentPage }}
+  <div class="flex flex-col gap-8">
+    <slot />
+
+    <div class="join justify-center m-auto">
+      <button
+        class="join-item btn"
+        :disabled="currentPage === 1 || isFetching"
+        @click="handlePreviousPage"
+      >
+        «
+      </button>
+      <div class="join-item btn pointer-events-none">
+        Página {{ currentPage }}
+      </div>
+      <button
+        class="join-item btn"
+        :disabled="currentPage === lastPage || isFetching"
+        @click="handleNextPage"
+      >
+        »
+      </button>
     </div>
-    <button
-      class="join-item btn"
-      :disabled="currentPage === lastPage || isFetching"
-      @click="handleNextPage"
-    >
-      »
-    </button>
   </div>
 </template>

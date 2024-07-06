@@ -15,7 +15,7 @@ useHead({
         </NuxtLink>
         <GothamFilters />
       </section>
-      <BooksList />
+      <BooksComponent />
     </GothamContainer>
   </main>
 </template>

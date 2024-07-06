@@ -1,8 +1,14 @@
 export const FILTER_CATEGORIES_ID = "categories";
+export const FILTER_SCORE_ID = "score";
 
 interface Filter {
   id: string;
-  values: Array<string> | string;
+  values: string[] | number;
 }
 
-export type { Filter };
+interface FiltersFormData {
+  categories: string[];
+  score: number;
+}
+
+export type { Filter, FiltersFormData };

@@ -10,13 +10,17 @@ import {
 } from "@headlessui/vue";
 import { useFiltersStore } from "~/stores/filters";
 import { reset } from "@formkit/core";
-import { FILTER_CATEGORIES_ID } from "~/types/filters";
-
-const { categories } = useCategories();
+import {
+  FILTER_CATEGORIES_ID,
+  FILTER_SCORE_ID,
+  type FiltersFormData,
+} from "~/types/filters";
+import FiltersCategories from "~/components/Filters/Categories.vue";
+import FiltersScore from "~/components/Filters/Score.vue";
 
 const filtersStore = useFiltersStore();
 const { filterBooks, resetFilteredBooks } = filtersStore;
-const { selectedFilters } = storeToRefs(filtersStore);
+const { selectedFilters, filtersFormData } = storeToRefs(filtersStore);
 
 const { getFilterLabel } = useBookFilters();
 
@@ -24,20 +28,32 @@ const filters = [
   {
     id: FILTER_CATEGORIES_ID,
     name: getFilterLabel(FILTER_CATEGORIES_ID),
-    options: categories,
+    component: FiltersCategories,
+  },
+  {
+    id: FILTER_SCORE_ID,
+    name: getFilterLabel(FILTER_SCORE_ID),
+    component: FiltersScore,
   },
 ];
 
 const mobileFiltersOpen = ref(false);
 
 const handleResetFilters = () => {
+  // TODO Remove page query param
+  // Try to use navigateTo
   reset("filters-form");
   resetFilteredBooks();
 };
 
-const handleFilterBook = async (values: any) => {
+const handleFilterBook = async (values: FiltersFormData) => {
   try {
-    await filterBooks(values);
+    const { getRange } = usePagination();
+    const { from, to } = getRange(DEFAULT_PAGE);
+
+    filtersFormData.value = values;
+
+    await filterBooks(from, to);
 
     mobileFiltersOpen.value = false;
   } catch (err: any) {
@@ -147,13 +163,9 @@ const handleFilterBook = async (values: any) => {
                     </span>
                   </DisclosureButton>
                 </h3>
-                <DisclosurePanel class="pt-6" :unmount="false">
+                <DisclosurePanel :unmount="false">
                   <div class="space-y-6">
-                    <FormKit
-                      type="checkbox"
-                      name="categories"
-                      :options="section.options"
-                    />
+                    <component :is="section.component" />
                   </div>
                 </DisclosurePanel>
               </Disclosure>
