@@ -13,13 +13,19 @@ const selectedFiltersLabels = computed(() =>
 
 const { currentPage, getRange } = usePagination();
 
+const isFetching = ref(false);
+
 watch(currentPage, async () => {
   try {
     const { from, to } = getRange(currentPage.value);
 
+    isFetching.value = true;
+
     await filterBooks(from, to);
   } catch (err: any) {
     console.error(err.message);
+  } finally {
+    isFetching.value = false;
   }
 });
 </script>
@@ -35,7 +41,7 @@ watch(currentPage, async () => {
       :current-page="currentPage"
       @on-next-page="(newPage) => (currentPage = newPage)"
       @on-previous-page="(newPage) => (currentPage = newPage)"
-      :is-fetching="false"
+      :is-fetching="isFetching"
       :total-items="filteredBooks?.total || 0"
     >
       <BooksList :books="filteredBooks!.results" />
