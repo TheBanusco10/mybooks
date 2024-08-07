@@ -19,7 +19,7 @@ export default {
   date: textClassification,
   "datetime-local": textClassification,
   checkbox: {
-    input: "$reset checkbox checkbox-accent",
+    input: "$reset checkbox checkbox-primary",
     inner: "$reset inline",
     label: "$reset ml-2 label-text",
     legend: "$reset px-1",
@@ -32,12 +32,13 @@ export default {
   number: textClassification,
   password: textClassification,
   radio: {
-    input: "$reset radio radio-accent",
+    input: "$reset radio radio-primary",
     inner: "$reset inline",
     label: "$reset ml-2 label-text",
     legend: "$reset font-bold px-1",
     fieldset: "$reset card card-bordered border-accent p-2",
     wrapper: "$reset cursor-pointer flex items-center justify-start max-w-fit",
+    option: "$reset mb-2 last:mb-0",
   },
   range: {
     input: "$reset range range-secondary",
