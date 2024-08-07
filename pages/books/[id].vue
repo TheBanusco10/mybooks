@@ -81,7 +81,8 @@ const bookMetaInfo = [
         </div>
       </section>
       <section class="flex-[90%]">
-        <h1 class="text-3xl font-bold">{{ book?.title }}</h1>
+        <h1 class="text-2xl md:text-3xl font-bold">{{ book?.title }}</h1>
+        <div class="divider"></div>
         <p class="text-gray-700">
           {{ book?.description }}
         </p>

@@ -12,10 +12,14 @@ import { useFiltersStore } from "~/stores/filters";
 import {
   FILTER_CATEGORIES_ID,
   FILTER_SCORE_ID,
+  FILTER_STATUS_ID,
+  FILTER_TYPE_ID,
   type FiltersFormData,
 } from "~/types/filters";
 import FiltersCategories from "~/components/Filters/Categories.vue";
 import FiltersScore from "~/components/Filters/Score.vue";
+import FiltersStatus from "~/components/Filters/Status.vue";
+import FiltersType from "~/components/Filters/Type.vue";
 import { FILTERS_FORM_ID } from "~/constants/filters";
 
 const filtersStore = useFiltersStore();
@@ -34,6 +38,16 @@ const filters = [
     id: FILTER_SCORE_ID,
     name: getFilterLabel(FILTER_SCORE_ID),
     component: FiltersScore,
+  },
+  {
+    id: FILTER_STATUS_ID,
+    name: getFilterLabel(FILTER_STATUS_ID),
+    component: FiltersStatus,
+  },
+  {
+    id: FILTER_TYPE_ID,
+    name: getFilterLabel(FILTER_TYPE_ID),
+    component: FiltersType,
   },
 ];
 
