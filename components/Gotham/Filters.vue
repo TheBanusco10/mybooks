@@ -9,7 +9,6 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { useFiltersStore } from "~/stores/filters";
-import { reset } from "@formkit/core";
 import {
   FILTER_CATEGORIES_ID,
   FILTER_SCORE_ID,
@@ -17,6 +16,7 @@ import {
 } from "~/types/filters";
 import FiltersCategories from "~/components/Filters/Categories.vue";
 import FiltersScore from "~/components/Filters/Score.vue";
+import { FILTERS_FORM_ID } from "~/constants/filters";
 
 const filtersStore = useFiltersStore();
 const { filterBooks, resetFilteredBooks } = filtersStore;
@@ -40,10 +40,7 @@ const filters = [
 const mobileFiltersOpen = ref(false);
 
 const handleResetFilters = () => {
-  // TODO Remove page query param
-  // Try to use navigateTo
-  reset("filters-form");
-  resetFilteredBooks();
+  resetFilteredBooks(FILTERS_FORM_ID);
 };
 
 const handleFilterBook = async (values: FiltersFormData) => {

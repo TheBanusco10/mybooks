@@ -9,7 +9,7 @@ defineProps<Props>();
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+  <div class="flex flex-wrap gap-4 justify-center">
     <BooksItem v-for="book in books" :key="book.id" :book="book" />
   </div>
 </template>

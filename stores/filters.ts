@@ -1,7 +1,11 @@
-import type { Row } from "~/interfaces/database";
+import {
+  FILTERS_SEARCH_BY_TITLE_ERROR_MESSAGE,
+  FiltersError,
+} from "~/errors/filters";
 import FiltersService from "~/services/filtersService";
 import type { BooksResult } from "~/types/books";
 import type { FiltersFormData } from "~/types/filters";
+import { reset } from "@formkit/core";
 
 export const useFiltersStore = defineStore("filters", () => {
   const supabase = useSupabaseClient();
@@ -43,7 +47,25 @@ export const useFiltersStore = defineStore("filters", () => {
     };
   };
 
-  const resetFilteredBooks = (): void => {
+  const filterBooksBySearch = async (input: string): Promise<void> => {
+    const { data, error, count } = await supabase
+      .from("books")
+      .select("*", { count: "exact" })
+      .ilike("title", `%${input}%`);
+
+    if (error) throw new FiltersError(FILTERS_SEARCH_BY_TITLE_ERROR_MESSAGE);
+
+    filteredBooks.value = {
+      results: data,
+      total: count || 0,
+    };
+  };
+
+  const resetFilteredBooks = (formId?: string): void => {
+    if (formId) {
+      reset(formId);
+    }
+
     selectedFilters.value = [];
     filteredBooks.value = null;
   };
@@ -54,5 +76,6 @@ export const useFiltersStore = defineStore("filters", () => {
     filtersFormData,
     filterBooks,
     resetFilteredBooks,
+    filterBooksBySearch,
   };
 });
