@@ -26,5 +26,5 @@ watch(bookTitle, handleSearchBooks);
 </script>
 
 <template>
-  <GothamSearchInput v-model="bookTitle" />
+  <GothamSearchInput v-model="bookTitle" placeholder="Buscar por título..." />
 </template>
