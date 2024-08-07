@@ -14,7 +14,7 @@ defineProps<Props>();
     class="relative rounded shadow overflow-hidden hover:shadow-md transition-shadow duration-300"
   >
     <img
-      class="w-40 h-60 object-cover"
+      class="w-36 h-52 md:w-40 md:h-60 object-cover"
       :src="book.image_url!"
       :alt="book.title!"
     />
