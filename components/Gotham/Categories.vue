@@ -5,6 +5,7 @@ import {
   ComboboxOptions,
   ComboboxOption,
   ComboboxLabel,
+  ComboboxButton,
 } from "@headlessui/vue";
 import type { Category } from "~/types/category";
 
@@ -57,12 +58,20 @@ watch(selectedCategories, () => {
       :categories="selectedCategories.map(({ value }) => value)"
       span-classes="badge-secondary badge-outline"
     />
-    <ComboboxInput
-      class="input input-bordered rounded shadow p-2"
-      id="category-input"
-      @change="query = $event.target.value"
-      placeholder="Buscar por nombre..."
-    />
+    <div class="join">
+      <ComboboxInput
+        class="w-full input input-bordered rounded shadow p-2 join-item"
+        id="category-input"
+        @change="query = $event.target.value"
+        placeholder="Buscar por nombre..."
+      />
+      <ComboboxButton class="btn btn-primary join-item" v-slot="{ open }">
+        <span class="swap" :class="{ 'swap-active': open }">
+          <Icon class="swap-off" name="mdi:arrow-right" />
+          <Icon class="swap-on" name="mdi:arrow-down" />
+        </span>
+      </ComboboxButton>
+    </div>
     <ComboboxOptions
       class="max-h-[10.5rem] overflow-y-scroll bg-white rounded border mt-1 overflow-hidden"
     >
