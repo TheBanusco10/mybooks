@@ -8,6 +8,8 @@ withDefaults(defineProps<Props>(), {
 });
 
 const model = defineModel({ default: "" });
+
+defineEmits(["onInputChange"]);
 </script>
 
 <template>
@@ -17,6 +19,7 @@ const model = defineModel({ default: "" });
       class="grow border-none focus:ring-0"
       v-model="model"
       :placeholder="placeholder"
+      @input="$emit('onInputChange', model)"
     />
     <Icon name="mdi:magnify" size="1.2rem" />
   </label>

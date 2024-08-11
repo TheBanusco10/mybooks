@@ -3,9 +3,11 @@ import { FILTERS_FORM_ID } from "~/constants/filters";
 import { FiltersError } from "~/errors/filters";
 import { useFiltersStore } from "~/stores/filters";
 
-const { filterBooksBySearch, resetFilteredBooks } = useFiltersStore();
+const filtersStore = useFiltersStore();
+const { filterBooksBySearch, resetFilteredBooks } = filtersStore;
+const { searchedBookInput } = storeToRefs(filtersStore);
 
-const bookTitle = ref("");
+const bookTitle = ref(searchedBookInput.value);
 const handleSearchBooks = useDebounce(async () => {
   try {
     if (!bookTitle.value || bookTitle.value.length < 2) {
@@ -13,6 +15,8 @@ const handleSearchBooks = useDebounce(async () => {
 
       return;
     }
+
+    searchedBookInput.value = bookTitle.value;
 
     await filterBooksBySearch(bookTitle.value);
   } catch (err: any) {
@@ -26,5 +30,9 @@ watch(bookTitle, handleSearchBooks);
 </script>
 
 <template>
-  <GothamSearchInput v-model="bookTitle" placeholder="Buscar por título..." />
+  <GothamSearchInput
+    v-model="bookTitle"
+    placeholder="Buscar por título..."
+    @on-input-change="(input: string) => isEmpty(input) ? searchedBookInput = '' : ''"
+  />
 </template>

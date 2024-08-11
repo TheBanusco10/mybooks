@@ -12,6 +12,7 @@ export const useFiltersStore = defineStore("filters", () => {
   const filteredBooks = ref<BooksResult | null>(null);
   const selectedFilters = ref<string[]>([]);
   const filtersFormData = ref<FiltersFormData | null>(null);
+  const searchedBookInput = ref("");
 
   const filterBooks = async (from: number, to: number): Promise<void> => {
     if (!filtersFormData.value) return;
@@ -74,6 +75,7 @@ export const useFiltersStore = defineStore("filters", () => {
     selectedFilters,
     filteredBooks,
     filtersFormData,
+    searchedBookInput,
     filterBooks,
     resetFilteredBooks,
     filterBooksBySearch,
