@@ -13,7 +13,7 @@ const model = defineModel({ default: "" });
 <template>
   <label class="input input-bordered flex items-center gap-2 my-4">
     <input
-      type="text"
+      type="search"
       class="grow border-none focus:ring-0"
       v-model="model"
       :placeholder="placeholder"
