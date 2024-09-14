@@ -1,5 +1,6 @@
 import {
   FILTERS_SEARCH_BY_TITLE_ERROR_MESSAGE,
+  FILTER_BOOKS_ERROR_MESSAGE,
   FiltersError,
 } from "~/errors/filters";
 import FiltersService from "~/services/filtersService";
@@ -40,7 +41,7 @@ export const useFiltersStore = defineStore("filters", () => {
 
     const { data: books, error, count } = await queryObj.query;
 
-    if (error) throw error;
+    if (error) throw new FiltersError(FILTER_BOOKS_ERROR_MESSAGE);
 
     filteredBooks.value = {
       results: books,

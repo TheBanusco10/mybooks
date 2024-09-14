@@ -10,6 +10,7 @@ import {
 } from "@headlessui/vue";
 import { useFiltersStore } from "~/stores/filters";
 import {
+  FILTER_AUTHOR_ID,
   FILTER_CATEGORIES_ID,
   FILTER_SCORE_ID,
   FILTER_STATUS_ID,
@@ -20,6 +21,7 @@ import FiltersCategories from "~/components/Filters/Categories.vue";
 import FiltersScore from "~/components/Filters/Score.vue";
 import FiltersStatus from "~/components/Filters/Status.vue";
 import FiltersType from "~/components/Filters/Type.vue";
+import FiltersAuthor from "~/components/Filters/Author.vue";
 import { FILTERS_FORM_ID } from "~/constants/filters";
 
 const filtersStore = useFiltersStore();
@@ -48,6 +50,11 @@ const filters = [
     id: FILTER_TYPE_ID,
     name: getFilterLabel(FILTER_TYPE_ID),
     component: FiltersType,
+  },
+  {
+    id: FILTER_AUTHOR_ID,
+    name: getFilterLabel(FILTER_AUTHOR_ID),
+    component: FiltersAuthor,
   },
 ];
 

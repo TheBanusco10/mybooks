@@ -26,6 +26,7 @@ export default {
     fieldset: "$reset card card-bordered border-accent p-2",
     wrapper: "$reset cursor-pointer flex items-center justify-start max-w-fit",
     decorator: "hidden",
+    option: "mb-1",
   },
   email: textClassification,
   month: textClassification,
