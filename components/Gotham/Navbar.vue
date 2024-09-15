@@ -46,16 +46,16 @@ const profileMenuItems = computed(() => [
 <template>
   <div class="drawer lg:drawer-open">
     <input id="main-navigation" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col items-center justify-center">
-      <div class="w-full ml-4 mt-4">
+    <div class="drawer-content flex flex-col items-center">
+      <div class="w-full ml-4 mt-4 lg:hidden">
         <label
           for="main-navigation"
-          class="btn btn-circle btn-ghost drawer-button lg:hidden"
+          class="btn btn-circle btn-ghost drawer-button"
         >
           <Icon name="mdi:menu" size="1.5rem" />
         </label>
       </div>
-      <div class="p-4">
+      <div class="w-full p-4">
         <slot />
       </div>
     </div>
