@@ -67,7 +67,7 @@ const profileMenuItems = computed(() => [
       ></label>
 
       <div
-        class="w-80 menu flex flex-col justify-between min-h-full px-3 py-4 overflow-y-auto bg-gray-200"
+        class="w-64 menu flex flex-col justify-between min-h-full px-3 py-4 overflow-y-auto bg-gray-200"
       >
         <ul class="space-y-2 font-medium">
           <div v-if="isUserLoggedIn">
