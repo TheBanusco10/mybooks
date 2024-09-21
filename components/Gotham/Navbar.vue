@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { initFlowbite } from "flowbite";
-import { onMounted } from "vue";
 import { useAuthStore } from "~/stores/auth";
 
 const route = useRoute();
@@ -8,6 +6,12 @@ const route = useRoute();
 const authStore = useAuthStore();
 const { signOut } = authStore;
 const { isUserLoggedIn } = storeToRefs(authStore);
+
+const drawerToggleInput = ref<HTMLInputElement | null>(null);
+const drawerToggleInputGlobaRef = useState<HTMLInputElement | null>(
+  "drawerToggleInput",
+  () => null,
+);
 
 const mainMenuItems = computed(() => [
   {
@@ -41,11 +45,20 @@ const profileMenuItems = computed(() => [
     icon: "mdi:account-outline",
   },
 ]);
+
+onMounted(() => {
+  drawerToggleInputGlobaRef.value = drawerToggleInput.value;
+});
 </script>
 
 <template>
   <div class="drawer lg:drawer-open">
-    <input id="main-navigation" type="checkbox" class="drawer-toggle" />
+    <input
+      id="main-navigation"
+      type="checkbox"
+      class="drawer-toggle"
+      ref="drawerToggleInput"
+    />
     <div class="drawer-content flex flex-col items-center">
       <div class="w-full ml-4 mt-4 lg:hidden">
         <label
