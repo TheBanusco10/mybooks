@@ -13,6 +13,8 @@ const drawerToggleInputGlobaRef = useState<HTMLInputElement | null>(
   () => null,
 );
 
+const config = useRuntimeConfig();
+
 const mainMenuItems = computed(() => [
   {
     name: "Biblioteca",
@@ -133,6 +135,9 @@ onMounted(() => {
                 </span>
               </button>
             </li>
+            <p class="text-xs text-gray-500 mt-2">
+              v{{ config.public.appVersion }}
+            </p>
           </div>
           <!-- Logo here -->
           <!-- <img
