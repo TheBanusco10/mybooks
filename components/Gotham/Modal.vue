@@ -25,7 +25,7 @@ defineExpose({
       <p class="py-4">
         <slot name="content" />
       </p>
-      <div class="modal-action">
+      <div class="modal-action mt-0">
         <form method="dialog" class="w-full flex justify-between">
           <button class="btn">Cancelar</button>
           <slot name="action" />
