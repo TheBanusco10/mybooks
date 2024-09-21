@@ -1,10 +1,8 @@
 import daisyui from "daisyui";
-import flowbite from "flowbite/plugin";
-import forms from "@tailwindcss/forms";
 
 module.exports = {
   content: ["./formkit-theme.js", "./node_modules/flowbite/**/*.{js,ts}"],
-  plugins: [daisyui, flowbite, forms],
+  plugins: [daisyui],
   daisyui: {
     themes: [
       {
@@ -15,7 +13,7 @@ module.exports = {
 
           accent: "#ddd6fe",
 
-          neutral: "#86efac",
+          neutral: "#291334",
 
           "base-100": "#ffffff",
 

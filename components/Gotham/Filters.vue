@@ -84,7 +84,7 @@ const handleFilterBook = async (values: FiltersFormData) => {
   <section>
     <button
       type="button"
-      class="btn text-gray-600 btn-outline btn-circle btn-sm -m-2 ml-4 p-2 sm:ml-6"
+      class="btn text-gray-600 btn-outline btn-circle btn-sm p-2 sm:ml-6"
       @click="mobileFiltersOpen = true"
     >
       <span class="sr-only">Filtros</span>

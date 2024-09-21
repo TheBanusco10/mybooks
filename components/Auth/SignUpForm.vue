@@ -41,6 +41,13 @@ const handleSignUp = async (values: UserCredentials) => {
         validation="required|confirm|length:8,22"
         autocomplete="new-password"
       />
+      <FormKit
+        type="url"
+        name="imageUrl"
+        label="Imagen de perfil"
+        help="Introduce una URL válida para la imagen de perfil"
+        validation="url"
+      />
     </FormKit>
     <p>
       ¿Ya eres miembro?

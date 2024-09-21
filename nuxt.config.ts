@@ -21,4 +21,9 @@ export default defineNuxtConfig({
       exclude: ["/login/confirm"],
     },
   },
+  runtimeConfig: {
+    public: {
+      appVersion: process.env.npm_package_version,
+    },
+  },
 });
