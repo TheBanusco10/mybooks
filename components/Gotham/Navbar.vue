@@ -60,7 +60,7 @@ onMounted(() => {
       ref="drawerToggleInput"
     />
     <div class="drawer-content flex flex-col items-center">
-      <div class="w-full ml-4 mt-4 lg:hidden">
+      <div class="w-full lg:hidden">
         <label
           for="main-navigation"
           class="btn btn-circle btn-ghost drawer-button"
@@ -72,7 +72,7 @@ onMounted(() => {
         <slot />
       </div>
     </div>
-    <div class="drawer-side h-full">
+    <div class="drawer-side">
       <label
         for="main-navigation"
         aria-label="close sidebar"
