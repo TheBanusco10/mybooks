@@ -24,15 +24,17 @@ const handleImagePreviewInput = () => {
       if (isEmpty(image_value)) return;
 
       previewImage.value = image_value;
-    }
+    },
   );
 };
 
 const handleAddBook = async (values: Exclude<Row<"books">, "id">) => {
   try {
     values.categories = selectedCategories.value.map(
-      (category) => category.value
+      (category) => category.value,
     );
+
+    values = useOmitBy(values, isEmpty) as Exclude<Row<"books">, "id">;
 
     await addBook(values);
 
@@ -113,13 +115,19 @@ onMounted(() => {
           outer-class="grow"
         />
       </div>
+      <FormKit
+        type="date"
+        name="end_date"
+        validation="date"
+        label="Fecha de finalización"
+      />
       <GothamCategories
         @on-select-category="(categories) => (selectedCategories = categories)"
       />
       <FormKitMessages />
       <FormKit
         type="submit"
-        :disabled="(disabled as boolean)"
+        :disabled="disabled as boolean"
         wrapper-class="text-end mt-8"
         >Añadir libro</FormKit
       >

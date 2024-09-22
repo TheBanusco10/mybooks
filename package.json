@@ -2,20 +2,22 @@
   "name": "my-books",
   "private": true,
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --dotenv .env.local",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "supabase:types": "supabase gen types typescript --local > types/database.types.ts"
+    "supabase:types": "supabase gen types typescript --local > types/database.types.ts",
+    "supabase:diff": "supabase db diff --schema public"
   },
   "dependencies": {
     "@formkit/core": "^1.6.3",
     "@formkit/i18n": "^1.6.3",
     "@formkit/icons": "^1.6.3",
     "@formkit/nuxt": "^1.6.3",
+    "@formkit/tempo": "^0.1.2",
     "@formkit/themes": "^1.6.3",
     "@formkit/vue": "^1.6.3",
     "@headlessui/vue": "^1.7.22",

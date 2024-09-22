@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { useBooksStore } from "~/stores/books";
+import { format } from "@formkit/tempo";
 
 const { getBookById } = useBooksStore();
 const route = useRoute();
 
 const { data: book } = await useAsyncData(() =>
-  getBookById(Number(route.params.id))
+  getBookById(Number(route.params.id)),
 );
 
 if (!book.value) {
@@ -17,7 +18,7 @@ if (!book.value) {
 }
 
 useHead({
-  title: book.value?.title || "",
+  title: book.value.title || "",
 });
 
 const { getBookStatus, getStatusBackgroundColor } = useBookStatus();
@@ -26,15 +27,21 @@ const { getBookType, getTypeIcon } = useBookType();
 const bookMetaInfo = [
   {
     icon: "mdi:star-outline",
-    value: `${book.value?.score}`,
+    value: `${book.value.score}`,
   },
   {
     icon: "mdi:book-open-page-variant-outline",
-    value: `${book.value?.number_pages} páginas`,
+    value: `${book.value.number_pages} páginas`,
   },
   {
-    icon: getTypeIcon(book.value?.type || ""),
-    value: getBookType(book.value?.type || "").label,
+    icon: getTypeIcon(book.value.type || ""),
+    value: getBookType(book.value.type || "").label,
+  },
+  {
+    icon: "mdi:book-check-outline",
+    value: book.value.end_date
+      ? format(book.value.end_date || "", { date: "medium" })
+      : null,
   },
 ];
 </script>
@@ -62,7 +69,7 @@ const bookMetaInfo = [
             span-classes="badge-primary badge-outline"
             class="mt-2"
           />
-          <ul class="flex flex-row lg:flex-col gap-2">
+          <ul class="flex flex-row flex-wrap lg:flex-col gap-2">
             <li class="flex gap-2 items-center text-sm">
               <div
                 class="w-4 rounded-full h-1"
@@ -70,13 +77,15 @@ const bookMetaInfo = [
               ></div>
               <span>{{ getBookStatus(book?.status || "").label }}</span>
             </li>
-            <li
-              v-for="{ icon, value } in bookMetaInfo"
-              class="flex gap-2 items-center text-sm"
-            >
-              <Icon :name="icon" size="16px" />
-              <span>{{ value }}</span>
-            </li>
+            <template v-for="{ icon, value } in bookMetaInfo">
+              <li
+                v-if="value"
+                class="flex gap-2 items-center text-sm grow justify-center lg:justify-start"
+              >
+                <Icon :name="icon" size="16px" />
+                <span>{{ value }}</span>
+              </li>
+            </template>
           </ul>
         </div>
       </section>
