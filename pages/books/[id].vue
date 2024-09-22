@@ -69,7 +69,7 @@ const bookMetaInfo = [
             span-classes="badge-primary badge-outline"
             class="mt-2"
           />
-          <ul class="flex flex-row lg:flex-col gap-2">
+          <ul class="flex flex-row flex-wrap lg:flex-col gap-2">
             <li class="flex gap-2 items-center text-sm">
               <div
                 class="w-4 rounded-full h-1"
@@ -78,7 +78,10 @@ const bookMetaInfo = [
               <span>{{ getBookStatus(book?.status || "").label }}</span>
             </li>
             <template v-for="{ icon, value } in bookMetaInfo">
-              <li v-if="value" class="flex gap-2 items-center text-sm">
+              <li
+                v-if="value"
+                class="flex gap-2 items-center text-sm grow justify-center lg:justify-start"
+              >
                 <Icon :name="icon" size="16px" />
                 <span>{{ value }}</span>
               </li>
