@@ -17,7 +17,7 @@ const { statuses } = useBookStatus();
 const selectedCategories = ref<Category[]>([]);
 
 const previewImage = ref<string>(
-  props.book.image_url || "https://placehold.co/160x200"
+  props.book.image_url || "https://placehold.co/160x200",
 );
 const { updateBook } = useBooksStore();
 
@@ -32,15 +32,19 @@ const handleImagePreviewInput = () => {
       if (isEmpty(image_value)) return;
 
       previewImage.value = image_value;
-    }
+    },
   );
 };
 
 const handleUpdateBook = async (values: Exclude<Row<"books">, "id">) => {
   try {
     values.categories = selectedCategories.value.map(
-      (category) => category.value
+      (category) => category.value,
     );
+
+    if (isEmpty(values.end_date)) {
+      values.end_date = null;
+    }
 
     await updateBook(props.book.id, values);
 
@@ -137,6 +141,13 @@ onMounted(() => {
           outer-class="grow"
         />
       </div>
+      <FormKit
+        type="date"
+        name="end_date"
+        validation="date"
+        label="Fecha de finalización"
+        :value="book.end_date || ''"
+      />
       <GothamCategories
         @on-select-category="(categories) => (selectedCategories = categories)"
         :default-values="book.categories || []"
@@ -144,7 +155,7 @@ onMounted(() => {
       <FormKitMessages />
       <FormKit
         type="submit"
-        :disabled="(disabled as boolean)"
+        :disabled="disabled as boolean"
         wrapper-class="text-end mt-8"
         >Editar libro</FormKit
       >
