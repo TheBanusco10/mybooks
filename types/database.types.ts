@@ -95,7 +95,15 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_top_categories: {
+        Args: {
+          limit_num?: number
+        }
+        Returns: {
+          category: string
+          count: number
+        }[]
+      }
     }
     Enums: {
       status: "reading" | "paused" | "finished"

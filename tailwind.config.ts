@@ -1,7 +1,14 @@
 import daisyui from "daisyui";
 
 module.exports = {
-  content: ["./formkit-theme.js", "./node_modules/flowbite/**/*.{js,ts}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        outline: "Bungee Outline, sans-serif",
+      },
+    },
+  },
+  content: ["./formkit-theme.js"],
   plugins: [daisyui],
   daisyui: {
     themes: [

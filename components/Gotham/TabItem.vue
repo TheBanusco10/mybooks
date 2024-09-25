@@ -19,7 +19,7 @@ withDefaults(defineProps<Props>(), {
     :aria-label="label"
     :checked="checked"
   />
-  <div role="tabpanel" class="tab-content p-4">
+  <div role="tabpanel" class="tab-content p-4 overflow-x-auto">
     <slot />
   </div>
 </template>
