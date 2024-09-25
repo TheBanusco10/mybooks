@@ -13,7 +13,7 @@ const { data } = await useAsyncData("highRatedBooks", () =>
       </p>
     </template>
   </GothamHeader>
-  <GothamCarousel align="center">
+  <GothamCarousel v-if="!isEmpty(data)" align="center">
     <GothamCarouselItem v-for="book in data" :key="book.id">
       <BooksItem :book="book">
         <template v-slot:after>
@@ -26,4 +26,5 @@ const { data } = await useAsyncData("highRatedBooks", () =>
       </BooksItem>
     </GothamCarouselItem>
   </GothamCarousel>
+  <p v-else>No hemos podido encontrar ningún libro.</p>
 </template>
