@@ -26,4 +26,7 @@ export default defineNuxtConfig({
       appVersion: process.env.npm_package_version,
     },
   },
+  tailwindcss: {
+    cssPath: ["~/public/css/index.css", { injectPosition: "first" }],
+  },
 });
