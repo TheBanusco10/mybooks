@@ -11,7 +11,7 @@ defineProps<Props>();
 <template>
   <NuxtLink
     :to="{ name: 'books-id', params: { id: book.id } }"
-    class="relative rounded shadow overflow-hidden hover:shadow-md transition-shadow duration-300"
+    class="w-36 h-full block relative rounded shadow overflow-hidden hover:shadow-md transition-shadow duration-300"
   >
     <img
       class="w-36 h-52 md:w-40 md:h-60 object-cover"
@@ -19,5 +19,6 @@ defineProps<Props>();
       :alt="book.title!"
     />
     <BooksCoverInformation :status="book.status!" :type="book.type!" />
+    <slot name="after" />
   </NuxtLink>
 </template>
