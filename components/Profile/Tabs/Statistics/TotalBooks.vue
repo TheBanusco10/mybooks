@@ -4,6 +4,8 @@ const { getTotalBooksNumber } = useStatisticsStore();
 const { data } = await useAsyncData("totalBooksNumber", () =>
   getTotalBooksNumber(),
 );
+
+if (!data.value) data.value = 0;
 </script>
 
 <template>
