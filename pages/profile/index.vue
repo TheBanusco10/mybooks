@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import ProfileTabsAccountMain from "~/components/Profile/Tabs/Account/Main.vue";
+import ProfileTabsStatisticsMain from "~/components/Profile/Tabs/Statistics/Main.vue";
 
 const tabs = [
   {
+    label: "Estadísticas",
+    component: ProfileTabsStatisticsMain,
+  },
+  {
     label: "Cuenta",
-    id: "account",
     component: ProfileTabsAccountMain,
   },
 ];
@@ -14,9 +18,9 @@ const tabs = [
   <ProfileUserInformation />
   <GothamTab class="mt-4">
     <GothamTabItem
-      v-for="({ id, label, component }, index) in tabs"
+      v-for="({ label, component }, index) in tabs"
       :key="index"
-      :id="id"
+      id="profile-tabs"
       :label="label"
       :checked="index === 0"
     >
