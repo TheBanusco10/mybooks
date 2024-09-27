@@ -2,6 +2,7 @@ import {
   GET_HIGH_RATED_BOOKS_ERROR_MESSAGE,
   GET_TOP_CATEGORY_BOOKS_ERROR_MESSAGE,
   GET_TOTAL_NUMBER_BOOKS_ERROR_MESSAGE,
+  GET_TOTAL_READ_PAGES_ERROR_MESSAGE,
   StatisticsError,
 } from "~/errors/statistics";
 import type { Row } from "~/interfaces/database";
@@ -61,9 +62,27 @@ export const useStatisticsStore = defineStore("statistics", () => {
     return data;
   };
 
+  const getTotalReadPages = async (): Promise<{ sum: number }> => {
+    const { STATUS_FINISHED } = useBookStatus();
+    const { data, error } = await supabase
+      .from("books")
+      .select("number_pages.sum()")
+      .eq("status", STATUS_FINISHED)
+      .single();
+
+    if (error)
+      throw new StatisticsError(
+        GET_TOTAL_READ_PAGES_ERROR_MESSAGE,
+        error.message,
+      );
+
+    return data;
+  };
+
   return {
     getTotalBooksNumber,
     getHighRatedBooks,
     getTopCategories,
+    getTotalReadPages,
   };
 });

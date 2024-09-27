@@ -9,8 +9,8 @@ if (!data.value) data.value = 0;
 </script>
 
 <template>
-  <p class="font-bold">
+  <p>
     Nº total de libros
-    <span class="ml-2 text-3xl font-thin italic">{{ data }}</span>
+    <span class="ml-1 text-2xl font-bold italic">{{ data }}</span>
   </p>
 </template>
