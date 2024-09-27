@@ -34,5 +34,8 @@ export default () => {
     statuses,
     getBookStatus,
     getStatusBackgroundColor,
+    STATUS_PAUSED,
+    STATUS_READING,
+    STATUS_FINISHED,
   };
 };
