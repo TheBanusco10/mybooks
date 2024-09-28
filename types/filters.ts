@@ -6,12 +6,27 @@ export const FILTER_AUTHOR_ID = "author";
 
 interface Filter {
   id: string;
-  values: string[] | number;
+  values: string[] | number | string;
 }
 
 interface FiltersFormData {
-  categories: string[];
-  score: number;
+  categories?: string[];
+  score?: number;
+  author?: string[];
+  status?: string;
+  type?: string;
 }
 
-export type { Filter, FiltersFormData };
+type FilterKey =
+  | typeof FILTER_CATEGORIES_ID
+  | typeof FILTER_SCORE_ID
+  | typeof FILTER_STATUS_ID
+  | typeof FILTER_TYPE_ID
+  | typeof FILTER_AUTHOR_ID;
+
+interface FilterComponentProps {
+  id: string;
+  defaultValues: any;
+}
+
+export type { Filter, FiltersFormData, FilterKey, FilterComponentProps };

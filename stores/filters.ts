@@ -10,8 +10,10 @@ import { reset } from "@formkit/core";
 
 export const useFiltersStore = defineStore("filters", () => {
   const supabase = useSupabaseClient();
+  const { clearQueryParams, getUrl, setUrl } = useURL();
   const filteredBooks = ref<BooksResult | null>(null);
   const selectedFilters = ref<string[]>([]);
+  const selectedFiltersValues = ref<Record<string, any>>({});
   const filtersFormData = ref<FiltersFormData | null>(null);
   const searchedBookInput = ref("");
 
@@ -22,12 +24,19 @@ export const useFiltersStore = defineStore("filters", () => {
       query: supabase.from("books").select("*", { count: "exact" }),
     };
 
+    // const url = getUrl();
+    const route = useRouter();
+    const queryRoute: any = {};
+
     useForEach(filtersFormData.value, (values, key) => {
-      if (isEmpty(values)) return;
+      if (isEmpty(values) || isUndefined(values)) return;
 
       if (!selectedFilters.value?.includes(key)) {
         selectedFilters.value?.push(key);
       }
+
+      const urlValue = isArray(values) ? values : [values];
+      queryRoute[key] = urlValue.join("|");
 
       FiltersService.buildQuery({ id: key, values }, queryObj);
     });
@@ -36,6 +45,12 @@ export const useFiltersStore = defineStore("filters", () => {
       filteredBooks.value = null;
       return;
     }
+
+    // setUrl(url);
+    route.push({
+      path: "/",
+      query: queryRoute,
+    });
 
     queryObj.query.range(from, to);
 
@@ -68,12 +83,16 @@ export const useFiltersStore = defineStore("filters", () => {
       reset(formId);
     }
 
+    clearQueryParams();
     selectedFilters.value = [];
     filteredBooks.value = null;
+    filtersFormData.value = null;
+    reset("categories");
   };
 
   return {
     selectedFilters,
+    selectedFiltersValues,
     filteredBooks,
     filtersFormData,
     searchedBookInput,
