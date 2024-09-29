@@ -9,9 +9,17 @@ import type { FiltersFormData } from "~/types/filters";
 import { reset } from "@formkit/core";
 
 export const useFiltersStore = defineStore("filters", () => {
+  const { FILTERS, getFilterLabel } = useBookFilters();
   const supabase = useSupabaseClient();
+
   const filteredBooks = ref<BooksResult | null>(null);
-  const selectedFilters = ref<string[]>([]);
+
+  const selectedFilters = ref<Record<string, any>>({});
+  const appliedFilters = ref<string[]>([]);
+  const appliedFiltersLabels = computed(() =>
+    appliedFilters.value.map((filterKey) => getFilterLabel(filterKey)),
+  );
+
   const filtersFormData = ref<FiltersFormData | null>(null);
   const searchedBookInput = ref("");
 
@@ -22,12 +30,18 @@ export const useFiltersStore = defineStore("filters", () => {
       query: supabase.from("books").select("*", { count: "exact" }),
     };
 
-    useForEach(filtersFormData.value, (values, key) => {
-      if (isEmpty(values)) return;
+    const route = useRouter();
+    const queryRoute: any = {};
 
-      if (!selectedFilters.value?.includes(key)) {
-        selectedFilters.value?.push(key);
+    useForEach(filtersFormData.value, (values, key) => {
+      if (isEmpty(values) || isUndefined(values)) return;
+
+      if (!appliedFilters.value?.includes(key)) {
+        appliedFilters.value.push(key);
       }
+
+      const urlValue = isArray(values) ? values : [values];
+      queryRoute[key] = urlValue.join("|");
 
       FiltersService.buildQuery({ id: key, values }, queryObj);
     });
@@ -36,6 +50,11 @@ export const useFiltersStore = defineStore("filters", () => {
       filteredBooks.value = null;
       return;
     }
+
+    route.push({
+      path: "/",
+      query: queryRoute,
+    });
 
     queryObj.query.range(from, to);
 
@@ -68,17 +87,27 @@ export const useFiltersStore = defineStore("filters", () => {
       reset(formId);
     }
 
-    selectedFilters.value = [];
+    useRouter().push({
+      path: useRoute().path,
+      query: undefined,
+    });
     filteredBooks.value = null;
+    appliedFilters.value = [];
+    // Clear filters
+    useEach(FILTERS, (_, key) => {
+      selectedFilters.value[key] = [];
+    });
   };
 
   return {
     selectedFilters,
+    appliedFiltersLabels,
     filteredBooks,
     filtersFormData,
     searchedBookInput,
     filterBooks,
     resetFilteredBooks,
     filterBooksBySearch,
+    appliedFilters,
   };
 });

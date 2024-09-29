@@ -4,7 +4,8 @@ import { useBooksStore } from "~/stores/books";
 import { useFiltersStore } from "~/stores/filters";
 
 const { getBooks } = useBooksStore();
-const { filteredBooks } = storeToRefs(useFiltersStore());
+const filtersStore = useFiltersStore();
+const { filteredBooks } = storeToRefs(filtersStore);
 
 const { currentPage, getRange, getFromQueryParam } = usePagination();
 
@@ -14,7 +15,7 @@ const { data: books } = await useAsyncData(() =>
     if (error.code === BOOKS_RANGE_ERROR_CODE) {
       currentPage.value = DEFAULT_PAGE;
     }
-  })
+  }),
 );
 
 const isFetching = ref(false);

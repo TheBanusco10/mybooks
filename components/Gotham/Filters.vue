@@ -15,6 +15,7 @@ import {
   FILTER_SCORE_ID,
   FILTER_STATUS_ID,
   FILTER_TYPE_ID,
+  type FilterKey,
   type FiltersFormData,
 } from "~/types/filters";
 import FiltersCategories from "~/components/Filters/Categories.vue";
@@ -26,11 +27,12 @@ import { FILTERS_FORM_ID } from "~/constants/filters";
 
 const filtersStore = useFiltersStore();
 const { filterBooks, resetFilteredBooks } = filtersStore;
-const { selectedFilters, filtersFormData } = storeToRefs(filtersStore);
+const { selectedFilters, filtersFormData, appliedFiltersLabels } =
+  storeToRefs(filtersStore);
 
 const { getFilterLabel } = useBookFilters();
 
-const filters = [
+const filters = computed(() => [
   {
     id: FILTER_CATEGORIES_ID,
     name: getFilterLabel(FILTER_CATEGORIES_ID),
@@ -56,7 +58,7 @@ const filters = [
     name: getFilterLabel(FILTER_AUTHOR_ID),
     component: FiltersAuthor,
   },
-];
+]);
 
 const mobileFiltersOpen = ref(false);
 
@@ -78,6 +80,24 @@ const handleFilterBook = async (values: FiltersFormData) => {
     console.error(err.message);
   }
 };
+
+const { FILTERS } = useBookFilters();
+const route = useRoute();
+const queryParams = route.query;
+
+useEach(queryParams, (value: any, key) => {
+  if (FILTERS[key]) {
+    const filterKey: FilterKey = key as FilterKey;
+    const filterValue = value.split("|");
+    selectedFilters.value[filterKey] = filterValue;
+  }
+});
+
+if (!isEmpty(selectedFilters.value)) {
+  await useAsyncData(() =>
+    handleFilterBook(selectedFilters.value).then(() => true),
+  );
+}
 </script>
 
 <template>
@@ -91,7 +111,7 @@ const handleFilterBook = async (values: FiltersFormData) => {
       <Icon name="mdi:filter" aria-hidden="true" />
     </button>
     <button
-      v-if="selectedFilters.length"
+      v-if="appliedFiltersLabels.length"
       class="btn btn-sm btn-link"
       @click="handleResetFilters"
     >
@@ -183,7 +203,13 @@ const handleFilterBook = async (values: FiltersFormData) => {
                 </h3>
                 <DisclosurePanel :unmount="false">
                   <div class="space-y-6">
-                    <component :is="section.component" />
+                    <component
+                      :is="section.component"
+                      v-bind="{
+                        id: section.id,
+                        defaultValues: section.defaultValues,
+                      }"
+                    />
                   </div>
                 </DisclosurePanel>
               </Disclosure>
