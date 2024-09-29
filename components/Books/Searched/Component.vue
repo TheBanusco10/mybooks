@@ -2,14 +2,8 @@
 import { useFiltersStore } from "~/stores/filters";
 
 const filtersStore = useFiltersStore();
-const { filteredBooks, selectedFilters } = storeToRefs(filtersStore);
+const { filteredBooks, appliedFiltersLabels } = storeToRefs(filtersStore);
 const { filterBooks } = filtersStore;
-
-const { getFilterLabel } = useBookFilters();
-
-const selectedFiltersLabels = computed(() =>
-  selectedFilters.value.map((filterKey) => getFilterLabel(filterKey))
-);
 
 const { currentPage, getRange } = usePagination();
 
@@ -32,9 +26,9 @@ watch(currentPage, async () => {
 
 <template>
   <section class="flex flex-col gap-4">
-    <div v-if="selectedFilters.length" class="flex gap-2">
+    <div v-if="appliedFiltersLabels.length" class="flex gap-2">
       Buscando por:
-      <GothamBadgeList :items="selectedFiltersLabels" />
+      <GothamBadgeList :items="appliedFiltersLabels" />
     </div>
     <GothamPagination
       v-if="filteredBooks?.results.length || 0"

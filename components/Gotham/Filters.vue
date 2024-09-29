@@ -27,7 +27,7 @@ import { FILTERS_FORM_ID } from "~/constants/filters";
 
 const filtersStore = useFiltersStore();
 const { filterBooks, resetFilteredBooks } = filtersStore;
-const { selectedFilters, filtersFormData, selectedFiltersValues } =
+const { selectedFilters, filtersFormData, appliedFiltersLabels } =
   storeToRefs(filtersStore);
 
 const { getFilterLabel } = useBookFilters();
@@ -37,7 +37,6 @@ const filters = computed(() => [
     id: FILTER_CATEGORIES_ID,
     name: getFilterLabel(FILTER_CATEGORIES_ID),
     component: FiltersCategories,
-    defaultValues: selectedFiltersValues.value[FILTER_CATEGORIES_ID] || [],
   },
   {
     id: FILTER_SCORE_ID,
@@ -73,7 +72,6 @@ const handleFilterBook = async (values: FiltersFormData) => {
     const { from, to } = getRange(DEFAULT_PAGE);
 
     filtersFormData.value = values;
-    console.log(values);
 
     await filterBooks(from, to);
 
@@ -87,17 +85,18 @@ const { FILTERS } = useBookFilters();
 const route = useRoute();
 const queryParams = route.query;
 
-const filterValues: FiltersFormData = {};
 useEach(queryParams, (value: any, key) => {
   if (FILTERS[key]) {
     const filterKey: FilterKey = key as FilterKey;
     const filterValue = value.split("|");
-    filterValues[filterKey] = filterValue;
+    selectedFilters.value[filterKey] = filterValue;
   }
 });
 
-if (!isEmpty(filterValues)) {
-  await useAsyncData(() => handleFilterBook(filterValues).then(() => true));
+if (!isEmpty(selectedFilters.value)) {
+  await useAsyncData(() =>
+    handleFilterBook(selectedFilters.value).then(() => true),
+  );
 }
 </script>
 
@@ -112,7 +111,7 @@ if (!isEmpty(filterValues)) {
       <Icon name="mdi:filter" aria-hidden="true" />
     </button>
     <button
-      v-if="selectedFilters.length"
+      v-if="appliedFiltersLabels.length"
       class="btn btn-sm btn-link"
       @click="handleResetFilters"
     >
@@ -202,7 +201,7 @@ if (!isEmpty(filterValues)) {
                     </span>
                   </DisclosureButton>
                 </h3>
-                <DisclosurePanel :unmount="true">
+                <DisclosurePanel :unmount="false">
                   <div class="space-y-6">
                     <component
                       :is="section.component"
