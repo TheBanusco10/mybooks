@@ -10,7 +10,13 @@ const { getCategory } = useCategories();
 </script>
 
 <template>
-  <article
+  <NuxtLink
+    :to="{
+      path: '/',
+      query: {
+        categories: category,
+      },
+    }"
     class="relative flex items-center justify-center w-auto min-w-24 h-24 rounded p-2 before:content before:absolute before:bottom-0 before:left-0 before:bg-primary before:h-0 before:w-full overflow-hidden hover:before:h-full before:transition-all before:duration-200 hover:text-white transition-all duration-200"
   >
     <span class="absolute text-8xl font-thin italic opacity-20 font-outline">
@@ -19,5 +25,5 @@ const { getCategory } = useCategories();
     <span class="relative text-2xl z-10">
       {{ getCategory(category).label }}
     </span>
-  </article>
+  </NuxtLink>
 </template>
