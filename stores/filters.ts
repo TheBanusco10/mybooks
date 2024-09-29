@@ -27,7 +27,10 @@ export const useFiltersStore = defineStore("filters", () => {
     if (!filtersFormData.value) return;
 
     const queryObj = {
-      query: supabase.from("books").select("*", { count: "exact" }),
+      query: supabase
+        .from("books")
+        .select("*", { count: "exact" })
+        .order("created_at", { ascending: false }),
     };
 
     const route = useRouter();

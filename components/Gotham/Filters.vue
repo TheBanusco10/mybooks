@@ -93,7 +93,7 @@ useEach(queryParams, (value: any, key) => {
   }
 });
 
-if (!isEmpty(selectedFilters.value)) {
+if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
   await useAsyncData(() =>
     handleFilterBook(selectedFilters.value).then(() => true),
   );
