@@ -74,7 +74,7 @@ onMounted(() => {
         <slot />
       </div>
     </div>
-    <div class="drawer-side">
+    <div class="drawer-side z-[9999]">
       <label
         for="main-navigation"
         aria-label="close sidebar"
