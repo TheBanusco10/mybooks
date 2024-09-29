@@ -15,16 +15,18 @@ const tabs = [
 </script>
 
 <template>
-  <ProfileUserInformation />
-  <GothamTab class="mt-4">
-    <GothamTabItem
-      v-for="({ label, component }, index) in tabs"
-      :key="index"
-      id="profile-tabs"
-      :label="label"
-      :checked="index === 0"
-    >
-      <component :is="component" />
-    </GothamTabItem>
-  </GothamTab>
+  <main>
+    <ProfileUserInformation />
+    <GothamTab class="mt-4">
+      <GothamTabItem
+        v-for="({ label, component }, index) in tabs"
+        :key="index"
+        id="profile-tabs"
+        :label="label"
+        :checked="index === 0"
+      >
+        <component :is="component" />
+      </GothamTabItem>
+    </GothamTab>
+  </main>
 </template>
