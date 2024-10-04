@@ -21,3 +21,9 @@ withDefaults(defineProps<Props>(), {
     </FormKit>
   </FormKit>
 </template>
+
+<style>
+.formkit-asterisk {
+  @apply text-red-500;
+}
+</style>
