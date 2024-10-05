@@ -17,6 +17,7 @@
     "@formkit/i18n": "^1.6.3",
     "@formkit/icons": "^1.6.3",
     "@formkit/nuxt": "^1.6.3",
+    "@formkit/pro": "^0.127.4",
     "@formkit/tempo": "^0.1.2",
     "@formkit/themes": "^1.6.3",
     "@formkit/vue": "^1.6.3",
