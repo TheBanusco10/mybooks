@@ -21,6 +21,11 @@ const mainMenuItems = computed(() => [
     href: "/",
     icon: "mdi:book-open-page-variant-outline",
   },
+  {
+    name: "Clubs de lectura",
+    href: "/reading-clubs",
+    icon: "mdi:bookshelf",
+  },
 ]);
 
 const subMenuItems = computed(() => [
