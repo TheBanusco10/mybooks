@@ -17,7 +17,7 @@ export const useBooksStore = defineStore("books", () => {
       .order("created_at", { ascending: false })
       .range(from, to);
 
-    if (error) throw new BooksError(error.message, error.code);
+    if (error) throw new BooksError(error.message, error.message, error.code);
 
     return {
       results: books,
@@ -26,7 +26,7 @@ export const useBooksStore = defineStore("books", () => {
   };
 
   const addBook = async (
-    book: Exclude<Row<"books">, "id">
+    book: Exclude<Row<"books">, "id">,
   ): Promise<Row<"books">> => {
     const { data, error } = await supabase.from("books").insert(book).single();
 
@@ -59,7 +59,7 @@ export const useBooksStore = defineStore("books", () => {
 
   const updateBook = async (
     id: number,
-    book: Exclude<Row<"books">, "id">
+    book: Exclude<Row<"books">, "id">,
   ): Promise<void> => {
     const { error } = await supabase
       .from("books")

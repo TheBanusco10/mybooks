@@ -2,11 +2,13 @@ export const ERROR_NAME = "UsersError";
 
 export class UsersError extends Error {
   code?: string;
+  originalError?: string;
 
-  constructor(message: string, code?: string) {
+  constructor(message: string, originalError?: string, code?: string) {
     super(message);
     this.name = ERROR_NAME;
     this.code = code;
+    this.originalError = originalError;
   }
 }
 
