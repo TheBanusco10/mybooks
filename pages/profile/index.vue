@@ -15,7 +15,7 @@ const tabs = [
 </script>
 
 <template>
-  <main>
+  <GothamContainer>
     <ProfileUserInformation />
     <GothamTab class="mt-4">
       <GothamTabItem
@@ -28,5 +28,5 @@ const tabs = [
         <component :is="component" />
       </GothamTabItem>
     </GothamTab>
-  </main>
+  </GothamContainer>
 </template>
