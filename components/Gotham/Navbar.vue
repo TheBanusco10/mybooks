@@ -75,7 +75,7 @@ onMounted(() => {
           <Icon name="mdi:menu" size="1.5rem" />
         </label>
       </div>
-      <div class="w-full p-4">
+      <div id="main-content" class="w-full p-4">
         <slot />
       </div>
     </div>
