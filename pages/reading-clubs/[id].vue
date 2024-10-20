@@ -43,7 +43,7 @@ const { data: membersInformation } = await useAsyncData(() =>
 </script>
 
 <template>
-  <main class="h-dvh">
+  <main id="club-detail" class="h-dvh">
     <section class="bg-neutral text-white p-4 shadow">
       {{ readingClub?.name }}
     </section>
@@ -51,7 +51,7 @@ const { data: membersInformation } = await useAsyncData(() =>
 </template>
 
 <style>
-#main-content {
-  @apply p-0;
+#main-content:has(#club-detail) {
+  @apply px-0;
 }
 </style>

@@ -21,6 +21,7 @@ export const useAuthStore = defineStore("auth", () => {
       options: {
         data: {
           image_url: userCredentials.imageUrl,
+          username: userCredentials.username,
         },
       },
     });
