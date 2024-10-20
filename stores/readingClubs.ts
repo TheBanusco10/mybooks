@@ -1,6 +1,8 @@
 import {
   ADD_USER_TO_READING_CLUB_ERROR_MESSAGE,
   CREATE_READING_CLUB_ERROR_MESSAGE,
+  GET_NUMBER_OF_MEMBERS_ERROR_MESSAGE,
+  GET_PUBLIC_READING_CLUBS_ERROR_MESSAGE,
   GET_READING_CLUB_ERROR_MESSAGE,
   GET_USERS_INFORMATION_IN_READING_CLUB_ERROR_MESSAGE,
   IS_USER_IN_READING_CLUB_ERROR_MESSAGE,
@@ -142,8 +144,50 @@ export const useReadingClubsStore = defineStore("readingClubs", () => {
     return data;
   };
 
+  const getPublicReadingClubs = async (
+    from: number,
+    to: number,
+  ): Promise<{
+    results: Row<"reading_clubs">[];
+    total: number;
+  }> => {
+    const { data, error, count } = await supabase
+      .from("reading_clubs")
+      .select("*", { count: "exact" })
+      .eq("is_private", false)
+      .range(from, to);
+
+    if (error)
+      throw new ReadingClubsError(
+        GET_PUBLIC_READING_CLUBS_ERROR_MESSAGE,
+        error.message,
+      );
+
+    return {
+      results: data,
+      total: count || 0,
+    };
+  };
+
+  const getNumberOfMembers = async (clubId: number): Promise<number> => {
+    const { count, error } = await supabase
+      .from("reading_clubs_members")
+      .select("*", { count: "exact", head: true })
+      .eq("club_id", clubId);
+
+    if (error)
+      throw new ReadingClubsError(
+        GET_NUMBER_OF_MEMBERS_ERROR_MESSAGE,
+        error.message,
+      );
+
+    return count || 0;
+  };
+
   return {
     getReadingClubInformation,
+    getPublicReadingClubs,
+    getNumberOfMembers,
     createReadingClub,
     addUserToReadingClub,
     isUserInReadingClub,

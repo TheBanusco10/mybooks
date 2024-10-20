@@ -6,19 +6,24 @@ export const DEFAULT_ITEMS_PER_PAGE = 24;
 export default () => {
   const currentPage = ref(DEFAULT_PAGE);
 
-  const getRange = (page: number): PaginationRange => {
+  const getRange = (
+    page: number,
+    itemsPerPage: number = DEFAULT_ITEMS_PER_PAGE,
+  ): PaginationRange => {
     currentPage.value = validateCurrentPage(page);
 
-    const from = (currentPage.value - 1) * DEFAULT_ITEMS_PER_PAGE;
-    const to = from + DEFAULT_ITEMS_PER_PAGE - 1;
+    const from = (currentPage.value - 1) * itemsPerPage;
+    const to = from + itemsPerPage - 1;
 
     return { from, to };
   };
 
-  const getFromQueryParam = (): PaginationRange => {
+  const getFromQueryParam = (
+    itemsPerPage: number = DEFAULT_ITEMS_PER_PAGE,
+  ): PaginationRange => {
     const currentPageFromParam = getPageQueryParam();
 
-    return getRange(currentPageFromParam);
+    return getRange(currentPageFromParam, itemsPerPage);
   };
 
   const getPageQueryParam = (): number => {

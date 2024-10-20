@@ -40,7 +40,9 @@ const handleNextPage = () => {
 
 <template>
   <div class="flex flex-col gap-8">
-    <slot />
+    <section>
+      <slot />
+    </section>
 
     <div class="join justify-center m-auto">
       <button
@@ -60,6 +62,9 @@ const handleNextPage = () => {
       >
         »
       </button>
+    </div>
+    <div class="mb-4">
+      <p class="text-xs text-center">{{ totalItems }} resultado/s en total</p>
     </div>
   </div>
 </template>
