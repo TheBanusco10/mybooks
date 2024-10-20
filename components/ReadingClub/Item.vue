@@ -9,8 +9,9 @@ const props = defineProps<Props>();
 
 const { getNumberOfMembers } = useReadingClubsStore();
 
-const { data: numberOfMembers } = await useAsyncData(() =>
-  getNumberOfMembers(props.readingClub.id),
+const { data: numberOfMembers } = await useAsyncData(
+  `${props.readingClub.id}`,
+  () => getNumberOfMembers(props.readingClub.id),
 );
 </script>
 
