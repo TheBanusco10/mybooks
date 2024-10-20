@@ -95,16 +95,19 @@ export type Database = {
           email: string | null
           id: string
           image_url: string | null
+          username: string | null
         }
         Insert: {
           email?: string | null
           id: string
           image_url?: string | null
+          username?: string | null
         }
         Update: {
           email?: string | null
           id?: string
           image_url?: string | null
+          username?: string | null
         }
         Relationships: [
           {
@@ -186,6 +189,13 @@ export type Database = {
             columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reading_clubs_members_user_id_fkey1"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
