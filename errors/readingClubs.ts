@@ -24,3 +24,5 @@ export const GET_PUBLIC_READING_CLUBS_ERROR_MESSAGE =
   "Ha ocurrido un error al obtener la lista de clubs de lectura públicos.";
 export const GET_NUMBER_OF_MEMBERS_ERROR_MESSAGE =
   "Ha ocurrido un error al obtener el número de miembros del club de lectura.";
+export const REMOVE_USER_FROM_READING_CLUB_ERROR_MESSAGE =
+  "Ha ocurrido un error al eliminar el usuario del club de lectura.";
