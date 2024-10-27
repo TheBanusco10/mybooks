@@ -19,7 +19,20 @@ export const useUsersStore = defineStore("users", () => {
     if (error)
       throw new UsersError(
         UPDATE_USER_PERSONAL_INFORMATION_ERROR_MESSAGE,
-        error.message,
+        error.message
+      );
+
+    const user = useSupabaseUser();
+
+    const { error: updateProfilesTableError } = await supabase
+      .from("profiles")
+      .update(userInformation as never)
+      .eq("id", user.value?.id!);
+
+    if (updateProfilesTableError)
+      throw new UsersError(
+        UPDATE_USER_PERSONAL_INFORMATION_ERROR_MESSAGE,
+        updateProfilesTableError.message
       );
   };
 
