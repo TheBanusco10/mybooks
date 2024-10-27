@@ -9,11 +9,8 @@ if (isArray(id)) {
 
 const clubId = parseInt(id);
 
-const {
-  getReadingClubInformation,
-  isUserInReadingClub,
-  getReadingClubMembers,
-} = useReadingClubsStore();
+const { getReadingClubInformation, isUserInReadingClub } =
+  useReadingClubsStore();
 
 const { data: readingClub } = await useAsyncData(() =>
   getReadingClubInformation(clubId),
@@ -33,11 +30,6 @@ const { data: isMember } = await useAsyncData(() =>
 
 await checkUserAndReadingClubVisibility();
 
-// TODO Move to MembersInformation component
-const { data: membersInformation } = await useAsyncData(() =>
-  getReadingClubMembers(clubId),
-);
-
 async function checkUserAndReadingClubVisibility() {
   // Checks if the reading club is private and the user is member
   if (readingClub.value?.is_private && !isMember.value) {
@@ -48,9 +40,7 @@ async function checkUserAndReadingClubVisibility() {
 
 <template>
   <main id="club-detail" class="h-dvh flex flex-col">
-    <section class="bg-neutral text-white p-4 shadow">
-      {{ readingClub?.name }}
-    </section>
+    <ReadingClubHeader :reading-club="readingClub!" :is-member="isMember" />
     <section class="relative flex-grow">
       <ReadingClubJoinSection
         v-if="!isMember"
