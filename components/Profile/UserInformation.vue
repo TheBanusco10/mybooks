@@ -12,6 +12,7 @@ if (!isUserLoggedIn) {
       <GothamAvatar
         :email="user?.user_metadata.email"
         :image-url="user?.user_metadata.image_url || null"
+        :username="user?.user_metadata.username || null"
         size="xl"
       />
     </div>

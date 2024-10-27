@@ -5,7 +5,9 @@ interface Props {
   member: Row<"profiles">;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
+
+console.log(props.member);
 </script>
 
 <template>
@@ -13,7 +15,7 @@ defineProps<Props>();
     class="flex gap-2 items-center border-b border-gray-500 last:border-0 py-3"
   >
     <section>
-      <GothamAvatar :image-url="member.image_url" />
+      <GothamAvatar :image-url="member.image_url" :username="member.username" />
     </section>
     <section>
       <p>
