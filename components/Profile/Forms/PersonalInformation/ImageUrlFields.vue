@@ -16,7 +16,7 @@ const removeUserImageModalRef = ref<ModalRef>();
     validation="url"
   />
   <button
-    class="btn btn-error btn-outline"
+    class="btn btn-error btn-outline btn-sm"
     @click="removeUserImageModalRef?.dialogElement.showModal()"
     type="button"
   >
