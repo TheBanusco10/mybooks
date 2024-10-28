@@ -48,7 +48,7 @@ const handleTogglePanel = () => {
       class="drawer-content bg-gray-100 p-4 shadow flex justify-between items-center hover:bg-opacity-50 transition duration-300 hover:cursor-pointer"
       @click="handleTogglePanel"
     >
-      <section class="flex gap-4 w-[90%]">
+      <section class="flex gap-4 w-[90%] md:w-auto">
         <GothamAvatar
           :image-url="readingClub.image || '/images/placeholder.svg'"
           :show-letter="false"
@@ -65,7 +65,7 @@ const handleTogglePanel = () => {
           </p>
         </div>
       </section>
-      <section class="w-[10%]">
+      <section class="md:w-auto">
         <Icon name="mdi:arrow-right" size="1.5rem" />
       </section>
     </div>
