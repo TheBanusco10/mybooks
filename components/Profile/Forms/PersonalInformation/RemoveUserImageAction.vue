@@ -7,16 +7,8 @@ const removeUserImageModalRef = ref<ModalRef>();
 </script>
 
 <template>
-  <FormKit
-    id="image_url"
-    type="url"
-    name="image_url"
-    label="Imagen de perfil"
-    help="Introduce una URL válida para la imagen de perfil"
-    validation="url"
-  />
   <button
-    class="btn btn-error btn-outline"
+    class="mt-4 btn btn-error btn-outline btn-sm"
     @click="removeUserImageModalRef?.dialogElement.showModal()"
     type="button"
   >
