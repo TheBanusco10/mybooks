@@ -4,10 +4,12 @@ import type { Row } from "~/interfaces/database";
 interface Props {
   readingClub: Row<"reading_clubs">;
   isMember?: boolean | null;
+  isOwner?: boolean | null;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   isMember: false,
+  isOwner: false,
 });
 
 const { getReadingClubMembers } = useReadingClubsStore();
@@ -85,11 +87,25 @@ const handleTogglePanel = () => {
             <p class="text-lg text-center mt-4">
               {{ readingClub?.name }}
             </p>
-            <ReadingClubActionsLeaveGroup
-              v-if="isMember"
-              class="absolute top-0 right-0"
-              :club-id="readingClub.id"
-            />
+            <NuxtLink
+              class="absolute top-0 left-0 btn btn-sm btn-circle btn-neutral"
+              v-if="isOwner"
+              :to="`/reading-clubs/edit/${readingClub.id}`"
+            >
+              <Icon name="mdi:pencil-outline" />
+            </NuxtLink>
+            <section v-if="isMember">
+              <ReadingClubActionsLeaveGroup
+                v-if="!isOwner"
+                class="absolute top-0 right-0"
+                :club-id="readingClub.id"
+              />
+              <ReadingClubActionsRemoveGroup
+                v-else
+                class="absolute top-0 right-0"
+                :club-id="readingClub.id"
+              />
+            </section>
           </section>
           <div class="divider m-0"></div>
           <section>

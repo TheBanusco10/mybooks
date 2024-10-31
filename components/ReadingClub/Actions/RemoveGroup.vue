@@ -8,22 +8,20 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const { removeUserFromReadingClub } = useReadingClubsStore();
+const { removeReadingClub } = useReadingClubsStore();
 
-const leaveGroupModalRef = ref<ModalRef>();
+const removeGroupModalRef = ref<ModalRef>();
 const isFetching = ref(false);
 
-const handleLeaveGroup = async () => {
+const handleRemoveGroup = async () => {
   try {
     isFetching.value = true;
 
-    const user = useSupabaseUser();
+    await removeReadingClub(props.clubId);
 
-    await removeUserFromReadingClub(user.value?.id || "", props.clubId);
+    removeGroupModalRef.value?.dialogElement.close();
 
-    leaveGroupModalRef.value?.dialogElement.close();
-
-    await navigateTo("/reading-clubs");
+    await navigateTo("/");
   } catch (err: any) {
     const error: ReadingClubsError = err;
 
@@ -38,22 +36,23 @@ const handleLeaveGroup = async () => {
   <section>
     <button
       class="btn btn-circle btn-outline btn-sm btn-error"
-      @click="leaveGroupModalRef?.dialogElement.showModal()"
+      @click="removeGroupModalRef?.dialogElement.showModal()"
     >
-      <Icon name="mdi:door-open" size="1.2rem" />
+      <Icon name="mdi:trash-can-outline" size="1.2rem" />
     </button>
-    <GothamModal id="leave_group" ref="leaveGroupModalRef">
-      <template v-slot:title>Abandonar club de lectura</template>
+    <GothamModal id="leave_group" ref="removeGroupModalRef">
+      <template v-slot:title>Eliminar club de lectura</template>
       <template v-slot:content>
-        ¿Estás seguro de que deseas abandonar el grupo?
+        ¿Estás seguro de que deseas quieres eliminar el grupo? Esto eliminará
+        todos los mensajes y los miembros del grupo.
       </template>
       <template v-slot:action>
         <button
           class="btn btn-error"
-          @click="handleLeaveGroup"
+          @click="handleRemoveGroup"
           :disabled="isFetching"
         >
-          Abandonar
+          Eliminar
         </button>
       </template>
     </GothamModal>
