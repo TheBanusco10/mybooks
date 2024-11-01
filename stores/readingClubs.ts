@@ -7,17 +7,19 @@ import {
   GET_USERS_INFORMATION_IN_READING_CLUB_ERROR_MESSAGE,
   IS_USER_IN_READING_CLUB_ERROR_MESSAGE,
   ReadingClubsError,
+  REMOVE_READING_CLUB_ERROR_MESSAGE,
   REMOVE_USER_FROM_READING_CLUB_ERROR_MESSAGE,
+  UPDATE_READING_CLUB_ERROR_MESSAGE,
 } from "~/errors/readingClubs";
 import type { Row } from "~/interfaces/database";
 import type { Database } from "~/types/database.types";
-import type { CreateReadingClub } from "~/types/readingClubs";
+import type { ReadingClubInformation } from "~/types/readingClubs";
 
 export const useReadingClubsStore = defineStore("readingClubs", () => {
   const supabase = useSupabaseClient<Database>();
 
   const createReadingClub = async (
-    values: CreateReadingClub
+    values: ReadingClubInformation
   ): Promise<number> => {
     const { data, error } = await supabase
       .from("reading_clubs")
@@ -32,6 +34,22 @@ export const useReadingClubsStore = defineStore("readingClubs", () => {
       );
 
     return data.id || -1;
+  };
+
+  const updateReadingClub = async (
+    id: number,
+    values: ReadingClubInformation
+  ): Promise<void> => {
+    const { error } = await supabase
+      .from("reading_clubs")
+      .update(values)
+      .eq("id", id);
+
+    if (error)
+      throw new ReadingClubsError(
+        UPDATE_READING_CLUB_ERROR_MESSAGE,
+        error.message
+      );
   };
 
   const getReadingClubInformation = async (
@@ -204,6 +222,40 @@ export const useReadingClubsStore = defineStore("readingClubs", () => {
       );
   };
 
+  const isUserOwner = async (
+    userId: string,
+    clubId: number
+  ): Promise<boolean> => {
+    if (!userId || !clubId) return false;
+
+    const { data, error } = await supabase
+      .from("reading_clubs")
+      .select("*")
+      .eq("user_id", userId)
+      .eq("id", clubId);
+
+    if (error)
+      throw new ReadingClubsError(
+        GET_READING_CLUB_ERROR_MESSAGE,
+        error.message
+      );
+
+    return data.length > 0;
+  };
+
+  const removeReadingClub = async (clubId: number): Promise<void> => {
+    const { error } = await supabase
+      .from("reading_clubs")
+      .delete()
+      .eq("id", clubId);
+
+    if (error)
+      throw new ReadingClubsError(
+        REMOVE_READING_CLUB_ERROR_MESSAGE,
+        error.message
+      );
+  };
+
   return {
     getReadingClubInformation,
     getPublicReadingClubs,
@@ -215,5 +267,8 @@ export const useReadingClubsStore = defineStore("readingClubs", () => {
     getMessages,
     sendMessage,
     removeUserFromReadingClub,
+    updateReadingClub,
+    isUserOwner,
+    removeReadingClub,
   };
 });

@@ -1,8 +1,8 @@
-interface CreateReadingClub {
+interface ReadingClubInformation {
   image?: string;
   name: string;
   description?: string;
   is_private: boolean;
 }
 
-export type { CreateReadingClub };
+export type { ReadingClubInformation };

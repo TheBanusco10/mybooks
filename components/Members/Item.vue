@@ -5,7 +5,7 @@ interface Props {
   member: Row<"profiles">;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 </script>
 
 <template>

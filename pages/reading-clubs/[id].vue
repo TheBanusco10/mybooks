@@ -1,19 +1,13 @@
 <script setup lang="ts">
-const route = useRoute();
+const { getReadingClubIdFromUrl } = useReadingClub();
 
-let id = route.params.id;
+const clubId = getReadingClubIdFromUrl();
 
-if (isArray(id)) {
-  id = id[0];
-}
-
-const clubId = parseInt(id);
-
-const { getReadingClubInformation, isUserInReadingClub } =
+const { getReadingClubInformation, isUserInReadingClub, isUserOwner } =
   useReadingClubsStore();
 
 const { data: readingClub } = await useAsyncData(() =>
-  getReadingClubInformation(clubId),
+  getReadingClubInformation(clubId)
 );
 
 if (!readingClub.value) {
@@ -25,8 +19,10 @@ const user = useSupabaseUser();
 const userId = user.value?.id || "";
 
 const { data: isMember } = await useAsyncData(() =>
-  isUserInReadingClub(userId, clubId),
+  isUserInReadingClub(userId, clubId)
 );
+
+const { data: isOwner } = await useAsyncData(() => isUserOwner(userId, clubId));
 
 await checkUserAndReadingClubVisibility();
 
@@ -40,7 +36,11 @@ async function checkUserAndReadingClubVisibility() {
 
 <template>
   <main id="club-detail" class="h-dvh flex flex-col">
-    <ReadingClubHeader :reading-club="readingClub!" :is-member="isMember" />
+    <ReadingClubHeader
+      :reading-club="readingClub!"
+      :is-member="isMember"
+      :is-owner="isOwner"
+    />
     <section class="relative flex-grow">
       <ReadingClubJoinSection
         v-if="!isMember"
