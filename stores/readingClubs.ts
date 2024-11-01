@@ -256,6 +256,35 @@ export const useReadingClubsStore = defineStore("readingClubs", () => {
       );
   };
 
+  const getUserReadingClubs = async (
+    from: number,
+    to: number
+  ): Promise<{
+    results: Row<"reading_clubs">[];
+    total: number;
+  }> => {
+    const user = useSupabaseUser();
+
+    if (!user.value) return { results: [], total: 0 };
+
+    const { data, error, count } = await supabase
+      .from("reading_clubs_members")
+      .select("...reading_clubs (*)", { count: "exact" })
+      .eq("user_id", user.value.id)
+      .range(from, to);
+
+    if (error)
+      throw new ReadingClubsError(
+        GET_PUBLIC_READING_CLUBS_ERROR_MESSAGE,
+        error.message
+      );
+
+    return {
+      results: data,
+      total: count || 0,
+    };
+  };
+
   return {
     getReadingClubInformation,
     getPublicReadingClubs,
@@ -270,5 +299,6 @@ export const useReadingClubsStore = defineStore("readingClubs", () => {
     updateReadingClub,
     isUserOwner,
     removeReadingClub,
+    getUserReadingClubs,
   };
 });
