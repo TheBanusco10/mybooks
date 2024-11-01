@@ -7,7 +7,7 @@ const { getFromQueryParam, currentPage, getRange } = usePagination();
 const { from, to } = getFromQueryParam();
 
 const { data: readingClubs } = await useAsyncData(() =>
-  getPublicReadingClubs(from, to),
+  getPublicReadingClubs(from, to)
 );
 
 watch(currentPage, async () => {
@@ -28,8 +28,7 @@ watch(currentPage, async () => {
     <GothamPagination
       :current-page="currentPage"
       :total-items="readingClubs.total"
-      @on-next-page="(newPage) => (currentPage = newPage)"
-      @on-previous-page="(newPage) => (currentPage = newPage)"
+      @on-page-changed="(newPage) => (currentPage = newPage)"
     >
       <ReadingClubItem
         v-for="readingClub in readingClubs.results"

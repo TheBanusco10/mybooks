@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
   totalItems: 0,
 });
 
-const emits = defineEmits(["onPreviousPage", "onNextPage"]);
+const emits = defineEmits(["onPageChanged"]);
 
 const lastPage = computed(() => {
   return Math.ceil(props.totalItems / props.itemsPerPage);
@@ -25,7 +25,7 @@ const handlePreviousPage = () => {
     url.searchParams.set("page", String(props.currentPage - 1));
     history.pushState(null, "", url);
 
-    emits("onPreviousPage", props.currentPage - 1);
+    emits("onPageChanged", props.currentPage - 1);
   }
 };
 
@@ -34,7 +34,7 @@ const handleNextPage = () => {
   url.searchParams.set("page", String(props.currentPage + 1));
   history.pushState(null, "", url);
 
-  emits("onNextPage", props.currentPage + 1);
+  emits("onPageChanged", props.currentPage + 1);
 };
 </script>
 
