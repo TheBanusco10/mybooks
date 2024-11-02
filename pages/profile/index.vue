@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ProfileTabsAccountMain from "~/components/Profile/Tabs/Account/Main.vue";
 import ProfileTabsStatisticsMain from "~/components/Profile/Tabs/Statistics/Main.vue";
+import ReadingClubsMain from "~/components/Profile/Tabs/ReadingClubs/Main.vue";
 
 const tabs = [
   {
@@ -10,6 +11,10 @@ const tabs = [
   {
     label: "Cuenta",
     component: ProfileTabsAccountMain,
+  },
+  {
+    label: "Clubes de lectura",
+    component: ReadingClubsMain,
   },
 ];
 </script>

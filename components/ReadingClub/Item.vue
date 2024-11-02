@@ -9,9 +9,11 @@ const props = defineProps<Props>();
 
 const { getNumberOfMembers } = useReadingClubsStore();
 
+const user = useSupabaseUser();
+
 const { data: numberOfMembers } = await useAsyncData(
   `${props.readingClub.id}`,
-  () => getNumberOfMembers(props.readingClub.id),
+  () => getNumberOfMembers(props.readingClub.id)
 );
 </script>
 
@@ -27,6 +29,12 @@ const { data: numberOfMembers } = await useAsyncData(
       <div class="text-xs text-gray-400">
         <p v-if="numberOfMembers">{{ numberOfMembers }} miembro/s</p>
         <p v-else="numberOfMembers">Sin miembros</p>
+        <p
+          v-if="user?.id === readingClub.user_id"
+          class="badge badge-outline badge-xs mt-2"
+        >
+          Admin
+        </p>
       </div>
     </div>
     <div>

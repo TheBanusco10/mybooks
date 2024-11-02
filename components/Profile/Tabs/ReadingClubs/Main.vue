@@ -1,20 +1,21 @@
 <script setup lang="ts">
-import { ReadingClubsError } from "~/errors/readingClubs";
+import type { ReadingClubsError } from "~/errors/readingClubs";
 
-const { getPublicReadingClubs } = useReadingClubsStore();
+const { getUserReadingClubs } = useReadingClubsStore();
 
-const { getFromQueryParam, currentPage, getRange } = usePagination();
+const { currentPage, getFromQueryParam, getRange } = usePagination();
+
 const { from, to } = getFromQueryParam();
 
-const { data: readingClubs } = await useAsyncData(() =>
-  getPublicReadingClubs(from, to)
+const { data: readingClubs } = await useAsyncData("readingClubs", () =>
+  getUserReadingClubs(from, to)
 );
 
 watch(currentPage, async () => {
   try {
     const { from, to } = getRange(currentPage.value);
 
-    readingClubs.value = await getPublicReadingClubs(from, to);
+    readingClubs.value = await getUserReadingClubs(from, to);
   } catch (err: any) {
     const error: ReadingClubsError = err;
 
@@ -24,7 +25,7 @@ watch(currentPage, async () => {
 </script>
 
 <template>
-  <section v-if="readingClubs?.total" class="mt-4">
+  <section v-if="readingClubs?.total">
     <GothamPagination
       :current-page="currentPage"
       :total-items="readingClubs.total"
@@ -32,11 +33,9 @@ watch(currentPage, async () => {
     >
       <ReadingClubItem
         v-for="readingClub in readingClubs.results"
+        :key="readingClub.id"
         :reading-club="readingClub"
       />
     </GothamPagination>
-  </section>
-  <section v-else>
-    <p>No hemos encontrado ningún club de lectura público en este momento.</p>
   </section>
 </template>
