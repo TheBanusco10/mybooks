@@ -2,6 +2,7 @@
 interface UserInformation {
   image_url?: string;
   username?: string;
+  is_private?: boolean;
 }
 
 export type { UserInformation };

@@ -7,6 +7,12 @@ const { updateUserInformation } = useUsersStore();
 
 const user = useSupabaseUser();
 
+const isProfilePrivate = computed(() => {
+  return isUndefined(user.value?.user_metadata.is_private)
+    ? true
+    : user.value.user_metadata.is_private;
+});
+
 const handleUpdateUserPersonalInformation = async (
   values: UserInformation,
   validateValues: boolean = true
@@ -15,7 +21,9 @@ const handleUpdateUserPersonalInformation = async (
     let userInformation = values;
 
     if (validateValues) {
-      userInformation = useOmitBy(userInformation, isEmpty);
+      const validation = useOverEvery([isString, isEmpty]);
+
+      userInformation = useOmitBy(userInformation, validation);
     }
 
     await updateUserInformation(userInformation);
@@ -62,6 +70,15 @@ const handleRemoveUserImage = async () => {
       help="Se mostrará públicamente para que puedas ser reconocido por otros usuarios"
       validation="required|length:5,15"
       :value="user?.user_metadata.username || ''"
+    />
+    <FormKit
+      id="is_private"
+      type="toggle"
+      name="is_private"
+      label="Perfil privado"
+      help="Permitirá que tu perfil sea encontrado por otros usuarios"
+      validation="required"
+      :value="isProfilePrivate"
     />
   </GothamForm>
 </template>

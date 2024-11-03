@@ -15,6 +15,7 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const signUp = async (userCredentials: UserCredentials) => {
+
     const { error } = await supabase.auth.signUp({
       email: userCredentials.email,
       password: userCredentials.password,
@@ -22,6 +23,7 @@ export const useAuthStore = defineStore("auth", () => {
         data: {
           image_url: userCredentials.imageUrl,
           username: userCredentials.username,
+          is_private: true,
         },
       },
     });
