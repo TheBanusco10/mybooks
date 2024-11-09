@@ -14,13 +14,14 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { getReadingClubMembers } = useReadingClubsStore();
 
-const { data: membersInformation } = await useAsyncData(
-  "membersInformation",
-  () => getReadingClubMembers(props.readingClub.id),
-  {
-    watch: [() => props.isMember],
-  }
-);
+const { data: membersInformation, execute: getMembersInformation } =
+  await useAsyncData(
+    "membersInformation",
+    () => getReadingClubMembers(props.readingClub.id),
+    {
+      watch: [() => props.isMember],
+    }
+  );
 
 const membersName = computed(
   () =>
@@ -116,6 +117,12 @@ const handleTogglePanel = () => {
           </section>
           <section v-if="membersInformation">
             <p class="text-lg font-bold mb-2">Miembros</p>
+            <section v-if="isMember && isOwner">
+              <ReadingClubActionsInviteUser
+                :club-id="readingClub.id"
+                @on-user-invited="getMembersInformation"
+              />
+            </section>
             <div class="flex flex-col p-2 rounded bg-gray-300">
               <MembersList :members="membersInformation" />
             </div>
