@@ -124,7 +124,14 @@ const handleTogglePanel = () => {
               />
             </section>
             <div class="flex flex-col p-2 rounded bg-gray-300">
-              <MembersList :members="membersInformation" />
+              <MembersItem
+                v-for="member in membersInformation"
+                :key="member.id"
+                :member="member"
+                :show-actions="isOwner || false"
+                :club="readingClub"
+                @on-user-removed="getMembersInformation"
+              />
             </div>
           </section>
         </section>
