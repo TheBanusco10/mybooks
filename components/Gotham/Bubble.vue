@@ -18,7 +18,7 @@ const { formatDate } = useFormatter();
       <div class="w-10 rounded-full">
         <img
           alt="user avatar"
-          :src="message.user.image_url || '/public/images/placeholder.svg'"
+          :src="message.user.image_url || '/images/placeholder.svg'"
         />
       </div>
     </div>
