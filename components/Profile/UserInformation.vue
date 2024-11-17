@@ -16,11 +16,13 @@ if (!isUserLoggedIn) {
         size="xl"
       />
     </div>
-    <p v-if="user?.user_metadata.username" class="text-xl">
-      {{ user.user_metadata.username }}
-    </p>
-    <p class="text-sm text-gray-500">
-      {{ user?.user_metadata.email }}
-    </p>
+    <div class="flex flex-col text-center md:text-start">
+      <p v-if="user?.user_metadata.username" class="text-xl">
+        {{ user.user_metadata.username }}
+      </p>
+      <p class="text-sm text-gray-500">
+        {{ user?.user_metadata.email }}
+      </p>
+    </div>
   </section>
 </template>

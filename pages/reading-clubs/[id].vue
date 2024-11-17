@@ -35,19 +35,21 @@ async function checkUserAndReadingClubVisibility() {
 </script>
 
 <template>
-  <main id="club-detail" class="h-dvh flex flex-col">
+  <!-- 48px mobile header height -->
+  <main id="club-detail" class="h-[calc(100dvh-48px)] md:h-dvh flex flex-col">
     <ReadingClubHeader
       :reading-club="readingClub!"
       :is-member="isMember"
       :is-owner="isOwner"
     />
-    <section class="relative flex-grow">
+    <section class="flex relative flex-grow">
       <ReadingClubJoinSection
         v-if="!isMember"
         :user-id="userId"
         :club-id="clubId"
         @on-user-added="() => (isMember = true)"
       />
+      <ReadingClubChatMain v-else :club-id="clubId" />
     </section>
   </main>
 </template>

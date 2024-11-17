@@ -36,7 +36,7 @@ watch(currentPage, async () => {
       />
     </GothamPagination>
   </section>
-  <section v-else>
+  <section v-else class="mt-4">
     <p>No hemos encontrado ningún club de lectura público en este momento.</p>
   </section>
 </template>

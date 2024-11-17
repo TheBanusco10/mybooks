@@ -20,7 +20,7 @@ withDefaults(defineProps<Props>(), {
   >
     <section class="flex gap-2 items-center">
       <GothamAvatar :image-url="member.image_url" :username="member.username" />
-      <p>
+      <p class="w-36 text-ellipsis whitespace-nowrap overflow-hidden">
         {{ member.username || member.email }}
       </p>
     </section>

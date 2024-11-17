@@ -70,14 +70,15 @@ export const useReadingClubsStore = defineStore("readingClubs", () => {
     return data;
   };
 
-  const getMessages = async (
-    clubId: number
-  ): Promise<Row<"reading_clubs_messages">[]> => {
+  const getMessages = async (clubId: number): Promise<MessageInformation[]> => {
     const { data, error } = await supabase
       .from("reading_clubs_messages")
-      .select("*")
+      .select(
+        "message_id:id, message:content, created_at, club_id, user:profiles (*)"
+      )
       .eq("club_id", clubId) // Filtra por el ID del grupo
-      .order("created_at", { ascending: true });
+      .order("created_at", { ascending: true })
+      .returns<MessageInformation[]>();
 
     if (error) throw error;
 
@@ -151,11 +152,12 @@ export const useReadingClubsStore = defineStore("readingClubs", () => {
   const sendMessage = async (
     content: string,
     clubId: number
-  ): Promise<Row<"reading_clubs_messages">> => {
+  ): Promise<MessageInformation> => {
     const { data, error } = await supabase
       .from("reading_clubs_messages")
       .insert([{ content, club_id: clubId }])
-      .select()
+      .select('message_id:id, message:content, created_at, club_id, user:profiles (*)')
+      .returns<MessageInformation>()
       .single();
 
     if (error) throw error;
