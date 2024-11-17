@@ -28,7 +28,7 @@ const { formatDate } = useFormatter();
         {{ formatDate(message.created_at || "") }}
       </time>
     </div>
-    <div class="chat-bubble">
+    <div class="chat-bubble text-white">
       {{ message.message }}
     </div>
   </div>

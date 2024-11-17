@@ -58,7 +58,6 @@ onMounted(() => {
   // Wait for the DOM to be ready when users join reading clubs
   setTimeout(() => {
     const lastMessage = getLastMessageElement();
-    console.log(lastMessage);
 
     if (!lastMessage) return;
 
