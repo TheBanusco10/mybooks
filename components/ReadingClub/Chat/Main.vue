@@ -55,11 +55,15 @@ const getLastMessageElement = () => {
 };
 
 onMounted(() => {
-  const lastMessage = getLastMessageElement();
+  // Wait for the DOM to be ready when users join reading clubs
+  setTimeout(() => {
+    const lastMessage = getLastMessageElement();
+    console.log(lastMessage);
 
-  if (!lastMessage) return;
+    if (!lastMessage) return;
 
-  scrollIntoView(lastMessage, "instant");
+    scrollIntoView(lastMessage, "instant");
+  }, 50);
 });
 
 onBeforeUnmount(() => {
