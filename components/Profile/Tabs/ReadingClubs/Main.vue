@@ -38,4 +38,10 @@ watch(currentPage, async () => {
       />
     </GothamPagination>
   </section>
+  <section v-else>
+    <p class="mb-4">Aún no eres miembro de ningún club de lectura.</p>
+    <NuxtLink to="/reading-clubs" class="btn btn-primary"
+      >Descubrir clubes</NuxtLink
+    >
+  </section>
 </template>
