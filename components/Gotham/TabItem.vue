@@ -23,3 +23,9 @@ withDefaults(defineProps<Props>(), {
     <slot />
   </div>
 </template>
+
+<style lang="css" scoped>
+input[type="radio"] {
+  @apply whitespace-nowrap;
+}
+</style>

@@ -33,8 +33,7 @@ watch(currentPage, async () => {
     <GothamPagination
       v-if="filteredBooks?.results.length || 0"
       :current-page="currentPage"
-      @on-next-page="(newPage) => (currentPage = newPage)"
-      @on-previous-page="(newPage) => (currentPage = newPage)"
+      @on-page-changed="(newPage) => (currentPage = newPage)"
       :is-fetching="isFetching"
       :total-items="filteredBooks?.total || 0"
     >

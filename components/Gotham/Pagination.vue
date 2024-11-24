@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
   totalItems: 0,
 });
 
-const emits = defineEmits(["onPreviousPage", "onNextPage"]);
+const emits = defineEmits(["onPageChanged"]);
 
 const lastPage = computed(() => {
   return Math.ceil(props.totalItems / props.itemsPerPage);
@@ -25,7 +25,7 @@ const handlePreviousPage = () => {
     url.searchParams.set("page", String(props.currentPage - 1));
     history.pushState(null, "", url);
 
-    emits("onPreviousPage", props.currentPage - 1);
+    emits("onPageChanged", props.currentPage - 1);
   }
 };
 
@@ -34,13 +34,15 @@ const handleNextPage = () => {
   url.searchParams.set("page", String(props.currentPage + 1));
   history.pushState(null, "", url);
 
-  emits("onNextPage", props.currentPage + 1);
+  emits("onPageChanged", props.currentPage + 1);
 };
 </script>
 
 <template>
   <div class="flex flex-col gap-8">
-    <slot />
+    <section>
+      <slot />
+    </section>
 
     <div class="join justify-center m-auto">
       <button
@@ -60,6 +62,9 @@ const handleNextPage = () => {
       >
         »
       </button>
+    </div>
+    <div class="mb-4">
+      <p class="text-xs text-center">{{ totalItems }} resultado/s en total</p>
     </div>
   </div>
 </template>

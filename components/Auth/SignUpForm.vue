@@ -48,6 +48,13 @@ const handleSignUp = async (values: UserCredentials) => {
         help="Introduce una URL válida para la imagen de perfil"
         validation="url"
       />
+      <FormKit
+        type="text"
+        name="username"
+        label="Nombre de usuario"
+        help="Se mostrará públicamente para que puedas ser reconocido por otros usuarios"
+        validation="required|length:5,15"
+      />
     </FormKit>
     <p>
       ¿Ya eres miembro?

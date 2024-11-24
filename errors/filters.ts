@@ -5,10 +5,12 @@ export const FILTER_BOOKS_ERROR_MESSAGE =
 
 export class FiltersError extends Error {
   code?: string;
+  originalError?: string;
 
-  constructor(message: string, code?: string) {
+  constructor(message: string, originalError?: string, code?: string) {
     super(message);
     this.name = "FiltersError";
     this.code = code;
+    this.originalError = originalError;
   }
 }

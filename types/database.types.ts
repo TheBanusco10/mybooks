@@ -90,6 +90,155 @@ export type Database = {
           },
         ]
       }
+      profiles: {
+        Row: {
+          email: string | null
+          id: string
+          image_url: string | null
+          username: string | null
+        }
+        Insert: {
+          email?: string | null
+          id: string
+          image_url?: string | null
+          username?: string | null
+        }
+        Update: {
+          email?: string | null
+          id?: string
+          image_url?: string | null
+          username?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reading_clubs: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: number
+          image: string | null
+          is_private: boolean | null
+          name: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          image?: string | null
+          is_private?: boolean | null
+          name: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          image?: string | null
+          is_private?: boolean | null
+          name?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clubs_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reading_clubs_members: {
+        Row: {
+          club_id: number | null
+          created_at: string | null
+          id: number
+          user_id: string
+        }
+        Insert: {
+          club_id?: number | null
+          created_at?: string | null
+          id?: number
+          user_id: string
+        }
+        Update: {
+          club_id?: number | null
+          created_at?: string | null
+          id?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reading_clubs_members_group_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "reading_clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reading_clubs_members_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reading_clubs_members_user_id_fkey1"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reading_clubs_messages: {
+        Row: {
+          club_id: number | null
+          content: string
+          created_at: string | null
+          id: number
+          user_id: string | null
+        }
+        Insert: {
+          club_id?: number | null
+          content: string
+          created_at?: string | null
+          id?: number
+          user_id?: string | null
+        }
+        Update: {
+          club_id?: number | null
+          content?: string
+          created_at?: string | null
+          id?: number
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clubs_messages_club_id_fkey"
+            columns: ["club_id"]
+            isOneToOne: false
+            referencedRelation: "reading_clubs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "clubs_messages_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

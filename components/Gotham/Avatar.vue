@@ -3,9 +3,10 @@ interface Props {
   imageUrl: string | null;
   email?: string;
   size?: "xl" | "lg" | "md" | "sm";
+  username?: string | null;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   size: "md",
 });
 
@@ -27,21 +28,29 @@ const sizes = {
     text: "text-xs",
   },
 };
+
+const hasImage = computed(
+  () => !isNull(props.imageUrl) && !isEmpty(props.imageUrl)
+);
 </script>
 
 <template>
-  <div class="avatar" :class="{ placeholder: isNull(imageUrl) }">
+  <div class="avatar" :class="{ placeholder: !hasImage }">
     <div
       class="rounded-full"
       :class="[
-        isNull(imageUrl) && 'bg-neutral text-neutral-content',
+        !hasImage && 'bg-neutral text-neutral-content',
         sizes[size]['image'],
       ]"
     >
-      <span v-if="isNull(imageUrl)" :class="sizes[size]['text']">
-        {{ email?.charAt(0).toUpperCase() || "A" }}
+      <span v-if="!hasImage" :class="sizes[size]['text']">
+        {{
+          username?.charAt(0).toUpperCase() ||
+          email?.charAt(0).toUpperCase() ||
+          "A"
+        }}
       </span>
-      <img v-else :src="imageUrl" />
+      <img v-else :src="imageUrl!" />
     </div>
   </div>
 </template>

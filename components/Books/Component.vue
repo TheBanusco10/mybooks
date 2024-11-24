@@ -15,7 +15,7 @@ const { data: books } = await useAsyncData(() =>
     if (error.code === BOOKS_RANGE_ERROR_CODE) {
       currentPage.value = DEFAULT_PAGE;
     }
-  }),
+  })
 );
 
 const isFetching = ref(false);
@@ -39,8 +39,7 @@ watch(currentPage, async () => {
     <GothamPagination
       v-if="books?.results.length"
       :current-page="currentPage"
-      @on-next-page="(newPage) => (currentPage = newPage)"
-      @on-previous-page="(newPage) => (currentPage = newPage)"
+      @on-page-changed="(newPage) => (currentPage = newPage)"
       :is-fetching="isFetching"
       :total-items="books?.total || 0"
     >
