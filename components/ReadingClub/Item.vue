@@ -28,7 +28,7 @@ const { data: numberOfMembers } = await useAsyncData(
       </p>
       <div class="text-xs text-gray-400">
         <p v-if="numberOfMembers">{{ numberOfMembers }} miembro/s</p>
-        <p v-else="numberOfMembers">Sin miembros</p>
+        <p v-else>Sin miembros</p>
         <p
           v-if="user?.id === readingClub.user_id"
           class="badge badge-outline badge-xs mt-2"

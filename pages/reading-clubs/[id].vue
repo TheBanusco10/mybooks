@@ -27,7 +27,7 @@ const { data: isOwner } = await useAsyncData(() => isUserOwner(userId, clubId));
 await checkUserAndReadingClubVisibility();
 
 async function checkUserAndReadingClubVisibility() {
-  // Checks if the reading club is private and the user is member
+  // Checks if the reading club is private and the user is not member
   if (readingClub.value?.is_private && !isMember.value) {
     await navigateTo("/");
   }
