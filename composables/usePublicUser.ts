@@ -13,7 +13,7 @@ export default async () => {
     }
   };
 
-  getUser();
+  await getUser();
 
   return publicUser;
 };
