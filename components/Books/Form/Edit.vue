@@ -17,7 +17,7 @@ const { statuses } = useBookStatus();
 const selectedCategories = ref<Category[]>([]);
 
 const previewImage = ref<string>(
-  props.book.image_url || "https://placehold.co/160x200",
+  props.book.image_url || "https://placehold.co/160x200"
 );
 const { updateBook } = useBooksStore();
 
@@ -32,14 +32,14 @@ const handleImagePreviewInput = () => {
       if (isEmpty(image_value)) return;
 
       previewImage.value = image_value;
-    },
+    }
   );
 };
 
 const handleUpdateBook = async (values: Exclude<Row<"books">, "id">) => {
   try {
     values.categories = selectedCategories.value.map(
-      (category) => category.value,
+      (category) => category.value
     );
 
     if (isEmpty(values.end_date)) {
@@ -68,10 +68,12 @@ onMounted(() => {
     @submit="handleUpdateBook"
   >
     <div>
-      <img
-        class="w-40 h-auto object-cover rounded shadow mx-auto"
+      <NuxtImg
+        class="w-40 h-60 object-cover rounded shadow mx-auto bg-gray-50"
         :src="previewImage"
         alt="Preview de imagen"
+        width="160px"
+        height="240px"
       />
       <FormKit
         type="url"

@@ -6,7 +6,7 @@ const { getBookById } = useBooksStore();
 const route = useRoute();
 
 const { data: book } = await useAsyncData(() =>
-  getBookById(Number(route.params.id)),
+  getBookById(Number(route.params.id))
 );
 
 if (!book.value) {
@@ -54,8 +54,9 @@ const bookMetaInfo = [
           <NuxtImg
             :src="book?.image_url || ''"
             width="160px"
-            height="auto"
-            class="object-cover rounded shadow w-40 h-auto max-h-64 mx-auto lg:ml-auto"
+            height="256px"
+            class="object-cover rounded shadow w-40 h-64 mx-auto lg:ml-auto"
+            fetchpriority="high"
           />
           <BooksCoverInformation :status="book?.status!" :type="book?.type!" />
           <BooksCoverActions :id="book?.id!" :title="book?.title!" />

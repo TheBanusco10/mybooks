@@ -10,6 +10,14 @@ interface BooksResult {
   total: number;
 }
 
+interface OpenLibraryBook {
+  author: string;
+  cover: string | null;
+  description: string;
+  key: string;
+  title: string;
+}
+
 type Status = Type;
 
-export type { Type, Status, BooksResult };
+export type { Type, Status, BooksResult, OpenLibraryBook };

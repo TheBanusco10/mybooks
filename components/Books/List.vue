@@ -10,6 +10,6 @@ defineProps<Props>();
 
 <template>
   <div class="flex flex-wrap gap-4 justify-center">
-    <BooksItem v-for="book in books" :key="book.id" :book="book" />
+    <BooksItem v-for="(book, index) in books" :key="book.id" :book="book" />
   </div>
 </template>

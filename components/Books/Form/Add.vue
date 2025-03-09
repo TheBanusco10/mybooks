@@ -5,12 +5,21 @@ import { getNode } from "@formkit/core";
 import type { Row } from "~/interfaces/database";
 import { useBooksStore } from "~/stores/books";
 
+interface Props {
+  cover?: string;
+  title?: string;
+  author?: string;
+  description?: string;
+}
+
+const props = defineProps<Props>();
+
 const { types } = useBookType();
 const { statuses } = useBookStatus();
 
 const selectedCategories = ref<Category[]>([]);
 
-const previewImage = ref<string>("https://placehold.co/160x200");
+const previewImage = ref<string>("images/no-cover.svg");
 const { addBook } = useBooksStore();
 
 const handleImagePreviewInput = () => {
@@ -24,14 +33,14 @@ const handleImagePreviewInput = () => {
       if (isEmpty(image_value)) return;
 
       previewImage.value = image_value;
-    },
+    }
   );
 };
 
 const handleAddBook = async (values: Exclude<Row<"books">, "id">) => {
   try {
     values.categories = selectedCategories.value.map(
-      (category) => category.value,
+      (category) => category.value
     );
 
     values = useOmitBy(values, isEmpty) as Exclude<Row<"books">, "id">;
@@ -46,6 +55,10 @@ const handleAddBook = async (values: Exclude<Row<"books">, "id">) => {
 
 onMounted(() => {
   handleImagePreviewInput();
+
+  if (props.cover) {
+    previewImage.value = props.cover;
+  }
 });
 </script>
 
@@ -58,10 +71,12 @@ onMounted(() => {
     @submit="handleAddBook"
   >
     <div>
-      <img
-        class="w-40 h-auto object-cover rounded shadow mx-auto"
+      <NuxtImg
+        class="w-40 h-60 object-cover rounded shadow mx-auto bg-gray-50"
         :src="previewImage"
         alt="Preview de imagen"
+        width="160px"
+        height="240px"
       />
       <FormKit
         type="url"
@@ -70,16 +85,30 @@ onMounted(() => {
         label="Imagen"
         placeholder="https://imgur.com/my_image.jpg"
         validation="required|url"
+        :value="cover || ''"
       />
     </div>
     <div>
-      <FormKit type="text" name="title" label="Título" validation="required" />
-      <FormKit type="text" name="author" label="Autor" validation="required" />
+      <FormKit
+        type="text"
+        name="title"
+        label="Título"
+        validation="required"
+        :value="title || ''"
+      />
+      <FormKit
+        type="text"
+        name="author"
+        label="Autor"
+        validation="required"
+        :value="author || ''"
+      />
       <FormKit
         type="textarea"
         name="description"
         label="Descripción"
         validation="required"
+        :value="description || ''"
       />
       <div class="flex flex-row gap-4 gap-y-0 flex-wrap">
         <FormKit
