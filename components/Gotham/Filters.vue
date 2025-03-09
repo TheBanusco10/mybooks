@@ -37,6 +37,7 @@ const filters = computed(() => [
     id: FILTER_CATEGORIES_ID,
     name: getFilterLabel(FILTER_CATEGORIES_ID),
     component: FiltersCategories,
+    defaultValues: [],
   },
   {
     id: FILTER_SCORE_ID,
@@ -95,7 +96,7 @@ useEach(queryParams, (value: any, key) => {
 
 if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
   await useAsyncData(() =>
-    handleFilterBook(selectedFilters.value).then(() => true),
+    handleFilterBook(selectedFilters.value).then(() => true)
   );
 }
 </script>

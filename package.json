@@ -35,6 +35,6 @@
     "nuxt-icon": "^0.6.10",
     "nuxt-lodash": "^2.5.3",
     "typescript": "^5.4.5",
-    "vue-tsc": "^1"
+    "vue-tsc": "^1.8.27"
   }
 }
