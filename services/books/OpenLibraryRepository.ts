@@ -77,9 +77,9 @@ export default class OpenLibraryRepository {
     return paramsString.slice(0, -1);
   }
 
-  // Limits function to run only 3 times in 1 second (1000ms / 3 = 333ms)
+  // Limits function to run only 1 time in 1 second (1000ms / 1 = 1000ms)
   static getBooksByTitleThrottled = useThrottle(
     OpenLibraryRepository.getBooksByTitle,
-    333
+    1000
   );
 }

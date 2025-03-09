@@ -6,9 +6,11 @@ import type { OpenLibraryBook } from "~/types/books";
 const bookTitle = ref("");
 const bookTemplates = ref<OpenLibraryBook[]>([]);
 const isLoading = ref(false);
+const errorMessage = ref("");
 
 const getBooksByTitleDebounce = async () => {
   bookTemplates.value = [];
+  errorMessage.value = "";
 
   if (!bookTitle.value || bookTitle.value.length < 2) return;
 
@@ -22,6 +24,7 @@ const getBooksByTitleDebounce = async () => {
 
   if (res instanceof OpenLibraryRepositoryError) {
     console.error(res.message);
+    errorMessage.value = res.message;
     return;
   }
 
@@ -53,6 +56,9 @@ watch(bookTitle, useDebounce(getBooksByTitleDebounce, 500));
           v-if="!isLoading && bookTemplates.length"
           :book-templates="bookTemplates"
         />
+        <p v-if="errorMessage">
+          {{ errorMessage }}
+        </p>
       </section>
     </GothamContainer>
   </main>
