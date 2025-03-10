@@ -22,7 +22,7 @@
     "@formkit/themes": "^1.6.3",
     "@formkit/vue": "^1.6.3",
     "@headlessui/vue": "^1.7.22",
-    "nuxt": "^3.11.2",
+    "nuxt": "^3.16.0",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
   },
