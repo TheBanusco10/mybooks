@@ -9,8 +9,6 @@ const selectedBookTemplate = useState<OpenLibraryBook | null>(
 if (!selectedBookTemplate || !selectedBookTemplate.value) {
   await navigateTo("/");
 }
-
-console.log(selectedBookTemplate.value);
 </script>
 
 <template>

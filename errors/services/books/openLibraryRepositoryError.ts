@@ -1,7 +1,7 @@
 import { ErrorBase } from "~/interfaces/errorBase";
 
 export class OpenLibraryRepositoryError extends ErrorBase {
-  name = "OpenLibraryRepositoryError";
+  override name = "OpenLibraryRepositoryError";
 }
 
 export const GET_BOOKS_ERROR_MESSAGE =
