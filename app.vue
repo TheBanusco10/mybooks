@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { currentTheme } = useTheme();
+
 useHead({
   titleTemplate: (title) =>
     !isEmpty(title) ? `${title} - MyBooks` : "MyBooks",
@@ -29,6 +31,9 @@ useHead({
     { name: "msapplication-TileColor", content: "#da532c" },
     { name: "theme-color", content: "#ffffff" },
   ],
+  htmlAttrs: {
+    "data-theme": () => currentTheme.value,
+  },
 });
 </script>
 
