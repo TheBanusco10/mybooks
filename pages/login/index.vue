@@ -3,10 +3,10 @@ useHead({
   title: "Iniciar sesión",
 });
 
-const user = useSupabaseUser();
+const {isUserLoggedIn} = storeToRefs(useAuthStore());
 
-if (user.value) {
-  navigateTo("/");
+if (isUserLoggedIn.value) {
+  await navigateTo("/");
 }
 
 const showSignInForm = ref(true);
