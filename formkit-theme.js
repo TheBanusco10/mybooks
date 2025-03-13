@@ -10,7 +10,7 @@ const buttonClassification = {
 export default {
   // the global key will apply to all inputs
   global: {
-    help: "text-xs text-gray-500 m-1",
+    help: "text-xs text-base-content/80 m-1",
     message: "$reset text-error text-xs m-1",
     label: "$reset label-text m-1",
     outer: "$reset my-2",

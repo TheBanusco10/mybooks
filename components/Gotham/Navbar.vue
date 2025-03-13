@@ -122,7 +122,7 @@ onMounted(() => {
               <NuxtLink
                 v-if="!callback && show"
                 :to="href"
-                class="w-full justify-start btn bg-primary hover:bg-gray-100 group transition-all"
+                class="w-full justify-start btn bg-primary text-primary-content hover:bg-primary/90 group transition-all"
               >
                 <Icon :name="icon" />
                 <span class="ms-3">
