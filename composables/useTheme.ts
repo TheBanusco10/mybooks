@@ -1,5 +1,5 @@
 export default () => {
-  const currentTheme = useCookie("mybooks-theme", { default: () => "custom" });
+  const currentTheme = useCookie("mybooks-theme", { default: () => "mybooks" });
 
   const changeTheme = (theme: string) => {
     currentTheme.value = theme;
