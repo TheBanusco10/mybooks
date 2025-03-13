@@ -56,7 +56,7 @@ watch(selectedCategories, () => {
     >
     <BooksCategoryBadgesList
       :categories="selectedCategories.map(({ value }) => value)"
-      span-classes="badge-secondary badge-outline"
+      span-classes="badge-outline"
     />
     <div class="join">
       <ComboboxInput
