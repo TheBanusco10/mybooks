@@ -16,7 +16,7 @@ defineEmits(["onInputChange"]);
   <label class="input input-bordered flex items-center gap-2 my-4">
     <input
       type="search"
-      class="grow border-none focus:ring-0"
+      class="grow border-none focus:ring-0 placeholder:text-base-content"
       v-model="model"
       :placeholder="placeholder"
       @input="$emit('onInputChange', model)"

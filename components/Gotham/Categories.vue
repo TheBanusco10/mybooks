@@ -60,7 +60,7 @@ watch(selectedCategories, () => {
     />
     <div class="join">
       <ComboboxInput
-        class="w-full input input-bordered rounded shadow p-2 join-item"
+        class="w-full input input-bordered rounded shadow p-2 join-item placeholder:text-base-content"
         id="category-input"
         @change="query = $event.target.value"
         placeholder="Buscar por nombre..."
@@ -73,16 +73,19 @@ watch(selectedCategories, () => {
       </ComboboxButton>
     </div>
     <ComboboxOptions
-      class="max-h-[10.5rem] overflow-y-scroll bg-white rounded border mt-1 overflow-hidden"
+      class="max-h-[10.5rem] overflow-y-scroll bg-base-content-100 rounded border border-base-300 mt-1 overflow-hidden"
     >
       <ComboboxOption
         v-for="category in filteredCategories"
         :key="category.value"
         :value="category"
-        class="border-b last:border-none cursor-pointer hover:bg-gray-50 transition"
+        class="border-b border-base-300 last:border-none cursor-pointer hover:bg-primary/30 transition"
         v-slot="{ selected }"
       >
-        <li :class="selected && 'bg-secondary'" class="p-2 w-auto">
+        <li
+          :class="selected && 'bg-primary text-primary-content'"
+          class="p-2 w-auto text-base-content"
+        >
           {{ category.label }}
         </li>
       </ComboboxOption>
