@@ -102,6 +102,7 @@ onMounted(() => {
           </div>
         </ul>
         <ul class="space-y-2 font-medium">
+          <GothamThemeSwitcher />
           <div v-if="isUserLoggedIn">
             <NavbarItem
               v-for="(item, index) in profileMenuItems"
@@ -140,7 +141,7 @@ onMounted(() => {
                 </span>
               </button>
             </li>
-            <p class="text-xs text-gray-500 mt-2">
+            <p class="text-xs text-base-content/70 mt-2">
               v{{ config.public.appVersion }}
             </p>
           </div>

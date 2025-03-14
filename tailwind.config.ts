@@ -33,9 +33,10 @@ module.exports = {
           error: "#ef4444",
         },
       },
-      "cyberpunk",
       "halloween",
       "dark",
+      "valentine",
+      "coffee",
     ],
   },
 };
