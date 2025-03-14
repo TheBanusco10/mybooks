@@ -72,7 +72,7 @@ onMounted(() => {
   >
     <div>
       <NuxtImg
-        class="w-40 h-60 object-cover rounded shadow mx-auto bg-gray-50"
+        class="w-40 h-60 object-cover rounded shadow mx-auto bg-base-200/60"
         :src="previewImage"
         alt="Preview de imagen"
         width="160px"

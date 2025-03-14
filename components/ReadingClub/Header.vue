@@ -48,7 +48,7 @@ const handleTogglePanel = () => {
       ref="togglePanelInput"
     />
     <div
-      class="drawer-content bg-gray-100 p-4 shadow flex justify-between items-center hover:bg-opacity-50 transition duration-300 hover:cursor-pointer"
+      class="drawer-content bg-base-100 p-4 shadow flex justify-between items-center hover:bg-opacity-50 transition duration-300 hover:cursor-pointer"
       @click="handleTogglePanel"
     >
       <section class="flex gap-4 w-[90%] md:w-auto">
@@ -123,7 +123,7 @@ const handleTogglePanel = () => {
                 @on-user-invited="getMembersInformation"
               />
             </section>
-            <div class="flex flex-col p-2 rounded bg-gray-300">
+            <div class="flex flex-col p-2 rounded bg-base-300">
               <MembersItem
                 v-for="member in membersInformation"
                 :key="member.id"

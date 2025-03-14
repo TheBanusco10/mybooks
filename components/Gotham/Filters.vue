@@ -105,7 +105,7 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
   <section>
     <button
       type="button"
-      class="btn text-gray-600 btn-outline btn-circle btn-sm p-2 sm:ml-6"
+      class="btn text-base-content btn-outline btn-circle btn-sm p-2 sm:ml-6"
       @click="mobileFiltersOpen = true"
     >
       <span class="sr-only">Filtros</span>
@@ -150,13 +150,13 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
           :unmount="false"
         >
           <DialogPanel
-            class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl"
+            class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-base-200 py-4 pb-12 shadow-xl"
           >
-            <div class="flex items-center justify-between px-4">
-              <h2 class="text-lg font-medium text-gray-900">Filtros</h2>
+            <div class="flex items-center justify-between px-4 pb-2">
+              <h2 class="text-lg font-medium text-base-content">Filtros</h2>
               <button
                 type="button"
-                class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+                class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-base-200 p-2 text-base-content hover:bg-base-300"
                 @click="mobileFiltersOpen = false"
               >
                 <span class="sr-only">Cerrar menú</span>
@@ -176,14 +176,14 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
                 as="div"
                 v-for="section in filters"
                 :key="section.id"
-                class="border-t border-gray-200 px-4 py-6"
+                class="group border-t border-base-content/10 px-4 py-6"
                 v-slot="{ open }"
               >
                 <h3 class="-mx-2 -my-3 flow-root">
                   <DisclosureButton
-                    class="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500"
+                    class="flex w-full items-center justify-between bg-base-200 px-2 py-3 text-base-content"
                   >
-                    <span class="font-medium text-gray-900">{{
+                    <span class="font-medium text-base-content">{{
                       section.name
                     }}</span>
                     <span class="ml-6 flex items-center">

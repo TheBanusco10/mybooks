@@ -39,7 +39,7 @@ const handleSendMessage = async (evt: any) => {
 </script>
 
 <template>
-  <div class="p-2 bg-gray-200">
+  <div class="p-2 bg-base-200">
     <form class="flex gap-2 w-full" @submit.prevent="handleSendMessage">
       <textarea
         class="textarea textarea-bordered textarea-xs flex-[80%] resize-none"

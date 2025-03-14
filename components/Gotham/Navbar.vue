@@ -10,7 +10,7 @@ const { isUserLoggedIn } = storeToRefs(authStore);
 const drawerToggleInput = ref<HTMLInputElement | null>(null);
 const drawerToggleInputGlobaRef = useState<HTMLInputElement | null>(
   "drawerToggleInput",
-  () => null,
+  () => null
 );
 
 const config = useRuntimeConfig();
@@ -87,7 +87,7 @@ onMounted(() => {
       ></label>
 
       <div
-        class="w-64 menu flex flex-col justify-between min-h-full px-3 py-4 overflow-y-auto bg-gray-200"
+        class="w-64 menu flex flex-col justify-between min-h-full px-3 py-4 overflow-y-auto bg-base-200"
       >
         <ul class="space-y-2 font-medium">
           <div v-if="isUserLoggedIn">
@@ -102,6 +102,7 @@ onMounted(() => {
           </div>
         </ul>
         <ul class="space-y-2 font-medium">
+          <GothamThemeSwitcher />
           <div v-if="isUserLoggedIn">
             <NavbarItem
               v-for="(item, index) in profileMenuItems"
@@ -122,7 +123,7 @@ onMounted(() => {
               <NuxtLink
                 v-if="!callback && show"
                 :to="href"
-                class="w-full justify-start btn bg-primary hover:bg-gray-100 group transition-all"
+                class="w-full justify-start btn bg-primary text-primary-content hover:bg-primary/90 group transition-all"
               >
                 <Icon :name="icon" />
                 <span class="ms-3">
@@ -140,7 +141,7 @@ onMounted(() => {
                 </span>
               </button>
             </li>
-            <p class="text-xs text-gray-500 mt-2">
+            <p class="text-xs text-base-content/70 mt-2">
               v{{ config.public.appVersion }}
             </p>
           </div>

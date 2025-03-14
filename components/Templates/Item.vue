@@ -10,7 +10,7 @@ defineProps<Props>();
 
 <template>
   <article
-    class="col-span-full md:col-span-1 flex rounded shadow overflow-hidden cursor-pointer hover:shadow-md transition-shadow duration-300"
+    class="col-span-full md:col-span-1 bg-base-100 flex rounded shadow overflow-hidden cursor-pointer hover:shadow-md transition-shadow duration-300"
   >
     <NuxtImg
       class="w-24 h-36"
@@ -23,7 +23,7 @@ defineProps<Props>();
     <div class="flex flex-col gap-1 px-4">
       <p class="pt-2 font-bold">
         {{ bookTemplate.title }}
-        <span class="text-gray-500 italic text-xs font-normal">{{
+        <span class="text-base-content italic text-xs font-normal">{{
           bookTemplate.author
         }}</span>
       </p>

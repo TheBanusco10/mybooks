@@ -13,7 +13,7 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        custom: {
+        mybooks: {
           primary: "#26cf80",
 
           secondary: "#7dd3fc",
@@ -33,6 +33,10 @@ module.exports = {
           error: "#ef4444",
         },
       },
+      "halloween",
+      "dark",
+      "valentine",
+      "coffee",
     ],
   },
 };

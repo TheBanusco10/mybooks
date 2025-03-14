@@ -10,7 +10,7 @@ defineProps<Props>();
 
 const drawerInput = useState<HTMLInputElement | null>(
   "drawerToggleInput",
-  () => null,
+  () => null
 );
 
 const closeNavigationDrawer = () => {
@@ -24,8 +24,8 @@ const closeNavigationDrawer = () => {
   <li class="mb-2">
     <NuxtLink
       :to="href"
-      class="navbar-item flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 outline-none focus:bg-gray-100 transition-all"
-      :class="{ 'bg-gray-100': route === href }"
+      class="navbar-item flex items-center p-2 text-base-content rounded-lg hover:bg-base-100 outline-none focus:bg-base-300 transition-all"
+      :class="{ 'bg-base-300': route === href }"
       @click="closeNavigationDrawer"
     >
       <Icon :name="icon" size="1.2rem" />

@@ -61,13 +61,13 @@ const bookMetaInfo = [
           <BooksCoverInformation :status="book?.status!" :type="book?.type!" />
           <BooksCoverActions :id="book?.id!" :title="book?.title!" />
         </div>
-        <p class="text-gray-500 text-center italic">
+        <p class="text-base-content text-center italic">
           {{ book?.author }}
         </p>
         <div class="flex flex-col gap-2">
           <BooksCategoryBadgesList
             :categories="book?.categories || []"
-            span-classes="badge-primary badge-outline"
+            span-classes="badge-outline"
             class="mt-2"
           />
           <ul class="flex flex-row flex-wrap lg:flex-col gap-2">
@@ -90,10 +90,10 @@ const bookMetaInfo = [
           </ul>
         </div>
       </section>
-      <section class="flex-[90%]">
+      <section class="flex-[90%] text-base-content">
         <h1 class="text-2xl md:text-3xl font-bold">{{ book?.title }}</h1>
         <div class="divider"></div>
-        <p class="text-gray-700">
+        <p>
           {{ book?.description }}
         </p>
       </section>
