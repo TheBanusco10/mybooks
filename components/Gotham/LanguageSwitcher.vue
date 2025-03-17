@@ -29,16 +29,28 @@ const localesInformation = locales.value.map((locale) => {
 </script>
 
 <template>
-  <ul class="flex flex-wrap gap-2 items-center">
-    <li v-for="locale in locales" @click="setLocale(locale.code)">
-      <p
-        class="font-thin"
-        :class="{
-          'bg-base-300': locale.code === currentLocale,
-        }"
-      >
-        {{ locale.name }}
-      </p>
-    </li>
-  </ul>
+  <div class="w-full dropdown dropdown-hover dropdown-top">
+    <div
+      tabindex="0"
+      role="button"
+      class="w-full btn bg-base-300 m-1 justify-start"
+    >
+      {{ $t("app.language") }}: {{ currentLocale.toLocaleUpperCase() }}
+    </div>
+    <ul
+      tabindex="0"
+      class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow gap-2"
+    >
+      <li v-for="locale in locales" @click="setLocale(locale.code)">
+        <p
+          class="font-thin"
+          :class="{
+            'bg-base-300': locale.code === currentLocale,
+          }"
+        >
+          {{ locale.name }}
+        </p>
+      </li>
+    </ul>
+  </div>
 </template>
