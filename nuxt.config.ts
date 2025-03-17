@@ -41,7 +41,7 @@ export default defineNuxtConfig({
       { code: "es", language: "es-ES", name: "Español", file: "es-ES.ts" },
       { code: "en", language: "en-US", name: "English", file: "en-US.ts" },
       { code: "fr", language: "fr-FR", name: "Français", file: "fr-FR.ts" },
-      { code: "pt", language: "pt-BR", name: "Português", file: "pt-BR.ts" },
+      { code: "pt", language: "pt-PT", name: "Português", file: "pt-PT.ts" },
     ],
     defaultLocale: "es",
     lazy: true,

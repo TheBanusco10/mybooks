@@ -28,9 +28,10 @@ const getBooksByTitleDebounce = async () => {
 
   isLoading.value = false;
 
+  // TODO: Find a way to translate errors
   if (res instanceof OpenLibraryRepositoryError) {
     console.error(res.message);
-    errorMessage.value = res.message;
+    errorMessage.value = t("errors.books.booksNotFound");
     return;
   }
 

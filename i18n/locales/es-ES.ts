@@ -104,6 +104,7 @@ export default {
     backToLogin: "Volver a iniciar sesión",
     editBook: "Editar libro",
     totalPages: "{count} páginas",
+    language: "Idioma",
   },
   books: {
     statuses: {

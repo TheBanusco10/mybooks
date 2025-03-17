@@ -6,4 +6,4 @@ export class OpenLibraryRepositoryError extends ErrorBase {
 
 export const GET_BOOKS_ERROR_MESSAGE =
   "Ha ocurrido un error al obtener los libros de OpenLibrary";
-export const BOOKS_NOT_FOUND_ERROR_MESSAGE = "No hemos podido encontrar libros";
+export const BOOKS_NOT_FOUND_ERROR_MESSAGE = "Could not find any book";

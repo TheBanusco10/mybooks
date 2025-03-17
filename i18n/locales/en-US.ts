@@ -103,6 +103,7 @@ export default {
     backToLogin: "Back to login",
     editBook: "Edit book",
     totalPages: "{count} pages",
+    language: "Language",
   },
   books: {
     statuses: {
