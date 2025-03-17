@@ -1,6 +1,6 @@
 const textClassification = {
   input:
-    "$reset input input-bordered w-full focus-within:input-info formkit-invalid:input-error",
+    "$reset input input-bordered w-full focus-within:input-info formkit-invalid:input-error placeholder:text-base-content",
   label: "text-sm formkit-invalid:text-red-500",
 };
 const buttonClassification = {
