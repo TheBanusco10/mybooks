@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "nuxt-lodash",
     "@nuxt/image",
+    "@nuxtjs/i18n",
   ],
 
   formkit: {
@@ -33,6 +34,18 @@ export default defineNuxtConfig({
 
   tailwindcss: {
     cssPath: ["~/public/css/index.css", { injectPosition: "first" }],
+  },
+
+  i18n: {
+    locales: [
+      { code: "es", language: "es-ES", name: "Español", file: "es-ES.ts" },
+      { code: "en", language: "en-US", name: "English", file: "en-US.ts" },
+      { code: "fr", language: "fr-FR", name: "Français", file: "fr-FR.ts" },
+      { code: "pt", language: "pt-BR", name: "Português", file: "pt-BR.ts" },
+    ],
+    defaultLocale: "es",
+    lazy: true,
+    strategy: "no_prefix",
   },
 
   compatibilityDate: "2025-03-10",

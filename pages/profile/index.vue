@@ -3,20 +3,26 @@ import ProfileTabsAccountMain from "~/components/Profile/Tabs/Account/Main.vue";
 import ProfileTabsStatisticsMain from "~/components/Profile/Tabs/Statistics/Main.vue";
 import ReadingClubsMain from "~/components/Profile/Tabs/ReadingClubs/Main.vue";
 
-const tabs = [
+const { t } = useI18n();
+
+useHead({
+  title: () => t("app.profile"),
+});
+
+const tabs = computed(() => [
   {
-    label: "Estadísticas",
+    label: t("app.statistics"),
     component: ProfileTabsStatisticsMain,
   },
   {
-    label: "Cuenta",
+    label: t("app.account"),
     component: ProfileTabsAccountMain,
   },
   {
-    label: "Clubes de lectura",
+    label: t("app.bookClubs"),
     component: ReadingClubsMain,
   },
-];
+]);
 </script>
 
 <template>

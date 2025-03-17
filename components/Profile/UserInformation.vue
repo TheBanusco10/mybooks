@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { isUserLoggedIn, user } = storeToRefs(useAuthStore());
 
-if (!isUserLoggedIn) {
+if (!isUserLoggedIn.value) {
   await navigateTo("/login");
 }
 </script>

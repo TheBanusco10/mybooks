@@ -17,26 +17,30 @@ const handleSignIn = async (values: UserCredentials) => {
 
 <template>
   <div>
-    <FormKit type="form" submit-label="Iniciar sesión" @submit="handleSignIn">
+    <FormKit
+      type="form"
+      :submit-label="$t('forms.login')"
+      @submit="handleSignIn"
+    >
       <FormKit
         type="text"
         name="email"
-        label="Email"
+        :label="$t('forms.email')"
         validation="required|email"
         autocomplete="email"
       />
       <FormKit
         type="password"
         name="password"
-        label="Contraseña"
+        :label="$t('forms.password')"
         validation="required|length:8,22"
         autocomplete="current-password"
       />
     </FormKit>
     <p>
-      ¿No eres miembro?
+      {{ $t("forms.notMember") }}
       <button class="btn btn-link" @click="$emit('onChangeFormType')">
-        Registrate
+        {{ $t("forms.signUp") }}
       </button>
     </p>
   </div>

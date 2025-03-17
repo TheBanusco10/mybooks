@@ -12,17 +12,19 @@ const removeUserImageModalRef = ref<ModalRef>();
     @click="removeUserImageModalRef?.dialogElement.showModal()"
     type="button"
   >
-    Eliminar foto de perfil
+    {{ $t("forms.removeProfileImage") }}
   </button>
 
   <GothamModal id="remove_user_image" ref="removeUserImageModalRef">
-    <template v-slot:title> Eliminar foto de perfil </template>
+    <template v-slot:title>
+      {{ $t("forms.removeProfileImage") }}
+    </template>
     <template v-slot:content>
-      ¿Estás seguro de que deseas eliminar tu foto de perfil?
+      {{ $t("forms.removeProfileImageConfirmation") }}
     </template>
     <template v-slot:action>
       <button class="btn btn-error" @click="$emit('onRemoveUserImage')">
-        Confirmar
+        {{ $t("forms.confirm") }}
       </button>
     </template>
   </GothamModal>

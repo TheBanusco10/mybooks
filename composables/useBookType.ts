@@ -1,13 +1,17 @@
 import type { Type } from "~/types/books";
 
 export default () => {
-  const types: Type[] = [
-    { value: "paper", label: "Papel" },
-    { value: "kindle", label: "Kindle" },
-  ];
+  const { t } = useI18n();
+
+  const types = computed<Type[]>(() => [
+    { value: "paper", label: t("books.types.paper") },
+    { value: "kindle", label: t("books.types.kindle") },
+  ]);
 
   const getBookType = (typeValue: string): Type => {
-    return types.find((type) => type.value === typeValue) || types.at(0)!;
+    return (
+      types.value.find((type) => type.value === typeValue) || types.value.at(0)!
+    );
   };
 
   const isPaper = (typeValue: string): boolean => {

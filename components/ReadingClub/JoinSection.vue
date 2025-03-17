@@ -36,14 +36,14 @@ const handleAddUserToReadingClub = async () => {
     class="w-full flex justify-evenly items-center absolute bottom-0 p-4 bg-gray-100"
   >
     <p>
-      Aún no formas parte de este club de lectura. ¿Te gustaría unirte ahora?
+      {{ $t("app.joinReadingClubHelp") }}
     </p>
     <button
       class="btn btn-primary"
       @click="handleAddUserToReadingClub"
       :disabled="isFetching"
     >
-      Unirse
+      {{ $t("forms.join") }}
     </button>
   </div>
 </template>

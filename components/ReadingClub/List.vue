@@ -37,6 +37,8 @@ watch(currentPage, async () => {
     </GothamPagination>
   </section>
   <section v-else class="mt-4">
-    <p>No hemos encontrado ningún club de lectura público en este momento.</p>
+    <p>
+      {{ $t("errors.readingClubs.publicReadingClubsNotFound") }}
+    </p>
   </section>
 </template>

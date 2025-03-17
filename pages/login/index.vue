@@ -1,9 +1,11 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 useHead({
-  title: "Iniciar sesión",
+  title: () => t("forms.login"),
 });
 
-const {isUserLoggedIn} = storeToRefs(useAuthStore());
+const { isUserLoggedIn } = storeToRefs(useAuthStore());
 
 if (isUserLoggedIn.value) {
   await navigateTo("/");

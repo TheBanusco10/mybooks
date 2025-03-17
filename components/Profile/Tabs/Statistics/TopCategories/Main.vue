@@ -4,11 +4,13 @@ const { data: categories } = await useAsyncData(() => getTopCategories());
 </script>
 
 <template>
-  <GothamHeader label="Las categorías que te encantan" />
+  <GothamHeader :label="$t('app.favoriteCategories')" />
   <ProfileTabsStatisticsTopCategoriesItemsList
     v-if="!isEmpty(categories)"
     class="mt-4"
     :categories="categories!"
   />
-  <p v-else>No hemos podido encontrar categorías.</p>
+  <p v-else>
+    {{ $t("errors.categories.categoriesNotFound") }}
+  </p>
 </template>

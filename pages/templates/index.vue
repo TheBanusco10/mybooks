@@ -3,6 +3,12 @@ import { OpenLibraryRepositoryError } from "~/errors/services/books/openLibraryR
 import OpenLibraryRepository from "~/services/books/OpenLibraryRepository";
 import type { OpenLibraryBook } from "~/types/books";
 
+const { t } = useI18n();
+
+useHead({
+  title: () => t("app.templates"),
+});
+
 const bookTitle = ref("");
 const bookTemplates = ref<OpenLibraryBook[]>([]);
 const isLoading = ref(false);
@@ -37,17 +43,21 @@ watch(bookTitle, useDebounce(getBooksByTitleDebounce, 500));
 <template>
   <main>
     <GothamContainer>
-      <GothamHeader label="Plantillas" />
-      <p class="text-sm pt-2">
-        Use la API de
-        <a class="link" href="https://openlibrary.org/" target="_blank"
+      <GothamHeader :label="$t('app.templates')" />
+      <p
+        class="text-sm pt-2"
+        v-html="
+          $t('app.templatesHelp', {
+            name: `<a class='link' href='https://openlibrary.org/' target='_blank'
           >OpenLibrary</a
-        >
-        para buscar un libro y autorellenar su información. Es posible que
-        algunos campos no estén completos o que no obtenga los resultados
-        esperados para su búsqueda.
-      </p>
-      <GothamSearchInput v-model="bookTitle" placeholder="Título del libro" />
+        >`,
+          })
+        "
+      ></p>
+      <GothamSearchInput
+        v-model="bookTitle"
+        :placeholder="$t('app.searchByTitle')"
+      />
       <section>
         <div class="text-center">
           <GothamLoading v-if="isLoading" size="lg" />

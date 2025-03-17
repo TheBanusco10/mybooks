@@ -44,9 +44,11 @@ const handleRemoveBook = async () => {
   </div>
 
   <GothamModal id="remove_modal" ref="removeModalRef">
-    <template v-slot:title> Eliminando {{ title }} </template>
+    <template v-slot:title>
+      {{ $t("app.removing", { name: title }) }}
+    </template>
     <template v-slot:content>
-      ¿Estás seguro de que desea eliminar este libro?
+      {{ $t("app.removeBookHelp") }}
     </template>
     <template v-slot:action>
       <button
@@ -55,7 +57,7 @@ const handleRemoveBook = async () => {
         :disabled="isRemoving"
       >
         <span v-show="isRemoving" class="loading loading-spinner"></span>
-        Eliminar
+        {{ $t("forms.remove") }}
       </button>
     </template>
   </GothamModal>

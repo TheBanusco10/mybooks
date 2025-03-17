@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useAuthStore } from "~/stores/auth";
 
+const { t } = useI18n();
+
 const route = useRoute();
 
 const authStore = useAuthStore();
@@ -17,12 +19,12 @@ const config = useRuntimeConfig();
 
 const mainMenuItems = computed(() => [
   {
-    name: "Biblioteca",
+    name: t("app.library"),
     href: "/",
     icon: "mdi:book-open-page-variant-outline",
   },
   {
-    name: "Clubs de lectura",
+    name: t("app.bookClubs"),
     href: "/reading-clubs",
     icon: "mdi:bookshelf",
   },
@@ -30,14 +32,14 @@ const mainMenuItems = computed(() => [
 
 const subMenuItems = computed(() => [
   {
-    name: "Iniciar sesión",
+    name: t("forms.login"),
     href: "/login",
     icon: "mdi:login",
     callback: null,
     show: !isUserLoggedIn.value,
   },
   {
-    name: "Cerrar sesión",
+    name: t("forms.logout"),
     href: "",
     icon: "mdi:logout",
     callback: signOut,
@@ -47,7 +49,7 @@ const subMenuItems = computed(() => [
 
 const profileMenuItems = computed(() => [
   {
-    name: "Perfil",
+    name: t("app.profile"),
     href: "/profile",
     icon: "mdi:account-outline",
   },
@@ -102,6 +104,7 @@ onMounted(() => {
           </div>
         </ul>
         <ul class="space-y-2 font-medium">
+          <GothamLanguageSwitcher />
           <GothamThemeSwitcher />
           <div v-if="isUserLoggedIn">
             <NavbarItem

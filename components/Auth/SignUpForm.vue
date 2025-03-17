@@ -4,6 +4,8 @@ import type { UserCredentials } from "~/types/auth";
 
 defineEmits(["onChangeFormType"]);
 
+const { t } = useI18n();
+
 const { signUp } = useAuthStore();
 
 const handleSignUp = async (values: UserCredentials) => {
@@ -17,49 +19,53 @@ const handleSignUp = async (values: UserCredentials) => {
 
 <template>
   <div>
-    <FormKit type="form" submit-label="Registrarse" @submit="handleSignUp">
+    <FormKit
+      type="form"
+      :submit-label="t('forms.signUp')"
+      @submit="handleSignUp"
+    >
       <FormKit
         type="text"
         name="email"
-        label="Email"
+        :label="t('forms.email')"
         validation="required|email"
         autocomplete="email"
       />
       <FormKit
         type="password"
         name="password"
-        label="Contraseña"
-        help="Introduce una contraseña"
+        :label="t('forms.password')"
+        :help="t('forms.enterPassword')"
         validation="required|length:8,22"
         autocomplete="new-password"
       />
       <FormKit
         type="password"
         name="password_confirm"
-        label="Confirma la contraseña"
-        help="Introduce de nuevo tu contraseña"
+        :label="t('forms.confirmPassword')"
+        :help="t('forms.reenterPassword')"
         validation="required|confirm|length:8,22"
         autocomplete="new-password"
       />
       <FormKit
         type="url"
         name="imageUrl"
-        label="Imagen de perfil"
-        help="Introduce una URL válida para la imagen de perfil"
+        :label="t('forms.profileImage')"
+        :help="t('forms.enterValidImageURL')"
         validation="url"
       />
       <FormKit
         type="text"
         name="username"
-        label="Nombre de usuario"
-        help="Se mostrará públicamente para que puedas ser reconocido por otros usuarios"
+        :label="t('forms.username')"
+        :help="t('forms.publicInfo')"
         validation="required|length:5,15"
       />
     </FormKit>
     <p>
-      ¿Ya eres miembro?
+      {{ t("forms.alreadyMember") }}
       <button class="btn btn-link" @click="$emit('onChangeFormType')">
-        Iniciar sesión
+        {{ t("forms.login") }}
       </button>
     </p>
   </div>

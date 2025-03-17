@@ -32,7 +32,7 @@ watch(bookTitle, handleSearchBooks);
 <template>
   <GothamSearchInput
     v-model="bookTitle"
-    placeholder="Buscar por título..."
+    :placeholder="`${$t('app.searchByTitle')}…`"
     @on-input-change="(input: string) => isEmpty(input) ? searchedBookInput = '' : ''"
   />
 </template>

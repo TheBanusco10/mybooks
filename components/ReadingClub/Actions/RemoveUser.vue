@@ -43,9 +43,11 @@ const handleRemoveUser = async () => {
       <Icon name="mdi:account-remove-outline" size="1.2rem" />
     </button>
     <GothamModal id="leave_group" ref="removeUserModalRef">
-      <template v-slot:title>Expulsar usuario</template>
+      <template v-slot:title>
+        {{ $t("app.excludeUser") }}
+      </template>
       <template v-slot:content>
-        ¿Estás seguro de que deseas expulsar a este usuario del grupo?
+        {{ $t("app.excludeUserHelp") }}
       </template>
       <template v-slot:action>
         <button
@@ -53,7 +55,7 @@ const handleRemoveUser = async () => {
           @click="handleRemoveUser"
           :disabled="isFetching"
         >
-          Expulsar
+          {{ $t("forms.exclude") }}
         </button>
       </template>
     </GothamModal>

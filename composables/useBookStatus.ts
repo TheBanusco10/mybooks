@@ -1,19 +1,22 @@
-import type { Status } from "~/types/books";
+import type { Status, TypeSingle } from "~/types/books";
 
 export default () => {
-  const STATUS_READING = "reading";
-  const STATUS_FINISHED = "finished";
-  const STATUS_PAUSED = "paused";
+  const { t } = useI18n();
 
-  const statuses: Status[] = [
-    { value: STATUS_READING, label: "Leyendo" },
-    { value: STATUS_FINISHED, label: "Terminado" },
-    { value: STATUS_PAUSED, label: "Pausado" },
-  ];
+  const STATUS_READING: TypeSingle = "reading";
+  const STATUS_FINISHED: TypeSingle = "finished";
+  const STATUS_PAUSED: TypeSingle = "paused";
+
+  const statuses = computed<Status[]>(() => [
+    { value: STATUS_READING, label: t("books.statuses.reading") },
+    { value: STATUS_FINISHED, label: t("books.statuses.finished") },
+    { value: STATUS_PAUSED, label: t("books.statuses.paused") },
+  ]);
 
   const getBookStatus = (statusValue: string): Status => {
     return (
-      statuses.find((status) => status.value === statusValue) || statuses.at(0)!
+      statuses.value.find((status) => status.value === statusValue) ||
+      statuses.value.at(0)!
     );
   };
 

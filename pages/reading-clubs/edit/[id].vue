@@ -40,7 +40,7 @@ const handleUpdateReadingClub = async (values: ReadingClubInformation) => {
 
 <template>
   <GothamContainer>
-    <GothamHeader label="Editar club de lectura" />
+    <GothamHeader :label="$t('app.editReadingClub')" />
     <ReadingClubInformationForm
       v-if="readingClub"
       v-bind="{
@@ -50,7 +50,7 @@ const handleUpdateReadingClub = async (values: ReadingClubInformation) => {
         is_private: readingClub.is_private!,
       }"
       @on-submit="handleUpdateReadingClub"
-      submit-label="Editar"
+      :submit-label="$t('forms.edit')"
     />
   </GothamContainer>
 </template>

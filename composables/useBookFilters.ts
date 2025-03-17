@@ -7,16 +7,20 @@ import {
 } from "~/types/filters";
 
 export default () => {
-  const FILTERS: Record<string, string> = {
-    [FILTER_CATEGORIES_ID]: "Categorías",
-    [FILTER_SCORE_ID]: "Puntuación",
-    [FILTER_STATUS_ID]: "Estado",
-    [FILTER_TYPE_ID]: "Tipo",
-    [FILTER_AUTHOR_ID]: "Autor",
-  };
+  const { t } = useI18n();
+
+  const FILTERS = computed<Record<string, string>>(() => {
+    return {
+      [FILTER_CATEGORIES_ID]: t("app.categories"),
+      [FILTER_SCORE_ID]: t("app.rating"),
+      [FILTER_STATUS_ID]: t("app.status"),
+      [FILTER_TYPE_ID]: t("app.type"),
+      [FILTER_AUTHOR_ID]: t("app.author"),
+    };
+  });
 
   const getFilterLabel = (filterKey: string): string => {
-    return FILTERS[filterKey] || useCapitalize(filterKey);
+    return FILTERS.value[filterKey] || useCapitalize(filterKey);
   };
 
   return {

@@ -27,7 +27,9 @@ defineExpose({
       </p>
       <div class="modal-action mt-0">
         <form method="dialog" class="w-full flex justify-between">
-          <button class="btn">Cancelar</button>
+          <button class="btn">
+            {{ $t("forms.cancel") }}
+          </button>
           <slot name="action" />
         </form>
       </div>

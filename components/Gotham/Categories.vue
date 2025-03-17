@@ -29,8 +29,8 @@ const query = ref("");
 
 const filteredCategories = computed(() =>
   query.value === ""
-    ? categories
-    : categories.filter((category) => {
+    ? categories.value
+    : categories.value.filter((category) => {
         return category.label.toLowerCase().includes(query.value.toLowerCase());
       })
 );
@@ -52,7 +52,7 @@ watch(selectedCategories, () => {
     class="flex flex-col gap-2"
   >
     <ComboboxLabel id="category-label" class="label-text"
-      >Categorías:</ComboboxLabel
+      >{{ $t("app.categories") }}:</ComboboxLabel
     >
     <BooksCategoryBadgesList
       :categories="selectedCategories.map(({ value }) => value)"
@@ -63,7 +63,7 @@ watch(selectedCategories, () => {
         class="w-full input input-bordered rounded shadow p-2 join-item placeholder:text-base-content"
         id="category-input"
         @change="query = $event.target.value"
-        placeholder="Buscar por nombre..."
+        :placeholder="`${$t('app.searchByName')}…`"
       />
       <ComboboxButton class="btn btn-primary join-item" v-slot="{ open }">
         <span class="swap" :class="{ 'swap-active': open }">
