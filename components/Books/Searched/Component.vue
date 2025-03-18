@@ -39,6 +39,8 @@ watch(currentPage, async () => {
     >
       <BooksList :books="filteredBooks!.results" />
     </GothamPagination>
-    <p v-else>No se encontraron libros</p>
+    <p v-else>
+      {{ $t("errors.books.booksNotFound") }}
+    </p>
   </section>
 </template>
