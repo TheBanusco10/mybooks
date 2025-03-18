@@ -1,7 +1,12 @@
+import { addYear } from "@formkit/tempo";
+
 export default () => {
   const { t } = useI18n();
 
-  const currentTheme = useCookie("mybooks-theme", { default: () => "mybooks" });
+  const currentTheme = useCookie("mybooks-theme", {
+    default: () => "mybooks",
+    expires: addYear(new Date()),
+  });
 
   const themes = computed(() => [
     {
