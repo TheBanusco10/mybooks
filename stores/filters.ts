@@ -15,9 +15,10 @@ export const useFiltersStore = defineStore("filters", () => {
   const filteredBooks = ref<BooksResult | null>(null);
 
   const selectedFilters = ref<Record<string, any>>({});
+
   const appliedFilters = ref<string[]>([]);
   const appliedFiltersLabels = computed(() =>
-    appliedFilters.value.map((filterKey) => getFilterLabel(filterKey)),
+    appliedFilters.value.map((filterKey) => getFilterLabel(filterKey))
   );
 
   const filtersFormData = ref<FiltersFormData | null>(null);
@@ -97,7 +98,7 @@ export const useFiltersStore = defineStore("filters", () => {
     filteredBooks.value = null;
     appliedFilters.value = [];
     // Clear filters
-    useEach(FILTERS, (_, key) => {
+    useEach(FILTERS.value, (_, key) => {
       selectedFilters.value[key] = [];
     });
   };
