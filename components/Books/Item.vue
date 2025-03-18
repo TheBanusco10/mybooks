@@ -10,7 +10,7 @@ defineProps<Props>();
 
 <template>
   <NuxtLink
-    :to="{ name: 'books-id', params: { id: 22 } }"
+    :to="{ name: 'books-id', params: { id: book.id } }"
     class="w-36 h-full block relative rounded shadow overflow-hidden hover:shadow-md transition-shadow duration-300"
   >
     <NuxtImg
