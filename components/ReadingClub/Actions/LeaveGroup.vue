@@ -43,9 +43,11 @@ const handleLeaveGroup = async () => {
       <Icon name="mdi:door-open" size="1.2rem" />
     </button>
     <GothamModal id="leave_group" ref="leaveGroupModalRef">
-      <template v-slot:title>Abandonar club de lectura</template>
+      <template v-slot:title>
+        {{ $t("app.leaveReadingClub") }}
+      </template>
       <template v-slot:content>
-        ¿Estás seguro de que deseas abandonar el grupo?
+        {{ $t("app.leaveReadingClubHelp") }}
       </template>
       <template v-slot:action>
         <button
@@ -53,7 +55,7 @@ const handleLeaveGroup = async () => {
           @click="handleLeaveGroup"
           :disabled="isFetching"
         >
-          Abandonar
+          {{ $t("forms.leave") }}
         </button>
       </template>
     </GothamModal>

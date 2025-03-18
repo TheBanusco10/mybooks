@@ -27,7 +27,7 @@ watch(currentPage, async () => {
 <template>
   <section class="flex flex-col gap-4">
     <div v-if="appliedFiltersLabels.length" class="flex gap-2">
-      Buscando por:
+      {{ $t("app.searching_by") }}:
       <GothamBadgeList :items="appliedFiltersLabels" />
     </div>
     <GothamPagination

@@ -1,6 +1,8 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 useHead({
-  title: "Añadir libro",
+  title: () => t("app.addBook"),
 });
 </script>
 
@@ -12,7 +14,7 @@ useHead({
         class="w-full md:w-fit md:mx-auto btn btn-primary btn-sm my-4"
       >
         <Icon name="mdi:book-plus" />
-        Añadir desde plantilla
+        {{ $t("app.addBookFromTemplate") }}
       </NuxtLink>
       <BooksFormAdd />
     </GothamContainer>

@@ -34,13 +34,15 @@ const handleInviteUser = async (values: FormValues) => {
 <template>
   <div class="collapse collapse-arrow">
     <input type="checkbox" />
-    <div class="collapse-title text-xl font-medium">Invitar usuario</div>
+    <div class="collapse-title text-xl font-medium">
+      {{ $t("app.inviteUser") }}
+    </div>
     <div class="collapse-content">
-      <GothamForm submit-label="Invitar" @submit="handleInviteUser">
+      <GothamForm :submit-label="$t('app.invite')" @submit="handleInviteUser">
         <FormKit
           name="user"
           validation="required"
-          label="Nombre de usuario o correo"
+          :label="$t('app.usernameOrEmail')"
         />
       </GothamForm>
     </div>

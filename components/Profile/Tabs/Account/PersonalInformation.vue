@@ -1,4 +1,6 @@
 <template>
-  <p class="text-lg font-bold">Información personal</p>
+  <p class="text-lg font-bold">
+    {{ $t("app.personalInfo") }}
+  </p>
   <ProfileFormsPersonalInformationMain />
 </template>

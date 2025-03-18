@@ -41,10 +41,11 @@ const handleRemoveGroup = async () => {
       <Icon name="mdi:trash-can-outline" size="1.2rem" />
     </button>
     <GothamModal id="leave_group" ref="removeGroupModalRef">
-      <template v-slot:title>Eliminar club de lectura</template>
+      <template v-slot:title>
+        {{ $t("app.removeReadingClub") }}
+      </template>
       <template v-slot:content>
-        ¿Estás seguro de que deseas quieres eliminar el grupo? Esto eliminará
-        todos los mensajes y los miembros del grupo.
+        {{ $t("app.removeReadingClubHelp") }}
       </template>
       <template v-slot:action>
         <button
@@ -52,7 +53,7 @@ const handleRemoveGroup = async () => {
           @click="handleRemoveGroup"
           :disabled="isFetching"
         >
-          Eliminar
+          {{ $t("forms.remove") }}
         </button>
       </template>
     </GothamModal>

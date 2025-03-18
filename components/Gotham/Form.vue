@@ -3,9 +3,7 @@ interface Props {
   submitLabel?: string;
 }
 
-withDefaults(defineProps<Props>(), {
-  submitLabel: "Enviar",
-});
+defineProps<Props>();
 </script>
 
 <template>
@@ -17,7 +15,7 @@ withDefaults(defineProps<Props>(), {
       wrapper-class="flex justify-end"
     >
       <span v-if="state.loading" class="loading loading-spinner"></span>
-      {{ submitLabel }}
+      {{ submitLabel || $t("forms.send") }}
     </FormKit>
   </FormKit>
 </template>

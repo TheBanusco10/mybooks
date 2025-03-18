@@ -87,7 +87,7 @@ const route = useRoute();
 const queryParams = route.query;
 
 useEach(queryParams, (value: any, key) => {
-  if (FILTERS[key]) {
+  if (FILTERS.value[key]) {
     const filterKey: FilterKey = key as FilterKey;
     const filterValue = value.split("|");
     selectedFilters.value[filterKey] = filterValue;
@@ -108,7 +108,9 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
       class="btn text-base-content btn-outline btn-circle btn-sm p-2 sm:ml-6"
       @click="mobileFiltersOpen = true"
     >
-      <span class="sr-only">Filtros</span>
+      <span class="sr-only">
+        {{ $t("app.filters") }}
+      </span>
       <Icon name="mdi:filter" aria-hidden="true" />
     </button>
     <button
@@ -116,7 +118,7 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
       class="btn btn-sm btn-link"
       @click="handleResetFilters"
     >
-      Limpiar filtros
+      {{ $t("app.clearFilters") }}
     </button>
   </section>
   <TransitionRoot as="template" :show="mobileFiltersOpen" :unmount="false">
@@ -153,7 +155,9 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
             class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-base-200 py-4 pb-12 shadow-xl"
           >
             <div class="flex items-center justify-between px-4 pb-2">
-              <h2 class="text-lg font-medium text-base-content">Filtros</h2>
+              <h2 class="text-lg font-medium text-base-content">
+                {{ $t("app.filters") }}
+              </h2>
               <button
                 type="button"
                 class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-base-200 p-2 text-base-content hover:bg-base-300"
@@ -216,7 +220,7 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
               </Disclosure>
               <FormKit
                 type="submit"
-                label="Aplicar filtros"
+                :label="$t('app.applyFilters')"
                 outer-class="px-4"
               />
             </FormKit>

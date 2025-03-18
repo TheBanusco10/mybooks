@@ -6,12 +6,12 @@ interface Props {
   is_private?: boolean;
   submitLabel?: string;
 }
+
 withDefaults(defineProps<Props>(), {
   image: "",
   name: "",
   description: "",
   is_private: true,
-  submitLabel: "Crear",
 });
 
 defineEmits(["onSubmit"]);
@@ -19,28 +19,33 @@ defineEmits(["onSubmit"]);
 
 <template>
   <GothamForm
-    :submitLabel="submitLabel"
+    :submitLabel="submitLabel || $t('forms.create')"
     @submit="(values) => $emit('onSubmit', values)"
   >
     <FormKit
       name="image"
-      label="Imagen de club"
-      help="Añade una URL para la imagen del club"
+      :label="$t('forms.clubImage')"
+      :help="$t('forms.clubImageHelp')"
       :value="image"
     />
-    <FormKit name="name" label="Título" validation="required" :value="name" />
+    <FormKit
+      name="name"
+      :label="$t('forms.title')"
+      validation="required"
+      :value="name"
+    />
     <FormKit
       name="description"
       type="textarea"
-      label="Descripción"
+      :label="$t('forms.description')"
       :value="description"
     />
     <FormKit
       type="toggle"
       name="is_private"
-      label="Club privado"
+      :label="$t('forms.privateClub')"
       :value="is_private"
-      help="Si la opción está activada, el club se creará como privado y no aparecerá en la lista de Clubes. Se necesita unir manualmente a los usuarios deseados."
+      :help="$t('forms.privateClubHelp')"
     />
   </GothamForm>
 </template>

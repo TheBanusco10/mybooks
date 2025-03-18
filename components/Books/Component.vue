@@ -45,7 +45,9 @@ watch(currentPage, async () => {
     >
       <BooksList :books="books?.results" />
     </GothamPagination>
-    <p v-else>Aún no tienes ningún libro en tu biblioteca</p>
+    <p v-else>
+      {{ $t("app.libraryEmpty") }}
+    </p>
   </section>
   <BooksSearchedComponent v-else />
 </template>

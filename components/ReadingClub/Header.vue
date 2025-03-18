@@ -113,10 +113,14 @@ const handleTogglePanel = () => {
             <p v-if="readingClub.description">
               {{ readingClub.description }}
             </p>
-            <p v-else class="italic">Sin descripción</p>
+            <p v-else class="italic">
+              {{ $t("app.noDescription") }}
+            </p>
           </section>
           <section v-if="membersInformation">
-            <p class="text-lg font-bold mb-2">Miembros</p>
+            <p class="text-lg font-bold mb-2">
+              {{ $t("app.members") }}
+            </p>
             <section v-if="isMember && isOwner">
               <ReadingClubActionsInviteUser
                 :club-id="readingClub.id"

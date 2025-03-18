@@ -82,7 +82,7 @@ onMounted(() => {
         type="url"
         id="image_url"
         name="image_url"
-        label="Imagen"
+        :label="$t('forms.image')"
         placeholder="https://imgur.com/my_image.jpg"
         validation="required|url"
         :value="cover || ''"
@@ -92,21 +92,21 @@ onMounted(() => {
       <FormKit
         type="text"
         name="title"
-        label="Título"
+        :label="$t('forms.title')"
         validation="required"
         :value="title || ''"
       />
       <FormKit
         type="text"
         name="author"
-        label="Autor"
+        :label="$t('app.author')"
         validation="required"
         :value="author || ''"
       />
       <FormKit
         type="textarea"
         name="description"
-        label="Descripción"
+        :label="$t('forms.description')"
         validation="required"
         :value="description || ''"
       />
@@ -114,7 +114,7 @@ onMounted(() => {
         <FormKit
           type="number"
           name="score"
-          label="Puntuación"
+          :label="$t('app.rating')"
           validation="required|min:0|max:10|number"
           value="0"
           outer-class="grow"
@@ -122,7 +122,7 @@ onMounted(() => {
         <FormKit
           type="number"
           name="number_pages"
-          label="Número de páginas"
+          :label="$t('app.numberOfPages')"
           validation="required|min:0|max:10000|number"
           value="100"
           outer-class="grow"
@@ -130,7 +130,7 @@ onMounted(() => {
         <FormKit
           type="select"
           name="type"
-          label="Formato del libro"
+          :label="$t('app.bookType')"
           validation="required"
           :options="types"
           outer-class="grow"
@@ -138,7 +138,7 @@ onMounted(() => {
         <FormKit
           type="select"
           name="status"
-          label="Estado del libro"
+          :label="$t('app.bookStatus')"
           validation="required"
           :options="statuses"
           outer-class="grow"
@@ -148,7 +148,7 @@ onMounted(() => {
         type="date"
         name="end_date"
         validation="date"
-        label="Fecha de finalización"
+        :label="$t('app.endDate')"
       />
       <GothamCategories
         @on-select-category="(categories) => (selectedCategories = categories)"
@@ -158,8 +158,9 @@ onMounted(() => {
         type="submit"
         :disabled="disabled as boolean"
         wrapper-class="text-end mt-8"
-        >Añadir libro</FormKit
       >
+        {{ $t("app.addBook") }}
+      </FormKit>
     </div>
   </FormKit>
 </template>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useBooksStore } from "~/stores/books";
 
+const { t } = useI18n();
+
 useHead({
-  title: "Editar libro",
+  title: () => t("app.editBook"),
 });
 
 const { getBookById } = useBooksStore();

@@ -27,8 +27,12 @@ const { data: numberOfMembers } = await useAsyncData(
         {{ readingClub.name }}
       </p>
       <div class="text-xs text-base-content/60">
-        <p v-if="numberOfMembers">{{ numberOfMembers }} miembro/s</p>
-        <p v-else>Sin miembros</p>
+        <p v-if="numberOfMembers">
+          {{ $t("app.membersCount", { count: numberOfMembers }) }}
+        </p>
+        <p v-else>
+          {{ $t("app.noMembersCount") }}
+        </p>
         <p
           v-if="user?.id === readingClub.user_id"
           class="badge badge-outline badge-xs mt-2"

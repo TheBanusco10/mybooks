@@ -51,23 +51,23 @@ const handleRemoveUserImage = async () => {
     @onRemoveUserImage="handleRemoveUserImage"
   />
   <GothamForm
-    submitLabel="Actualizar"
+    :submitLabel="$t('forms.update')"
     @submit="handleUpdateUserPersonalInformation"
   >
     <FormKit
       id="image_url"
       type="url"
       name="image_url"
-      label="Imagen de perfil"
-      help="Introduce una URL válida para la imagen de perfil"
+      :label="$t('forms.profileImage')"
+      :help="$t('forms.enterValidImageURL')"
       validation="url"
     />
     <FormKit
       id="username"
       type="text"
       name="username"
-      label="Nombre de usuario"
-      help="Se mostrará públicamente para que puedas ser reconocido por otros usuarios"
+      :label="$t('forms.username')"
+      :help="$t('forms.publicInfo')"
       validation="required|length:5,15"
       :value="user?.user_metadata.username || ''"
     />
@@ -75,8 +75,8 @@ const handleRemoveUserImage = async () => {
       id="is_private"
       type="toggle"
       name="is_private"
-      label="Perfil privado"
-      help="Permitirá que tu perfil sea encontrado por otros usuarios"
+      :label="$t('app.privateProfile')"
+      :help="$t('app.allowProfileDiscovery')"
       validation="required"
       :value="isProfilePrivate"
     />

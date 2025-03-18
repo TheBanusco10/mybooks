@@ -7,11 +7,14 @@ const { formatNumber } = useFormatter();
 </script>
 
 <template>
-  <p v-if="totalPages">
-    Has leído
-    <span class="mx-1 text-2xl font-bold italic">{{
-      formatNumber(totalPages.sum)
-    }}</span>
-    páginas en total
-  </p>
+  <p
+    v-if="totalPages"
+    v-html="
+      $t('app.totalPagesRead', {
+        count: `<span class='mx-1 text-2xl font-bold italic'>${formatNumber(
+          totalPages.sum
+        )}</span>`,
+      })
+    "
+  ></p>
 </template>

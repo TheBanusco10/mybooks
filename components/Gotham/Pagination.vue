@@ -53,7 +53,7 @@ const handleNextPage = () => {
         «
       </button>
       <div class="join-item btn pointer-events-none">
-        Página {{ currentPage }}
+        {{ $t("app.page_number", { count: currentPage }) }}
       </div>
       <button
         class="join-item btn"
@@ -64,7 +64,9 @@ const handleNextPage = () => {
       </button>
     </div>
     <div class="mb-4">
-      <p class="text-xs text-center">{{ totalItems }} resultado/s en total</p>
+      <p class="text-xs text-center">
+        {{ $t("app.total_results", { count: totalItems }) }}
+      </p>
     </div>
   </div>
 </template>

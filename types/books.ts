@@ -1,5 +1,7 @@
 import type { Row } from "~/interfaces/database";
 
+type TypeSingle = "reading" | "finished" | "paused";
+
 interface Type {
   value: string;
   label: string;
@@ -20,4 +22,4 @@ interface OpenLibraryBook {
 
 type Status = Type;
 
-export type { Type, Status, BooksResult, OpenLibraryBook };
+export type { Type, Status, BooksResult, OpenLibraryBook, TypeSingle };

@@ -21,29 +21,31 @@ useHead({
   title: book.value.title || "",
 });
 
+const { t } = useI18n();
+
 const { getBookStatus, getStatusBackgroundColor } = useBookStatus();
 const { getBookType, getTypeIcon } = useBookType();
 
-const bookMetaInfo = [
+const bookMetaInfo = computed(() => [
   {
     icon: "mdi:star-outline",
-    value: `${book.value.score}`,
+    value: `${book.value!.score}`,
   },
   {
     icon: "mdi:book-open-page-variant-outline",
-    value: `${book.value.number_pages} páginas`,
+    value: t("app.totalPages", { count: book.value!.number_pages }),
   },
   {
-    icon: getTypeIcon(book.value.type || ""),
-    value: getBookType(book.value.type || "").label,
+    icon: getTypeIcon(book.value!.type || ""),
+    value: getBookType(book.value!.type || "").label,
   },
   {
     icon: "mdi:book-check-outline",
-    value: book.value.end_date
-      ? format(book.value.end_date || "", { date: "medium" })
+    value: book.value!.end_date
+      ? format(book.value!.end_date || "", { date: "medium" })
       : null,
   },
-];
+]);
 </script>
 
 <template>

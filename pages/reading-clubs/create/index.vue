@@ -22,7 +22,7 @@ const handleCreateReadingClub = async (values: ReadingClubInformation) => {
 
 <template>
   <GothamContainer>
-    <GothamHeader label="Crear club de lectura" />
+    <GothamHeader :label="$t('app.createReadingClub')" />
     <section class="max-w-screen-sm">
       <ReadingClubInformationForm @onSubmit="handleCreateReadingClub" />
     </section>

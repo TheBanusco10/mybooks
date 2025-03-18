@@ -20,14 +20,14 @@ export const useStatisticsStore = defineStore("statistics", () => {
     if (error)
       throw new StatisticsError(
         GET_TOTAL_NUMBER_BOOKS_ERROR_MESSAGE,
-        error.message,
+        error.message
       );
 
     return count || 0;
   };
 
   const getHighRatedBooks = async (
-    limit: number = 5,
+    limit: number = 5
   ): Promise<Row<"books">[]> => {
     const { data, error } = await supabase
       .from("books")
@@ -38,14 +38,14 @@ export const useStatisticsStore = defineStore("statistics", () => {
     if (error)
       throw new StatisticsError(
         GET_HIGH_RATED_BOOKS_ERROR_MESSAGE,
-        error.message,
+        error.message
       );
 
     return data;
   };
 
   const getTopCategories = async (
-    limit: number = 5,
+    limit: number = 5
   ): Promise<TopCategory[]> => {
     const { data, error } = await supabase
       .rpc("get_top_categories", {
@@ -56,7 +56,7 @@ export const useStatisticsStore = defineStore("statistics", () => {
     if (error)
       throw new StatisticsError(
         GET_TOP_CATEGORY_BOOKS_ERROR_MESSAGE,
-        error.message,
+        error.message
       );
 
     return data;
@@ -64,6 +64,7 @@ export const useStatisticsStore = defineStore("statistics", () => {
 
   const getTotalReadPages = async (): Promise<{ sum: number }> => {
     const { STATUS_FINISHED } = useBookStatus();
+
     const { data, error } = await supabase
       .from("books")
       .select("number_pages.sum()")
@@ -73,7 +74,7 @@ export const useStatisticsStore = defineStore("statistics", () => {
     if (error)
       throw new StatisticsError(
         GET_TOTAL_READ_PAGES_ERROR_MESSAGE,
-        error.message,
+        error.message
       );
 
     return data;
