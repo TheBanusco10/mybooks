@@ -12,7 +12,7 @@ const { isUserLoggedIn } = storeToRefs(authStore);
 const drawerToggleInput = ref<HTMLInputElement | null>(null);
 const drawerToggleInputGlobaRef = useState<HTMLInputElement | null>(
   "drawerToggleInput",
-  () => null
+  () => null,
 );
 
 const config = useRuntimeConfig();
@@ -27,6 +27,11 @@ const mainMenuItems = computed(() => [
     name: t("app.bookClubs"),
     href: "/reading-clubs",
     icon: "mdi:bookshelf",
+  },
+  {
+    name: "Wrapped 2025",
+    href: "/wrapped",
+    icon: "mdi:party-popper",
   },
 ]);
 
