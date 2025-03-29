@@ -1,6 +1,5 @@
-import type { Row } from "~/interfaces/database";
 import type { TopCategory } from "~/types/statistics";
-import type { BookRead } from "~/types/wrapped/booksRead";
+import type { BestBook, BookRead } from "~/types/wrapped/books";
 
 // TODO Create errors for wrapped store
 
@@ -75,15 +74,14 @@ export const useWrappedStore = defineStore("wrapped", () => {
     };
   };
 
-  const getBestBooks = async (): Promise<
-    Pick<Row<"books">, "id" | "title" | "score">[]
-  > => {
+  const getBestBooks = async (): Promise<BestBook[]> => {
     const { data: bestBooks, error: bestBooksError } = await supabase
       .from("books")
-      .select("id, title, score")
+      .select("id, title, score, image_url")
       .gte("end_date", startOfYear)
       .lt("end_date", endOfWrapped)
-      .order("score", { ascending: false });
+      .order("score", { ascending: false })
+      .returns<BestBook[]>();
 
     if (bestBooksError) {
       console.error(bestBooksError.message);

@@ -2,7 +2,7 @@
 import WrappedIntroduction from "~/components/Wrapped/Introduction.vue";
 import WrappedBooksRead from "~/components/Wrapped/BooksRead/Component.vue";
 import WrappedPagesRead from "~/components/Wrapped/PagesRead.vue";
-import WrappedBestBooks from "~/components/Wrapped/BestBooks.vue";
+import WrappedBestBooks from "~/components/Wrapped/BestBooks/Component.vue";
 import WrappedMostReadCategories from "~/components/Wrapped/MostReadCategories.vue";
 import WrappedMostReadAuthors from "~/components/Wrapped/MostReadAuthors.vue";
 import WrappedSummary from "~/components/Wrapped/Summary.vue";
@@ -27,7 +27,11 @@ const wrappedSteps = [
 </script>
 
 <template>
-  <GothamContainer class="flex flex-col justify-between h-full !mt-0">
+  <GothamContainer
+    class="relative flex flex-col justify-between h-full !mt-0 overflow-hidden"
+  >
+    <WrappedBackgroundImage class="left-0 -top-3" animation="rotate" />
+    <WrappedBackgroundImage class="bottom-0 right-0" animation="float" />
     <template v-for="(step, index) in wrappedSteps">
       <component
         v-if="index === wrappedStepIndex"
