@@ -81,7 +81,7 @@ export const useWrappedStore = defineStore("wrapped", () => {
       .gte("end_date", startOfYear)
       .lt("end_date", endOfWrapped)
       .order("score", { ascending: false })
-      .returns<BestBook[]>();
+      .overrideTypes<BestBook[], { merge: false }>();
 
     if (bestBooksError) {
       console.error(bestBooksError.message);
@@ -97,7 +97,7 @@ export const useWrappedStore = defineStore("wrapped", () => {
   const getMostReadCategories = async (): Promise<TopCategory[]> => {
     const { data: categories, error } = await supabase
       .rpc("get_wrapped_top_categories")
-      .returns<TopCategory[]>();
+      .overrideTypes<TopCategory[], { merge: false }>();
 
     if (error) {
       console.error(error.message);

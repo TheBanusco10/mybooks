@@ -3,7 +3,7 @@ import WrappedIntroduction from "~/components/Wrapped/Introduction.vue";
 import WrappedBooksRead from "~/components/Wrapped/BooksRead/Component.vue";
 import WrappedPagesRead from "~/components/Wrapped/PagesRead.vue";
 import WrappedBestBooks from "~/components/Wrapped/BestBooks/Component.vue";
-import WrappedMostReadCategories from "~/components/Wrapped/MostReadCategories.vue";
+import WrappedMostReadCategories from "~/components/Wrapped/MostReadCategories/Component.vue";
 import WrappedMostReadAuthors from "~/components/Wrapped/MostReadAuthors.vue";
 import WrappedSummary from "~/components/Wrapped/Summary.vue";
 
@@ -38,7 +38,7 @@ const wrappedSteps = [
         :is="step"
         :key="index"
         @onNextStep="wrappedStepIndex++"
-        class="overflow-scroll animate__animated animate__fadeIn"
+        class="animate__animated animate__fadeIn"
       />
     </template>
     <div class="flex gap-4 my-4">
