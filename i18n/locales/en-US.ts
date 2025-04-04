@@ -104,6 +104,7 @@ export default {
     editBook: "Edit book",
     totalPages: "{count} pages",
     language: "Language",
+    goBack: "Go back",
   },
   books: {
     statuses: {

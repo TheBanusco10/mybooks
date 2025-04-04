@@ -105,6 +105,7 @@ export default {
     editBook: "Modifier le livre",
     totalPages: "{count} pages",
     language: "Langue",
+    goBack: "Retourner",
   },
   books: {
     statuses: {
