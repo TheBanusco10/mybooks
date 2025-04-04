@@ -51,7 +51,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative container mx-auto">
+  <div class="container mx-auto">
     <section v-if="showBackButton">
       <button
         :class="[
