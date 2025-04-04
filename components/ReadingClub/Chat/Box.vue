@@ -11,7 +11,6 @@ const { sendMessage } = useReadingClubsStore();
 const message = ref("");
 const isFetching = ref(false);
 const user = await usePublicUser();
-const supabase = useSupabaseClient();
 
 const isSendButtonDisabled = computed(() => !message.value || isFetching.value);
 
@@ -42,7 +41,7 @@ const handleSendMessage = async (evt: any) => {
   <div class="p-2 bg-base-200">
     <form class="flex gap-2 w-full" @submit.prevent="handleSendMessage">
       <textarea
-        class="textarea textarea-bordered textarea-xs flex-[80%] resize-none"
+        class="textarea textarea-bordered textarea-xs flex-[80%] resize-none placeholder:text-base-content"
         :placeholder="$t('app.writeAMessage')"
         type="text"
         v-model="message"

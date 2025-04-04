@@ -65,7 +65,7 @@ onMounted(() => {
   }, 50);
 });
 
-onBeforeUnmount(() => {
+onUnmounted(() => {
   channel.unsubscribe();
 });
 </script>
