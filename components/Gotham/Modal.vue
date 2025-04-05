@@ -5,6 +5,8 @@ interface Props {
 
 defineProps<Props>();
 
+defineEmits(["onClose"]);
+
 const dialogElement = ref<HTMLDialogElement>();
 
 defineExpose({
@@ -27,7 +29,7 @@ defineExpose({
       </p>
       <div class="modal-action mt-0">
         <form method="dialog" class="w-full flex justify-between">
-          <button class="btn">
+          <button class="btn" @click="$emit('onClose')">
             {{ $t("forms.cancel") }}
           </button>
           <slot name="action" />
