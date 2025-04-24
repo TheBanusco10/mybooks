@@ -1,5 +1,7 @@
 # MyBooks OpenSource
 
-Gestiona tus libros de forma sencilla y gratuita.
+Manage your books in an easy and fast way.
 
-Desarrollado por [David Jiménez](https://djvdev.com) with ❤️
+Developed by [David Jiménez](https://djvdev.com) with ❤️
+
+[Start your account now](https://mybooks.djvdev.com)
