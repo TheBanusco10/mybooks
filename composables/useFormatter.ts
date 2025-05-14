@@ -7,16 +7,19 @@ export default () => {
   };
 
   const formatDate = (
-    date: string,
-    time: "full" | "long" | "medium" | "short" = "short"
+    date: string | Date,
+    type: "full" | "long" | "medium" | "short" | string = "short",
   ) => {
-    return format(date, {
-      time,
-    });
+    return format(date, type);
+  };
+
+  const formatDateToInput = (date: string | Date) => {
+    return formatDate(date, "YYYY-MM-DD");
   };
 
   return {
     formatNumber,
     formatDate,
+    formatDateToInput,
   };
 };

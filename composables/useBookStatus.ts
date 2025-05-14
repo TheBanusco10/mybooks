@@ -7,6 +7,8 @@ export default () => {
   const STATUS_FINISHED: TypeSingle = "finished";
   const STATUS_PAUSED: TypeSingle = "paused";
 
+  const DEFAULT_STATUS: TypeSingle = STATUS_READING;
+
   const statuses = computed<Status[]>(() => [
     { value: STATUS_READING, label: t("books.statuses.reading") },
     { value: STATUS_FINISHED, label: t("books.statuses.finished") },
@@ -40,5 +42,6 @@ export default () => {
     STATUS_PAUSED,
     STATUS_READING,
     STATUS_FINISHED,
+    DEFAULT_STATUS,
   };
 };

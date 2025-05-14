@@ -3,10 +3,12 @@ import type { Type } from "~/types/books";
 export default () => {
   const { t } = useI18n();
 
-  const types = computed<Type[]>(() => [
+  const types = computed(() => [
     { value: "paper", label: t("books.types.paper") },
     { value: "kindle", label: t("books.types.kindle") },
   ]);
+
+  const DEFAULT_BOOK_TYPE = computed(() => types.value.at(0)!);
 
   const getBookType = (typeValue: string): Type => {
     return (
@@ -30,5 +32,6 @@ export default () => {
     getBookType,
     isPaper,
     getTypeIcon,
+    DEFAULT_BOOK_TYPE,
   };
 };

@@ -106,6 +106,8 @@ export default {
     totalPages: "{count} páginas",
     language: "Idioma",
     goBack: "Voltar",
+    endDateMessage:
+      "Deseja definir o campo de data de conclusão do livro para hoje?",
   },
   books: {
     statuses: {

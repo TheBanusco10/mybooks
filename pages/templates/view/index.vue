@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import OpenLibraryMapper from "~/services/books/OpenLibraryMapper";
 import type { OpenLibraryBook } from "~/types/books";
 
 const selectedBookTemplate = useState<OpenLibraryBook | null>(
@@ -9,16 +10,15 @@ const selectedBookTemplate = useState<OpenLibraryBook | null>(
 if (!selectedBookTemplate || !selectedBookTemplate.value) {
   await navigateTo("/");
 }
+
+const mappedBook = OpenLibraryMapper.map(selectedBookTemplate.value!);
 </script>
 
 <template>
   <main>
     <GothamContainer>
       <BooksFormAdd
-        :cover="selectedBookTemplate?.cover || ''"
-        :author="selectedBookTemplate?.author"
-        :title="selectedBookTemplate?.title"
-        :description="selectedBookTemplate?.description"
+        :book="mappedBook"
       />
     </GothamContainer>
   </main>

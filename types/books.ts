@@ -22,4 +22,6 @@ interface OpenLibraryBook {
 
 type Status = Type;
 
-export type { Type, Status, BooksResult, OpenLibraryBook, TypeSingle };
+type BookFormInformationType = Omit<Row<"books">, "id" | "created_at" | "updated_at" | "user_id">;
+
+export type { Type, Status, BooksResult, OpenLibraryBook, TypeSingle, BookFormInformationType };
