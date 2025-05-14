@@ -3,6 +3,7 @@ import type { Category } from "~/types/category";
 import { FormKitMessages } from "@formkit/vue";
 import { getNode } from "@formkit/core";
 import type { BookFormInformationType } from "~/types/books";
+import type { ModalRef } from "~/types/modals";
 
 interface Props {
   book?: BookFormInformationType;
@@ -13,12 +14,15 @@ const props = defineProps<Props>();
 const emits = defineEmits(["onFormSubmit"]);
 
 const { types, DEFAULT_BOOK_TYPE } = useBookType();
-const { statuses, DEFAULT_STATUS } = useBookStatus();
+const { statuses, DEFAULT_STATUS, STATUS_FINISHED } = useBookStatus();
+const { formatDateToInput } = useFormatter();
 
 const selectedCategories = defineModel<Category[]>();
 
+const bookStatusModalRef = ref<ModalRef>();
+
 const previewImage = ref<string>(
-  props.book?.image_url || "images/no-cover.svg"
+  props.book?.image_url || "images/no-cover.svg",
 );
 
 const handleImagePreviewInput = () => {
@@ -32,12 +36,38 @@ const handleImagePreviewInput = () => {
       if (isEmpty(image_value)) return;
 
       previewImage.value = image_value;
-    }
+    },
   );
+};
+
+const handleBookStatusField = () => {
+  const bookStatusField = getNode("status");
+
+  if (!bookStatusField) return;
+
+  bookStatusField.on(
+    "input",
+    ({ payload: status_value }: { payload: string }) => {
+      if (isEmpty(status_value)) return;
+
+      if (status_value !== STATUS_FINISHED) return;
+
+      bookStatusModalRef.value?.dialogElement.showModal();
+    },
+  );
+};
+
+const setBookEndDateToToday = () => {
+  const bookEndDate = getNode("end_date");
+
+  if (!bookEndDate) return;
+
+  bookEndDate.input(formatDateToInput(new Date()));
 };
 
 onMounted(() => {
   handleImagePreviewInput();
+  handleBookStatusField();
 });
 </script>
 
@@ -117,6 +147,7 @@ onMounted(() => {
         />
         <FormKit
           type="select"
+          id="status"
           name="status"
           :label="$t('app.bookStatus')"
           validation="required"
@@ -127,6 +158,7 @@ onMounted(() => {
       </div>
       <FormKit
         type="date"
+        id="end_date"
         name="end_date"
         validation="date"
         :label="$t('app.endDate')"
@@ -147,4 +179,13 @@ onMounted(() => {
       </FormKit>
     </div>
   </FormKit>
+  <GothamModal id="book-status-modal" ref="bookStatusModalRef">
+    <template v-slot:title> {{ $t("app.endDate") }} </template>
+    <template v-slot:content> {{ $t("app.endDateMessage") }} </template>
+    <template v-slot:action>
+      <button class="btn btn-primary" @click="setBookEndDateToToday">
+        {{ $t("forms.confirm") }}
+      </button>
+    </template>
+  </GothamModal>
 </template>

@@ -105,6 +105,8 @@ export default {
     totalPages: "{count} pages",
     language: "Language",
     goBack: "Go back",
+    endDateMessage:
+      "Do you want to set the end date field for the book to today?",
   },
   books: {
     statuses: {
