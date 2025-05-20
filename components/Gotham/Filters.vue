@@ -105,7 +105,7 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
   <section>
     <button
       type="button"
-      class="btn text-base-content btn-outline btn-circle btn-sm p-2 sm:ml-6"
+      class="btn text-base-content btn-outline btn-circle btn-sm p-2"
       @click="mobileFiltersOpen = true"
     >
       <span class="sr-only">
