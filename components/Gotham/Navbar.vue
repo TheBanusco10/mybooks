@@ -8,6 +8,7 @@ const route = useRoute();
 const authStore = useAuthStore();
 const { signOut } = authStore;
 const { isUserLoggedIn } = storeToRefs(authStore);
+const { canInstall } = storeToRefs(usePWAStore());
 
 const drawerToggleInput = ref<HTMLInputElement | null>(null);
 const drawerToggleInputGlobaRef = useState<HTMLInputElement | null>(
@@ -92,8 +93,8 @@ onMounted(() => {
         class="w-64 menu flex flex-col justify-between min-h-full px-3 py-4 overflow-y-auto bg-base-200"
       >
         <ul class="space-y-2 font-medium">
-          <div v-if="isUserLoggedIn">
-            <NavbarItem
+          <NavbarItem
+              v-if="isUserLoggedIn"
               v-for="(item, index) in mainMenuItems"
               v-bind="{
                 ...item,
@@ -101,7 +102,9 @@ onMounted(() => {
               }"
               :key="index"
             />
-          </div>
+          <ClientOnly>
+            <PWAInstallNavbarItem />
+          </ClientOnly>
         </ul>
         <ul class="space-y-2 font-medium">
           <GothamLanguageSwitcher />

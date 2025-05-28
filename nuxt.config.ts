@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     "nuxt-lodash",
     "@nuxt/image",
     "@nuxtjs/i18n",
-    // "@vite-pwa/nuxt",
+    "@vite-pwa/nuxt",
   ],
 
   formkit: {
@@ -47,12 +47,6 @@ export default defineNuxtConfig({
     defaultLocale: "es",
     lazy: true,
     strategy: "no_prefix",
-  },
-
-  pwa: {
-    devOptions: {
-      enabled: false,
-    },
   },
 
   compatibilityDate: "2025-03-10",

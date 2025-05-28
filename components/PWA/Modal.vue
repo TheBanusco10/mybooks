@@ -3,7 +3,7 @@ import type { ModalRef } from "~/types/modals";
 
 const pwaStore = usePWAStore();
 
-const { installPWA, updateModalConsent } = pwaStore;
+const { installPWA, updateModalConsent, hookIntoInstallPrompt } = pwaStore;
 const { canInstall, modalConsent } = storeToRefs(pwaStore);
 
 const pwaModalRef = ref<ModalRef>();
@@ -13,14 +13,18 @@ const handleCancel = () => {
 };
 
 const handleInstall = () => {
-    pwaModalRef.value?.dialogElement.close();
-    installPWA();
-}
+  pwaModalRef.value?.dialogElement.close();
+  installPWA();
+};
 
 watch(canInstall, () => {
   if (!canInstall.value || !modalConsent.value) return;
 
   pwaModalRef.value?.dialogElement.showModal();
+});
+
+onMounted(() => {
+  hookIntoInstallPrompt();
 });
 </script>
 
