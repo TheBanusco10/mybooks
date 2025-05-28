@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { currentTheme } = useTheme();
+const { currentTheme, currentPrimaryColor } = useTheme();
 
 useHead({
   titleTemplate: (title) =>
-    !isEmpty(title) ? `${title} - MyBooks` : "MyBooks",
+    !isEmpty(title) ? `${title}` : "MyBooks",
   link: [
     {
       rel: "apple-touch-icon",
@@ -22,23 +22,33 @@ useHead({
       sizes: "16x16",
       href: "/favicon-16x16.png",
     },
-    { rel: "manifest", href: "/site.webmanifest" },
+    // {
+    //   rel: "manifest",
+    //   href: "/site.webmanifest",
+    // },
     { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#5bbad5" },
   ],
   meta: [
     { name: "apple-mobile-web-app-title", content: "MyBooks" },
     { name: "application-name", content: "MyBooks" },
     { name: "msapplication-TileColor", content: "#da532c" },
-    { name: "theme-color", content: "#ffffff" },
+    { name: "theme-color", content: () => currentPrimaryColor.value },
   ],
   htmlAttrs: {
     "data-theme": () => currentTheme.value,
   },
 });
+
+const pwaStore = usePWAStore();
+
+onMounted(() => {
+  pwaStore.hookIntoInstallPrompt();
+})
 </script>
 
 <template>
   <GothamNavbar>
+    <PWAModal />
     <NuxtPage />
   </GothamNavbar>
 </template>
