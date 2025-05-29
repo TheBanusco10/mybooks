@@ -33,6 +33,7 @@ export const useStatisticsStore = defineStore("statistics", () => {
       .from("books")
       .select("*")
       .order("score", { ascending: false })
+      .order("end_date", { ascending: false, nullsFirst: false })
       .limit(limit);
 
     if (error)

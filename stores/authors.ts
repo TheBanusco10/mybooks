@@ -12,7 +12,7 @@ export const useAuthorsStore = defineStore("authors", () => {
     const { data, error } = await supabase
       .from("books")
       .select("author, count()")
-      .returns<Author[]>();
+      .overrideTypes<Author[], { merge: false }>();
 
     if (error) throw new AuthorsError(GET_DISTINCT_AUTHORS_ERROR_MESSAGE);
 
