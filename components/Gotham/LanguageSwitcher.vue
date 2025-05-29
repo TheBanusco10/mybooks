@@ -33,13 +33,13 @@ const localesInformation = locales.value.map((locale) => {
     <div
       tabindex="0"
       role="button"
-      class="w-full btn bg-base-300 m-1 justify-start"
+      class="w-full btn bg-base-300 mt-2 justify-start"
     >
       {{ $t("app.language") }}: {{ currentLocale.toLocaleUpperCase() }}
     </div>
     <ul
       tabindex="0"
-      class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow gap-2"
+      class="w-full dropdown-content menu bg-base-100 rounded-box z-[1] p-2 shadow gap-2"
     >
       <li v-for="locale in locales" @click="setLocale(locale.code)">
         <p
