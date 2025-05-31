@@ -108,6 +108,8 @@ export default {
     goBack: "Retourner",
     endDateMessage:
       "Voulez-vous définir le champ de date de fin du livre à aujourd'hui?",
+    searchByUsername: "Rechercher par nom d'utilisateur",
+    discover: "Découvrir",
   },
   books: {
     statuses: {

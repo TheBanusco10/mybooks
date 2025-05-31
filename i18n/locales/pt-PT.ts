@@ -108,6 +108,8 @@ export default {
     goBack: "Voltar",
     endDateMessage:
       "Deseja definir o campo de data de conclusão do livro para hoje?",
+    searchByUsername: "Pesquisar por nome de utilizador",
+    discover: "Descobrir",
   },
   books: {
     statuses: {

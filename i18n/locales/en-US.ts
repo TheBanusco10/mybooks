@@ -107,6 +107,8 @@ export default {
     goBack: "Go back",
     endDateMessage:
       "Do you want to set the end date field for the book to today?",
+    searchByUsername: "Search by username",
+    discover: "Discover",
   },
   books: {
     statuses: {

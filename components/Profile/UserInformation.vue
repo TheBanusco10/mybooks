@@ -18,7 +18,7 @@ if (!isUserLoggedIn.value) {
     </div>
     <div class="flex flex-col text-center md:text-start">
       <p v-if="user?.user_metadata.username" class="text-xl">
-        {{ user.user_metadata.username }}
+        @{{ user.user_metadata.username }}
       </p>
       <p class="text-sm text-base-content/60">
         {{ user?.user_metadata.email }}

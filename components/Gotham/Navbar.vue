@@ -28,6 +28,11 @@ const mainMenuItems = computed(() => [
     href: "/reading-clubs",
     icon: "mdi:bookshelf",
   },
+  {
+    name: t("app.discover"),
+    href: "/discover",
+    icon: "mdi:compass-outline",
+  },
 ]);
 
 const subMenuItems = computed(() => [
