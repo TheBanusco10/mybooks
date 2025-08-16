@@ -16,12 +16,15 @@ const handleUpdateLocale = async (newLocale: LocaleEnum) => {
     const error: SettingsError = err;
 
     console.error(error.message);
+  } finally {
+    // Closing dropdown on click
+    (document.activeElement as HTMLElement).blur();
   }
 };
 </script>
 
 <template>
-  <div class="w-full dropdown dropdown-hover dropdown-top">
+  <div class="w-full dropdown dropdown-top">
     <div
       tabindex="0"
       role="button"
