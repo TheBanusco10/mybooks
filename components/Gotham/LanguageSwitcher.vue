@@ -1,15 +1,22 @@
 <script setup lang="ts">
 import type { LocaleEnum } from "~/enums/LocaleEnum";
+import type { SettingsError } from "~/errors/settings";
 
 const { locales, setLocale, locale: currentLocale } = useI18n();
 const { updateSettings } = useSettingsStore();
 
 const handleUpdateLocale = async (newLocale: LocaleEnum) => {
-  setLocale(newLocale);
+  try {
+    setLocale(newLocale);
 
-  await updateSettings({
-    locale: newLocale,
-  });
+    await updateSettings({
+      locale: newLocale,
+    });
+  } catch (err: any) {
+    const error: SettingsError = err;
+
+    console.error(error.message);
+  }
 };
 </script>
 
