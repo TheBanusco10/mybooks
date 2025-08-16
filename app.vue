@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { currentTheme } = useTheme();
+const { t } = useI18n();
+
+const { currentTheme } = useTheme(t);
 const config = useRuntimeConfig();
 
 useHead({
@@ -23,7 +25,10 @@ useHead({
       sizes: "16x16",
       href: "/favicon-16x16.png",
     },
-    { rel: "manifest", href: `/site.webmanifest?v=${config.public.appVersion}` },
+    {
+      rel: "manifest",
+      href: `/site.webmanifest?v=${config.public.appVersion}`,
+    },
     { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#5bbad5" },
   ],
   meta: [
