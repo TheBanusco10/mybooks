@@ -1,31 +1,5 @@
 <script setup lang="ts">
 const { locales, setLocale, locale: currentLocale } = useI18n();
-
-const localeIconsMapping = {
-  es: {
-    icon: "material-symbols-light:language-spanish-rounded",
-    isIcon: true,
-  },
-  en: {
-    icon: "material-symbols-light:language-gb-english-rounded",
-    isIcon: true,
-  },
-  fr: {
-    icon: "material-symbols-light:language-french-rounded",
-    isIcon: true,
-  },
-  pt: {
-    icon: "PT",
-    isIcon: false,
-  },
-};
-
-const localesInformation = locales.value.map((locale) => {
-  return {
-    ...locale,
-    iconData: localeIconsMapping[locale.code],
-  };
-});
 </script>
 
 <template>
