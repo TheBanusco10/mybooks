@@ -1,5 +1,16 @@
 <script setup lang="ts">
+import type { LocaleEnum } from "~/enums/LocaleEnum";
+
 const { locales, setLocale, locale: currentLocale } = useI18n();
+const { updateSettings } = useSettingsStore();
+
+const handleUpdateLocale = async (newLocale: LocaleEnum) => {
+  setLocale(newLocale);
+
+  await updateSettings({
+    locale: newLocale,
+  });
+};
 </script>
 
 <template>
@@ -15,7 +26,10 @@ const { locales, setLocale, locale: currentLocale } = useI18n();
       tabindex="0"
       class="w-full dropdown-content menu bg-base-100 rounded-box z-[1] p-2 shadow gap-2"
     >
-      <li v-for="locale in locales" @click="setLocale(locale.code)">
+      <li
+        v-for="locale in locales"
+        @click="handleUpdateLocale(locale.code as LocaleEnum)"
+      >
         <p
           class="font-thin"
           :class="{

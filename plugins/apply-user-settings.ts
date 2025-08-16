@@ -4,16 +4,16 @@ import { LocaleEnum } from "~/enums/LocaleEnum";
 export default defineNuxtPlugin({
   name: "apply-user-settings",
   async setup() {
-    const { getSettings } = useSettingsStore();
-    const settings = await getSettings();
-    if (!settings) return;
+    const settings = await useSettings();
+
+    if (!settings.value) return;
 
     const { $i18n } = useNuxtApp();
 
-    $i18n.setLocale(settings.locale || LocaleEnum.DEFAULT);
+    $i18n.setLocale(settings.value.locale || LocaleEnum.DEFAULT);
 
     const { currentTheme } = useTheme($i18n.t);
 
-    currentTheme.value = settings.theme || ThemeEnum.DEFAULT;
+    currentTheme.value = settings.value.theme || ThemeEnum.DEFAULT;
   },
 });

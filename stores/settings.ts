@@ -7,7 +7,7 @@ export const useSettingsStore = defineStore("settings", () => {
   const getSettings = async () => {
     const user = useSupabaseUser();
 
-    if (!user.value) return;
+    if (!user.value) return null;
 
     const { data, error } = await supabase
       .from("profiles")
@@ -20,20 +20,28 @@ export const useSettingsStore = defineStore("settings", () => {
     return data.settings as Settings;
   };
 
-  const updateSettings = async (settings: Settings) => {
+  const updateSettings = useDebounce(async (settings: Settings) => {
     const user = useSupabaseUser();
+    const previousSettings = await useSettings();
 
     if (!user.value) return;
+
+    const newSettings = {
+      ...previousSettings.value,
+      ...settings,
+    };
 
     const { error } = await supabase
       .from("profiles")
       .update({
-        settings: settings as Json,
+        settings: newSettings,
       })
       .eq("id", user.value.id);
 
     if (error) throw error;
-  };
+
+    previousSettings.value = newSettings;
+  }, 500);
 
   return {
     getSettings,
