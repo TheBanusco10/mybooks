@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { currentTheme, themes, changeTheme } = useTheme();
+const { t } = useI18n();
+
+const { currentTheme, themes, changeTheme } = useTheme(t);
 </script>
 
 <template>
