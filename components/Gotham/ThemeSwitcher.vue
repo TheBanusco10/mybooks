@@ -1,5 +1,25 @@
 <script setup lang="ts">
-const { currentTheme, themes, changeTheme } = useTheme();
+import type { ThemeEnum } from "~/enums/ThemeEnum";
+import type { SettingsError } from "~/errors/settings";
+
+const { t } = useI18n();
+
+const { currentTheme, themes, changeTheme } = useTheme(t);
+const { updateSettings } = useSettingsStore();
+
+const handleUpdateTheme = async (newTheme: ThemeEnum) => {
+  try {
+    changeTheme(newTheme);
+
+    await updateSettings({
+      theme: newTheme,
+    });
+  } catch (err: any) {
+    const error: SettingsError = err;
+
+    console.error(error.message);
+  }
+};
 </script>
 
 <template>
@@ -14,7 +34,7 @@ const { currentTheme, themes, changeTheme } = useTheme();
       <button
         class="btn btn-circle btn-sm"
         :class="{ 'bg-base-100': currentTheme === theme.value }"
-        @click="changeTheme(theme.value)"
+        @click="handleUpdateTheme(theme.value)"
       >
         <Icon :name="theme.icon" />
       </button>

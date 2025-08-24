@@ -88,6 +88,7 @@ export type Database = {
           id: string
           image_url: string | null
           is_private: boolean
+          settings: Json
           username: string
         }
         Insert: {
@@ -95,6 +96,7 @@ export type Database = {
           id: string
           image_url?: string | null
           is_private?: boolean
+          settings?: Json
           username: string
         }
         Update: {
@@ -102,6 +104,7 @@ export type Database = {
           id?: string
           image_url?: string | null
           is_private?: boolean
+          settings?: Json
           username?: string
         }
         Relationships: []
