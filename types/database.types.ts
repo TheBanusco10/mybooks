@@ -84,6 +84,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          achievements: string[]
           email: string
           id: string
           image_url: string | null
@@ -92,6 +93,7 @@ export type Database = {
           username: string
         }
         Insert: {
+          achievements?: string[]
           email: string
           id: string
           image_url?: string | null
@@ -100,6 +102,7 @@ export type Database = {
           username: string
         }
         Update: {
+          achievements?: string[]
           email?: string
           id?: string
           image_url?: string | null
