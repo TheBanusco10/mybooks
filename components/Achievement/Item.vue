@@ -4,16 +4,21 @@ interface Props {
   imageSize?: number;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   imageSize: 100,
 });
 
 const { getAchievementFromCode } = useAchievements();
+
+const achievementTooltip = computed(() => {
+  const achievementInfo = getAchievementFromCode(props.code);
+  return achievementInfo?.label || "";
+});
 </script>
 
 <template>
   <article>
-    <GothamTooltip :tooltip="getAchievementFromCode(code)?.label || ''">
+    <GothamTooltip :tooltip="achievementTooltip">
       <img
         :src="`/images/achievements/${code}.png`"
         alt=""

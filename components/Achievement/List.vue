@@ -12,9 +12,9 @@ withDefaults(defineProps<Props>(), {
 <template>
   <section class="flex flex-wrap">
     <AchievementItem
-      v-for="achievementCode in achievementCodes"
-      :key="achievementCode"
-      :code="achievementCode"
+      v-for="code in achievementCodes"
+      :key="code"
+      :code="code"
       :image-size="imageSize"
     />
   </section>
