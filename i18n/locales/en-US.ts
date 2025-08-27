@@ -173,4 +173,12 @@ export default {
     valentine: "Valentine's Day",
     coffee: "Coffee",
   },
+  achievements: {
+    books_1_label: "New reader",
+    books_1_description: "Add your first book to your library",
+    books_20_label: "Mid reader",
+    books_20_description: "Add 20 books to your library",
+    books_40_label: "Super reader",
+    books_40_description: "Add 40 books to your library",
+  },
 };

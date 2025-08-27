@@ -2,25 +2,27 @@ import OwnCertainBooksService from "~/services/achievements/ownCertainBooksServi
 import type { Achievement } from "~/types/achievements";
 
 export default () => {
+  const { t } = useI18n();
+
   const ACHIEVEMENTS = computed<Achievement[]>(() => [
     {
       code: "books_1",
-      label: "New reader",
-      description: "Add your first book to your library", // TODO Translate it
+      label: t("achievements.books_1_label"),
+      description: t("achievements.books_1_description"),
       condition: async (supabase: any) =>
         OwnCertainBooksService.execute(supabase, 1),
     },
     {
       code: "books_20",
-      label: "Mid reader",
-      description: "Add 20 books to your library",
+      label: t("achievements.books_20_label"),
+      description: t("achievements.books_20_description"),
       condition: async (supabase: any) =>
         OwnCertainBooksService.execute(supabase, 20),
     },
     {
       code: "books_40",
-      label: "Super reader",
-      description: "Add 40 books to your library",
+      label: t("achievements.books_40_label"),
+      description: t("achievements.books_40_description"),
       condition: async (supabase: any) =>
         OwnCertainBooksService.execute(supabase, 40),
     },

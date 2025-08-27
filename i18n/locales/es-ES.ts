@@ -174,4 +174,12 @@ export default {
     valentine: "San Valentín",
     coffee: "Café",
   },
+  achievements: {
+    books_1_label: "Nuevo lector",
+    books_1_description: "Añade tu primer libro a tu biblioteca",
+    books_20_label: "Lector intermedio",
+    books_20_description: "Añade 20 libros a tu biblioteca",
+    books_40_label: "Súper lector",
+    books_40_description: "Añade 40 libros a tu biblioteca",
+  },
 };

@@ -174,4 +174,12 @@ export default {
     valentine: "Dia dos Namorados",
     coffee: "Café",
   },
+  achievements: {
+    books_1_label: "Novo leitor",
+    books_1_description: "Adicione seu primeiro livro à sua biblioteca",
+    books_20_label: "Lector intermedio",
+    books_20_description: "Adicione 20 livros à sua biblioteca",
+    books_40_label: "Lector superior",
+    books_40_description: "Adicione 40 livros à sua biblioteca",
+  },
 };

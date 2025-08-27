@@ -4,6 +4,8 @@ const { isUserLoggedIn, user } = storeToRefs(useAuthStore());
 if (!isUserLoggedIn.value) {
   await navigateTo("/login");
 }
+
+const publicUser = await usePublicUser();
 </script>
 
 <template>
@@ -24,5 +26,12 @@ if (!isUserLoggedIn.value) {
         {{ user?.user_metadata.email }}
       </p>
     </div>
+  </section>
+  <section>
+    <AchievementList
+      v-if="publicUser?.achievements"
+      :achievementCodes="publicUser.achievements"
+      :image-size="70"
+    />
   </section>
 </template>
