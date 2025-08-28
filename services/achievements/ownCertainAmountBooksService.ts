@@ -1,4 +1,4 @@
-export default class OwnCertainBooksService {
+export default class OwnCertainAmountBooksService {
   static async execute(supabase: any, booksCount: number) {
     const { count } = await supabase
       .from("books")
