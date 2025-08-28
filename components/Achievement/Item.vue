@@ -21,7 +21,7 @@ const achievementTooltip = computed(() => {
     <GothamTooltip :tooltip="achievementTooltip">
       <img
         :src="`/images/achievements/${code}.png`"
-        alt=""
+        :alt="getAchievementFromCode(code)?.label || ''"
         :width="imageSize"
         :height="imageSize"
       />
