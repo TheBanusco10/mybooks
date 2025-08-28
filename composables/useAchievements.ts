@@ -2,7 +2,8 @@ import OwnCertainBooksService from "~/services/achievements/ownCertainBooksServi
 import type { Achievement } from "~/types/achievements";
 
 export default () => {
-  const { t } = useI18n();
+  const { $i18n } = useNuxtApp();
+  const { t } = $i18n;
 
   const ACHIEVEMENTS = computed<Achievement[]>(() => [
     {
