@@ -28,7 +28,7 @@ const tabs = computed(() => [
 <template>
   <GothamContainer>
     <ProfileUserInformation />
-    <GothamTab class="mt-4">
+    <GothamTab class="mt-2">
       <GothamTabItem
         v-for="({ label, component }, index) in tabs"
         :key="index"
