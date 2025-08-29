@@ -28,10 +28,10 @@ console.log(userAchievements.value);
     </div>
   </section>
   <section>
-    <!-- <AchievementList
+    <AchievementList
       v-if="userAchievements"
-      :achievementCodes="userAchievements.reverse()"
+      :achievementCodes="userAchievements"
       :image-size="70"
-    /> -->
+    />
   </section>
 </template>
