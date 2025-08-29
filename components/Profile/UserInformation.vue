@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { user } = storeToRefs(useAuthStore());
 
-const publicUser = await usePublicUser();
+const { publicUser } = usePublicUser();
 
 const userAchievements = computed(() => publicUser.value?.achievements);
 </script>

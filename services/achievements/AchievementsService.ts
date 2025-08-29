@@ -2,7 +2,7 @@ export default class AchievementsService {
   static async execute() {
     const { ACHIEVEMENTS } = useAchievements();
     const supabase = useSupabaseClient();
-    const publicUser = await usePublicUser();
+    const { publicUser } = usePublicUser();
 
     if (!publicUser.value) return;
 
