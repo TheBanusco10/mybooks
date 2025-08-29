@@ -1,11 +1,9 @@
 <script setup lang="ts">
-const { isUserLoggedIn, user } = storeToRefs(useAuthStore());
+const { user } = storeToRefs(useAuthStore());
 
-if (!isUserLoggedIn.value) {
-  await navigateTo("/login");
-}
+const publicUser = await usePublicUser();
 
-// const publicUser = await usePublicUser();
+const userAchievements = computed(() => publicUser.value?.achievements);
 </script>
 
 <template>
@@ -28,10 +26,10 @@ if (!isUserLoggedIn.value) {
     </div>
   </section>
   <section>
-    <!-- <AchievementList
-      v-if="publicUser?.achievements"
-      :achievementCodes="publicUser.achievements.reverse()"
+    <AchievementList
+      v-if="userAchievements"
+      :achievementCodes="userAchievements.reverse()"
       :image-size="70"
-    /> -->
+    />
   </section>
 </template>

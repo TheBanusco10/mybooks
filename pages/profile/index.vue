@@ -9,6 +9,12 @@ useHead({
   title: () => t("app.profile"),
 });
 
+const { isUserLoggedIn } = storeToRefs(useAuthStore());
+
+if (!isUserLoggedIn.value) {
+  await navigateTo("/login");
+}
+
 const tabs = computed(() => [
   {
     label: t("app.statistics"),
