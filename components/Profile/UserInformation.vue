@@ -30,7 +30,7 @@ const publicUser = await usePublicUser();
   <section>
     <AchievementList
       v-if="publicUser?.achievements"
-      :achievementCodes="publicUser.achievements"
+      :achievementCodes="publicUser.achievements.reverse()"
       :image-size="70"
     />
   </section>

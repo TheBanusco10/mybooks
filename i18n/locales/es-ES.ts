@@ -187,5 +187,11 @@ export default {
     pages_count_40k_description: "Lee 40k páginas",
     pages_count_100k_label: "Lector noctámbulo",
     pages_count_100k_description: "Lee 100k páginas",
+    member_since_now_label: "¡Bienvenido/a!",
+    member_since_now_description: "¡Bienvenido/a a MyBooks!",
+    member_since_1_label: "Veterano/a",
+    member_since_1_description: "Has sido miembro durante un año",
+    member_since_2_label: "Librero/a",
+    member_since_2_description: "Has sido miembro durante dos años",
   },
 };

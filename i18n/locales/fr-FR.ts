@@ -187,5 +187,11 @@ export default {
     pages_count_40k_description: "Lis 40k pages",
     pages_count_100k_label: "Lecteur nocturne",
     pages_count_100k_description: "Lis 100k pages",
+    member_since_now_label: "Bienvenue!",
+    member_since_now_description: "Bienvenue à MyBooks!",
+    member_since_1_label: "Veteran",
+    member_since_1_description: "Vous avez été membre pendant un an",
+    member_since_2_label: "Bibliothécaire",
+    member_since_2_description: "Vous avez été membre pendant deux ans",
   },
 };

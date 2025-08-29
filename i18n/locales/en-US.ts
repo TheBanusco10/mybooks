@@ -186,5 +186,11 @@ export default {
     pages_count_40k_description: "Read 40k pages",
     pages_count_100k_label: "Night owl reader",
     pages_count_100k_description: "Read 100k pages",
+    member_since_now_label: "Welcome!",
+    member_since_now_description: "Welcome to MyBooks!",
+    member_since_1_label: "Veteran",
+    member_since_1_description: "You've been a member for a year",
+    member_since_2_label: "Librarian",
+    member_since_2_description: "You've been a member for two years",
   },
 };

@@ -1,5 +1,6 @@
-import HasReadCertainAmountPagesService from "~/services/achievements/HasReadCertainAmountPagesService";
-import OwnCertainAmountBooksService from "~/services/achievements/OwnCertainAmountBooksService";
+import HasReadCertainAmountPagesService from "~/services/achievements/hasReadCertainAmountPagesService";
+import MemberSinceService from "~/services/achievements/MemberSinceService";
+import OwnCertainAmountBooksService from "~/services/achievements/ownCertainAmountBooksService";
 import type { Achievement } from "~/types/achievements";
 
 export default () => {
@@ -33,21 +34,42 @@ export default () => {
       label: t("achievements.pages_count_5k_label"),
       description: t("achievements.pages_count_5k_description"),
       condition: async (_supabase: any) =>
-        HasReadCertainAmountPagesService.execute(1),
+        HasReadCertainAmountPagesService.execute(5000),
     },
     {
       code: "pages_count_40k",
       label: t("achievements.pages_count_40k_label"),
       description: t("achievements.pages_count_40k_description"),
       condition: async (_supabase: any) =>
-        HasReadCertainAmountPagesService.execute(2),
+        HasReadCertainAmountPagesService.execute(40000),
     },
     {
       code: "pages_count_100k",
       label: t("achievements.pages_count_100k_label"),
       description: t("achievements.pages_count_100k_description"),
       condition: async (_supabase: any) =>
-        HasReadCertainAmountPagesService.execute(3),
+        HasReadCertainAmountPagesService.execute(100000),
+    },
+    {
+      code: "member_since_now",
+      label: t("achievements.member_since_now_label"),
+      description: t("achievements.member_since_now_description"),
+      condition: async (supabase: any) =>
+        MemberSinceService.execute(supabase, 0),
+    },
+    {
+      code: "member_since_1",
+      label: t("achievements.member_since_1_label"),
+      description: t("achievements.member_since_1_description"),
+      condition: async (supabase: any) =>
+        MemberSinceService.execute(supabase, 1),
+    },
+    {
+      code: "member_since_2",
+      label: t("achievements.member_since_2_label"),
+      description: t("achievements.member_since_2_description"),
+      condition: async (supabase: any) =>
+        MemberSinceService.execute(supabase, 2),
     },
   ]);
 
