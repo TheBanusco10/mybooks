@@ -5,7 +5,7 @@ if (!isUserLoggedIn.value) {
   await navigateTo("/login");
 }
 
-const publicUser = await usePublicUser();
+// const publicUser = await usePublicUser();
 </script>
 
 <template>
@@ -28,10 +28,10 @@ const publicUser = await usePublicUser();
     </div>
   </section>
   <section>
-    <AchievementList
+    <!-- <AchievementList
       v-if="publicUser?.achievements"
       :achievementCodes="publicUser.achievements.reverse()"
       :image-size="70"
-    />
+    /> -->
   </section>
 </template>
