@@ -181,5 +181,11 @@ export default {
     books_20_description: "Adicione 20 livros à sua biblioteca",
     books_40_label: "Lector superior",
     books_40_description: "Adicione 40 livros à sua biblioteca",
+    pages_count_5k_label: "Lector principiante",
+    pages_count_5k_description: "Leia 5k páginas",
+    pages_count_40k_label: "Lector hábil",
+    pages_count_40k_description: "Leia 40k páginas",
+    pages_count_100k_label: "Lector nocturno",
+    pages_count_100k_description: "Leia 100k páginas",
   },
 };

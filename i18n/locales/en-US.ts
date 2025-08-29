@@ -180,5 +180,11 @@ export default {
     books_20_description: "Add 20 books to your library",
     books_40_label: "Super reader",
     books_40_description: "Add 40 books to your library",
+    pages_count_5k_label: "Beginner reader",
+    pages_count_5k_description: "Read 5k pages",
+    pages_count_40k_label: "Skilled reader",
+    pages_count_40k_description: "Read 40k pages",
+    pages_count_100k_label: "Night owl reader",
+    pages_count_100k_description: "Read 100k pages",
   },
 };

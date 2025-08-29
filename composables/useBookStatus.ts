@@ -1,7 +1,8 @@
 import type { Status, TypeSingle } from "~/types/books";
 
 export default () => {
-  const { t } = useI18n();
+  const { $i18n } = useNuxtApp();
+  const { t } = $i18n;
 
   const STATUS_READING: TypeSingle = "reading";
   const STATUS_FINISHED: TypeSingle = "finished";

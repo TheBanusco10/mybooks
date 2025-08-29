@@ -28,7 +28,6 @@ export default class AchievementsService {
         }
       }
       // TODO Show notification if any achievement was unlocked
-      publicUser.value.achievements = unlockedAchievements;
     } catch (err: any) {
       console.error(err.message);
     }
