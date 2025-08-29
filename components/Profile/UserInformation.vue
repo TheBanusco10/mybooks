@@ -4,6 +4,8 @@ const { user } = storeToRefs(useAuthStore());
 const { publicUser } = usePublicUser();
 
 const userAchievements = computed(() => publicUser.value?.achievements);
+
+console.log(userAchievements.value);
 </script>
 
 <template>
@@ -26,10 +28,10 @@ const userAchievements = computed(() => publicUser.value?.achievements);
     </div>
   </section>
   <section>
-    <AchievementList
+    <!-- <AchievementList
       v-if="userAchievements"
       :achievementCodes="userAchievements.reverse()"
       :image-size="70"
-    />
+    /> -->
   </section>
 </template>
