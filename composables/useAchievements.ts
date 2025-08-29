@@ -1,5 +1,5 @@
 import HasReadCertainAmountPagesService from "~/services/achievements/hasReadCertainAmountPagesService";
-import MemberSinceService from "~/services/achievements/MemberSinceService";
+import MemberSinceService from "~/services/achievements/memberSinceService";
 import OwnCertainAmountBooksService from "~/services/achievements/ownCertainAmountBooksService";
 import type { Achievement } from "~/types/achievements";
 
