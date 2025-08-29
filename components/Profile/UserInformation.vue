@@ -3,9 +3,9 @@ const { user } = storeToRefs(useAuthStore());
 
 const { publicUser } = usePublicUser();
 
-const userAchievements = computed(() => publicUser.value?.achievements);
-
-console.log(userAchievements.value);
+const userAchievements = computed(() =>
+  publicUser.value?.achievements.toReversed()
+);
 </script>
 
 <template>
