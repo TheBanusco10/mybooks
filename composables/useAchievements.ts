@@ -1,5 +1,5 @@
-import HasReadCertainAmountPagesService from "~/services/achievements/hasReadCertainAmountPagesService";
-import OwnCertainAmountBooksService from "~/services/achievements/ownCertainAmountBooksService";
+import HasReadCertainAmountPagesService from "~/services/achievements/HasReadCertainAmountPagesService";
+import OwnCertainAmountBooksService from "~/services/achievements/OwnCertainAmountBooksService";
 import type { Achievement } from "~/types/achievements";
 
 export default () => {
