@@ -11,6 +11,10 @@ export const useAuthStore = defineStore("auth", () => {
 
     if (error) throw error;
 
+    const { getUser } = usePublicUser();
+
+    await getUser();
+
     await navigateTo("/");
   };
 
