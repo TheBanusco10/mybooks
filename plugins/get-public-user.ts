@@ -1,7 +1,7 @@
 export default defineNuxtPlugin({
   name: "get-public-user",
   async setup() {
-    const { getUser } = await usePublicUser();
+    const { getUser } = usePublicUser();
 
     await getUser();
   },
