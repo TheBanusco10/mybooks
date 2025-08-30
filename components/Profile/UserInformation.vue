@@ -31,7 +31,7 @@ const userAchievements = computed(() =>
     <AchievementList
       v-if="userAchievements"
       :achievementCodes="userAchievements"
-      :image-size="70"
+      :image-size="50"
     />
   </section>
 </template>

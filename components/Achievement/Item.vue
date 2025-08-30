@@ -24,6 +24,7 @@ const achievementTooltip = computed(() => {
         :alt="getAchievementFromCode(code)?.label || ''"
         :width="imageSize"
         :height="imageSize"
+        class="bg-neutral rounded-btn"
       />
     </GothamTooltip>
   </article>
