@@ -77,7 +77,7 @@ onMounted(() => {
       <div class="w-full lg:hidden">
         <label
           for="main-navigation"
-          class="btn btn-circle btn-ghost drawer-button"
+          class="btn btn-circle btn-ghost drawer-button ml-2 mt-2"
         >
           <Icon name="mdi:menu" size="1.5rem" />
         </label>
