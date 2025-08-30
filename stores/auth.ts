@@ -11,6 +11,10 @@ export const useAuthStore = defineStore("auth", () => {
 
     if (error) throw error;
 
+    const { getUser } = usePublicUser();
+
+    await getUser();
+
     await navigateTo("/");
   };
 
@@ -46,6 +50,10 @@ export const useAuthStore = defineStore("auth", () => {
     const { error } = await supabase.auth.signOut();
 
     if (error) throw error;
+
+    const { publicUser } = usePublicUser();
+
+    publicUser.value = null;
 
     await navigateTo("/login");
   };

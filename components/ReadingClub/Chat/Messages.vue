@@ -5,7 +5,7 @@ interface Props {
 
 defineProps<Props>();
 
-const currentUser = await usePublicUser();
+const { publicUser } = usePublicUser();
 </script>
 <template>
   <div class="relative h-full">
@@ -13,7 +13,7 @@ const currentUser = await usePublicUser();
       <GothamBubble
         v-for="message in messages"
         :message="message"
-        :current-user-id="currentUser?.id || ''"
+        :current-user-id="publicUser?.id || ''"
       />
     </div>
   </div>

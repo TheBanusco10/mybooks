@@ -108,6 +108,8 @@ export default {
     goBack: "Retourner",
     endDateMessage:
       "Voulez-vous définir le champ de date de fin du livre à aujourd'hui?",
+    searchByUsername: "Rechercher par nom d'utilisateur",
+    discover: "Découvrir",
   },
   books: {
     statuses: {
@@ -166,6 +168,9 @@ export default {
     books: {
       booksNotFound: "Nous n'avons pas pu trouver de livres.",
     },
+    profile: {
+      profileNotFound: "Nous n'avons pas pu trouver de profil.",
+    },
   },
   themes: {
     light: "Clair",
@@ -173,5 +178,25 @@ export default {
     halloween: "Halloween",
     valentine: "Saint-Valentin",
     coffee: "Café",
+  },
+  achievements: {
+    books_1_label: "Nouveau lecteur",
+    books_1_description: "Ajoute ton premier livre à ta bibliothèque",
+    books_20_label: "Lecteur intermédiaire",
+    books_20_description: "Ajoute 20 livres à ta bibliothèque",
+    books_40_label: "Lecteur superieur",
+    books_40_description: "Ajoute 40 livres à ta bibliothèque",
+    pages_count_5k_label: "Lecteur débutant",
+    pages_count_5k_description: "Lis 5k pages",
+    pages_count_40k_label: "Lecteur expert",
+    pages_count_40k_description: "Lis 40k pages",
+    pages_count_100k_label: "Lecteur nocturne",
+    pages_count_100k_description: "Lis 100k pages",
+    member_since_now_label: "Bienvenue!",
+    member_since_now_description: "Bienvenue à MyBooks!",
+    member_since_1_label: "Veteran",
+    member_since_1_description: "Vous avez été membre pendant un an",
+    member_since_2_label: "Bibliothécaire",
+    member_since_2_description: "Vous avez été membre pendant deux ans",
   },
 };
