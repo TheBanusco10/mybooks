@@ -5,13 +5,19 @@ const username = route.params.username as string;
 
 const { getProfileByUsername } = useProfilesStore();
 
-const { data, error } = useAsyncData(() => getProfileByUsername(username));
+const { data, error } = await useAsyncData(() =>
+  getProfileByUsername(username)
+);
 
 if (error.value) {
   throw createError({
     statusCode: 404,
     message: error.value.message,
   });
+}
+
+if (!data.value) {
+  await navigateTo("/");
 }
 </script>
 
@@ -26,8 +32,5 @@ if (error.value) {
       <Icon name="mdi:lock-alert-outline" size="64" />
       <p>{{ $t("app.privateProfile") }}</p>
     </section>
-  </GothamContainer>
-  <GothamContainer v-else>
-    <p>{{ $t("errors.profile.profileNotFound") }}</p>
   </GothamContainer>
 </template>
