@@ -10,7 +10,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <section class="flex flex-wrap">
+  <section class="flex flex-wrap justify-center md:justify-start">
     <AchievementItem
       v-for="code in achievementCodes"
       :key="code"
