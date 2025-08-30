@@ -167,6 +167,9 @@ export default {
     books: {
       booksNotFound: "We couldn't find any books.",
     },
+    profile: {
+      profileNotFound: "We couldn't find any profile.",
+    },
   },
   themes: {
     light: "Light",

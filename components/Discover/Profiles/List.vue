@@ -15,6 +15,6 @@ defineProps<Props>();
     </GothamCarouselItem>
   </GothamCarousel>
   <p v-else>
-    {{ $t("errors.profile.profilesNotFound") }}
+    {{ $t("errors.profile.profileNotFound") }}
   </p>
 </template>

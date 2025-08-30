@@ -168,6 +168,9 @@ export default {
     books: {
       booksNotFound: "Não foi possível encontrar livros.",
     },
+    profile: {
+      profileNotFound: "Não foi possível encontrar perfil.",
+    },
   },
   themes: {
     light: "Claro",

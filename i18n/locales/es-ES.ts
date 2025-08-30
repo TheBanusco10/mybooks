@@ -109,7 +109,7 @@ export default {
     endDateMessage:
       "¿Desea establecer el campo fecha de finalización para el libro a hoy?",
     searchByUsername: "Buscar por nombre de usuario",
-    discover: "Descubre"
+    discover: "Descubre",
   },
   books: {
     statuses: {
@@ -167,6 +167,9 @@ export default {
     },
     books: {
       booksNotFound: "No hemos podido encontrar libros.",
+    },
+    profile: {
+      profileNotFound: "No hemos encontrado ningún perfil.",
     },
   },
   themes: {
