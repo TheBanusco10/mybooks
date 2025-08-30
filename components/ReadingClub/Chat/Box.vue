@@ -10,7 +10,7 @@ const emits = defineEmits(["onMessageSent"]);
 const { sendMessage } = useReadingClubsStore();
 const message = ref("");
 const isFetching = ref(false);
-const user = await usePublicUser();
+const { publicUser: user } = usePublicUser();
 
 const isSendButtonDisabled = computed(() => !message.value || isFetching.value);
 

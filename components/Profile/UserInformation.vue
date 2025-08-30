@@ -1,9 +1,11 @@
 <script setup lang="ts">
-const { isUserLoggedIn, user } = storeToRefs(useAuthStore());
+const { user } = storeToRefs(useAuthStore());
 
-if (!isUserLoggedIn.value) {
-  await navigateTo("/login");
-}
+const { publicUser } = usePublicUser();
+
+const userAchievements = computed(() =>
+  publicUser.value?.achievements.toReversed()
+);
 </script>
 
 <template>
@@ -24,5 +26,12 @@ if (!isUserLoggedIn.value) {
         {{ user?.user_metadata.email }}
       </p>
     </div>
+  </section>
+  <section>
+    <AchievementList
+      v-if="userAchievements"
+      :achievementCodes="userAchievements"
+      :image-size="50"
+    />
   </section>
 </template>

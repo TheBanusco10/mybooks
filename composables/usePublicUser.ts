@@ -1,7 +1,10 @@
 import type { PublicUserInformation } from "~/types/users";
 
-export default async () => {
-  const publicUser = ref<PublicUserInformation | null>(null);
+export default () => {
+  const publicUser = useState<PublicUserInformation | null>(
+    "publicUser",
+    () => null
+  );
 
   const getUser = async () => {
     try {
@@ -13,7 +16,8 @@ export default async () => {
     }
   };
 
-  await getUser();
-
-  return publicUser;
+  return {
+    publicUser,
+    getUser,
+  };
 };
