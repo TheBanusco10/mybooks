@@ -17,9 +17,7 @@ if (error.value) {
 
 <template>
   <GothamContainer v-if="data">
-    <section class="flex flex-col md:flex-row gap-4 items-center">
-      <DiscoverProfileInformation :profile="data" />
-    </section>
+    <DiscoverProfileInformation :profile="data" />
     <div class="divider"></div>
     <section v-if="!data.is_private">
       <!-- TODO: Add reading lists or something public related to user -->

@@ -5,6 +5,6 @@ export default defineNuxtPlugin({
   name: "check-achievements",
   dependsOn: ["get-public-user"],
   async setup() {
-    // await AchievementsService.execute();
+    await AchievementsService.execute();
   },
 });
