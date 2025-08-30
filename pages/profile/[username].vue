@@ -28,6 +28,6 @@ if (error.value) {
     </section>
   </GothamContainer>
   <GothamContainer v-else>
-    <p>{{ $t("app.profileNotFound") }}</p>
+    <p>{{ $t("errors.profile.profileNotFound") }}</p>
   </GothamContainer>
 </template>

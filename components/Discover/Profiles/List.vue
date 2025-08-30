@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import type { SearchProfilesResults } from '~/types/profiles';
+import type { SearchProfilesResults } from "~/types/profiles";
 
 interface Props {
-    profiles: SearchProfilesResults;
+  profiles: SearchProfilesResults;
 }
 
 defineProps<Props>();
 </script>
 
 <template>
-    <GothamCarousel>
-        <GothamCarouselItem v-for="profile in profiles" :key="profile.username">
-            <DiscoverProfilesItem :profile="profile" />
-        </GothamCarouselItem>
-    </GothamCarousel>
+  <GothamCarousel v-if="profiles.length">
+    <GothamCarouselItem v-for="profile in profiles" :key="profile.username">
+      <DiscoverProfilesItem :profile="profile" />
+    </GothamCarouselItem>
+  </GothamCarousel>
+  <p v-else>
+    {{ $t("errors.profile.profilesNotFound") }}
+  </p>
 </template>
