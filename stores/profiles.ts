@@ -11,6 +11,7 @@ import type {
 
 export const useProfilesStore = defineStore("profiles", () => {
   const supabase = useSupabaseClient();
+  const user = useSupabaseUser();
 
   const searchProfiles = async (
     profileInformation: SearchProfileInformation
@@ -20,7 +21,8 @@ export const useProfilesStore = defineStore("profiles", () => {
     const { data, error } = await supabase
       .from("profiles")
       .select("username, image_url")
-      .ilike("username", `%${username}%`);
+      .ilike("username", `%${username}%`)
+      .neq("id", user.value?.id || ""); // Avoid getting current user
 
     if (error)
       throw new ProfilesError(SEARCH_PROFILE_ERROR_MESSAGE, error.message);
