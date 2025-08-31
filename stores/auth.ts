@@ -55,7 +55,9 @@ export const useAuthStore = defineStore("auth", () => {
     if (error) throw error;
 
     const { publicUser } = usePublicUser();
+    const settings = await useSettings();
 
+    settings.value = null;
     publicUser.value = null;
 
     await navigateTo("/login");
