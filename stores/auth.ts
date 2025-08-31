@@ -1,3 +1,4 @@
+import ApplyUserSettingsService from "~/services/settings/ApplyUserSettingsService";
 import type { UserCredentials } from "~/types/auth";
 
 export const useAuthStore = defineStore("auth", () => {
@@ -14,6 +15,8 @@ export const useAuthStore = defineStore("auth", () => {
     const { getUser } = usePublicUser();
 
     await getUser();
+
+    await applyUserSettings();
 
     await navigateTo("/");
   };
@@ -56,6 +59,15 @@ export const useAuthStore = defineStore("auth", () => {
     publicUser.value = null;
 
     await navigateTo("/login");
+  };
+
+  const applyUserSettings = async () => {
+    const { $i18n } = useNuxtApp();
+
+    const theme = useTheme($i18n.t);
+    const settings = await useSettings();
+
+    await ApplyUserSettingsService.execute($i18n, settings, theme);
   };
 
   return {

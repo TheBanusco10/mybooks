@@ -1,19 +1,13 @@
-import { ThemeEnum } from "~/enums/ThemeEnum";
-import { LocaleEnum } from "~/enums/LocaleEnum";
+import ApplyUserSettingsService from "~/services/settings/ApplyUserSettingsService";
 
 export default defineNuxtPlugin({
   name: "apply-user-settings",
   async setup() {
-    const settings = await useSettings();
-
-    if (!settings.value) return;
-
     const { $i18n } = useNuxtApp();
 
-    $i18n.setLocale(settings.value.locale || LocaleEnum.DEFAULT);
+    const theme = useTheme($i18n.t);
+    const settings = await useSettings();
 
-    const { currentTheme } = useTheme($i18n.t);
-
-    currentTheme.value = settings.value.theme || ThemeEnum.DEFAULT;
+    await ApplyUserSettingsService.execute($i18n, settings, theme);
   },
 });
