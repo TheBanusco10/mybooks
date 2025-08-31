@@ -8,11 +8,10 @@ const { formatNumber } = useFormatter();
 
 <template>
   <p
-    v-if="totalPages"
     v-html="
       $t('app.totalPagesRead', {
         count: `<span class='mx-1 text-2xl font-bold italic'>${formatNumber(
-          totalPages.sum
+          totalPages?.sum || 0
         )}</span>`,
       })
     "
