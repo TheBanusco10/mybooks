@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-const { currentTheme, currentPrimaryColor } = useTheme();
+const { currentTheme, currentPrimaryColor } = useTheme(t);
 const config = useRuntimeConfig();
 
 useHead({
