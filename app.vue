@@ -1,9 +1,11 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 const { currentTheme, currentPrimaryColor } = useTheme();
+const config = useRuntimeConfig();
 
 useHead({
-  titleTemplate: (title) =>
-    !isEmpty(title) ? `${title}` : "MyBooks",
+  titleTemplate: (title) => (!isEmpty(title) ? `${title}` : "MyBooks"),
   link: [
     {
       rel: "apple-touch-icon",
@@ -24,7 +26,7 @@ useHead({
     },
     {
       rel: "manifest",
-      href: "/site.webmanifest",
+      href: `/site.webmanifest?v=${config.public.appVersion}`,
     },
     { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#5bbad5" },
   ],

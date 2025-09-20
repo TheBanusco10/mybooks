@@ -4,12 +4,16 @@ import type { UserCredentials } from "~/types/auth";
 
 defineEmits(["onChangeFormType"]);
 
-const { t } = useI18n();
+const { t, locale: currentLocale } = useI18n();
 
 const { signUp } = useAuthStore();
 
+const { currentTheme } = useTheme(t);
+
 const handleSignUp = async (values: UserCredentials) => {
   try {
+    values.locale = currentLocale.value;
+    values.theme = currentTheme.value;
     await signUp(values);
   } catch (err: any) {
     console.error(err.message);

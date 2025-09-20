@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Row } from "~/interfaces/database";
+import AchievementsService from "~/services/achievements/AchievementsService";
 import { useBooksStore } from "~/stores/books";
 import { type Category } from "~/types/category";
 
@@ -40,6 +41,8 @@ const handleUpdateBook = async (values: Exclude<Row<"books">, "id">) => {
 
     await updateBook(book.value!.id, values);
 
+    await AchievementsService.execute();
+
     await navigateTo(`/books/${book.value!.id}`);
   } catch (err: any) {
     console.error(err.message);
@@ -50,7 +53,12 @@ const handleUpdateBook = async (values: Exclude<Row<"books">, "id">) => {
 <template>
   <main>
     <GothamContainer>
-      <BooksFormComponent :book="book!" @on-form-submit="handleUpdateBook" v-model="selectedCategories" :submitLabel="$t('app.editBook')" />
+      <BooksFormComponent
+        :book="book!"
+        @on-form-submit="handleUpdateBook"
+        v-model="selectedCategories"
+        :submitLabel="$t('app.editBook')"
+      />
     </GothamContainer>
   </main>
 </template>

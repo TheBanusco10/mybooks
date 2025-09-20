@@ -1,47 +1,45 @@
 <script setup lang="ts">
+import type { LocaleEnum } from "~/enums/LocaleEnum";
+import type { SettingsError } from "~/errors/settings";
+
 const { locales, setLocale, locale: currentLocale } = useI18n();
+const { updateSettings } = useSettingsStore();
 
-const localeIconsMapping = {
-  es: {
-    icon: "material-symbols-light:language-spanish-rounded",
-    isIcon: true,
-  },
-  en: {
-    icon: "material-symbols-light:language-gb-english-rounded",
-    isIcon: true,
-  },
-  fr: {
-    icon: "material-symbols-light:language-french-rounded",
-    isIcon: true,
-  },
-  pt: {
-    icon: "PT",
-    isIcon: false,
-  },
+const handleUpdateLocale = async (newLocale: LocaleEnum) => {
+  try {
+    setLocale(newLocale);
+
+    await updateSettings({
+      locale: newLocale,
+    });
+  } catch (err: any) {
+    const error: SettingsError = err;
+
+    console.error(error.message);
+  } finally {
+    // Closing dropdown on click
+    (document.activeElement as HTMLElement).blur();
+  }
 };
-
-const localesInformation = locales.value.map((locale) => {
-  return {
-    ...locale,
-    iconData: localeIconsMapping[locale.code],
-  };
-});
 </script>
 
 <template>
-  <div class="w-full dropdown dropdown-hover dropdown-top">
+  <div class="w-full dropdown dropdown-top">
     <div
       tabindex="0"
       role="button"
-      class="w-full btn bg-base-300 m-1 justify-start"
+      class="w-full btn bg-base-300 mt-2 justify-start"
     >
       {{ $t("app.language") }}: {{ currentLocale.toLocaleUpperCase() }}
     </div>
     <ul
       tabindex="0"
-      class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow gap-2"
+      class="w-full dropdown-content menu bg-base-100 rounded-box z-[1] p-2 shadow gap-2"
     >
-      <li v-for="locale in locales" @click="setLocale(locale.code)">
+      <li
+        v-for="locale in locales"
+        @click="handleUpdateLocale(locale.code as LocaleEnum)"
+      >
         <p
           class="font-thin"
           :class="{

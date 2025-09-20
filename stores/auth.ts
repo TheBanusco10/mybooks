@@ -1,3 +1,4 @@
+import ApplyUserSettingsService from "~/services/settings/ApplyUserSettingsService";
 import type { UserCredentials } from "~/types/auth";
 
 export const useAuthStore = defineStore("auth", () => {
@@ -11,18 +12,34 @@ export const useAuthStore = defineStore("auth", () => {
 
     if (error) throw error;
 
+    const { getUser } = usePublicUser();
+
+    await getUser();
+
+    await applyUserSettings();
+
     await navigateTo("/");
   };
 
   const signUp = async (userCredentials: UserCredentials) => {
+    const {
+      email,
+      password,
+      imageUrl = "",
+      username,
+      locale,
+      theme,
+    } = userCredentials;
+
     const { error } = await supabase.auth.signUp({
-      email: userCredentials.email,
-      password: userCredentials.password,
+      email,
+      password,
       options: {
         data: {
-          image_url: userCredentials.imageUrl,
-          username: userCredentials.username,
+          image_url: imageUrl,
+          username,
           is_private: true,
+          settings: { locale, theme },
         },
       },
     });
@@ -37,7 +54,22 @@ export const useAuthStore = defineStore("auth", () => {
 
     if (error) throw error;
 
+    const { publicUser } = usePublicUser();
+    const settings = await useSettings();
+
+    settings.value = null;
+    publicUser.value = null;
+
     await navigateTo("/login");
+  };
+
+  const applyUserSettings = async () => {
+    const { $i18n } = useNuxtApp();
+
+    const theme = useTheme($i18n.t);
+    const settings = await useSettings();
+
+    await ApplyUserSettingsService.execute($i18n, settings, theme);
   };
 
   return {

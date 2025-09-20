@@ -1,15 +1,12 @@
+import { ThemeEnum } from "~/enums/ThemeEnum";
 import { addYear } from "@formkit/tempo";
 import { getRgbColorFromOklch } from "~/utils/cssVariables";
 
 const DEFAULT_PRIMARY_COLOR = "#27cf80";
 
-export default () => {
-  const { t } = useI18n();
+export default (t: any) => {
+  const currentTheme = useState("currentTheme", () => ThemeEnum.DEFAULT);
 
-  const currentTheme = useCookie("mybooks-theme", {
-    default: () => "mybooks",
-    expires: addYear(new Date()),
-  });
   const currentPrimaryColor = useCookie("mybooks-primary-color", {
     default: () => DEFAULT_PRIMARY_COLOR,
     expires: addYear(new Date()),
@@ -18,36 +15,37 @@ export default () => {
   const themes = computed(() => [
     {
       icon: "mdi:white-balance-sunny",
-      value: "mybooks",
+      value: ThemeEnum.DEFAULT,
       label: t("themes.light"),
     },
     {
       icon: "mdi:moon-waxing-crescent",
-      value: "dark",
+      value: ThemeEnum.DARK,
       label: t("themes.dark"),
     },
     {
       icon: "mingcute:pumpkin-lantern-fill",
-      value: "halloween",
+      value: ThemeEnum.HALLOWEEN,
       label: t("themes.halloween"),
     },
     {
       icon: "famicons:rose-outline",
-      value: "valentine",
+      value: ThemeEnum.VALENTINE,
       label: t("themes.valentine"),
     },
     {
       icon: "lineicons:coffee-cup",
-      value: "coffee",
+      value: ThemeEnum.COFFEE,
       label: t("themes.coffee"),
     },
   ]);
 
-  const changeTheme = (theme: string) => {
+  const changeTheme = (theme: ThemeEnum) => {
     currentTheme.value = theme;
 
     setTimeout(() => {
-      currentPrimaryColor.value = getRgbColorFromOklch("--p") || DEFAULT_PRIMARY_COLOR;
+      currentPrimaryColor.value =
+        getRgbColorFromOklch("--p") || DEFAULT_PRIMARY_COLOR;
     }, 100);
   };
 

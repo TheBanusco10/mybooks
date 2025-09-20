@@ -2,6 +2,7 @@
 import type { Category } from "~/types/category";
 import type { Row } from "~/interfaces/database";
 import type { BookFormInformationType } from "~/types/books";
+import AchievementsService from "~/services/achievements/AchievementsService";
 
 interface Props {
   book?: BookFormInformationType;
@@ -22,6 +23,8 @@ const handleAddBook = async (values: Exclude<Row<"books">, "id">) => {
 
     await addBook(values);
 
+    await AchievementsService.execute();
+
     await navigateTo("/");
   } catch (err: any) {
     console.error(err.message);
@@ -30,5 +33,10 @@ const handleAddBook = async (values: Exclude<Row<"books">, "id">) => {
 </script>
 
 <template>
-  <BooksFormComponent :book="book" @on-form-submit="handleAddBook" v-model="selectedCategories" :submitLabel="$t('app.addBook')" />
+  <BooksFormComponent
+    :book="book"
+    @on-form-submit="handleAddBook"
+    v-model="selectedCategories"
+    :submitLabel="$t('app.addBook')"
+  />
 </template>

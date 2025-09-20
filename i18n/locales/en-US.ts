@@ -107,6 +107,8 @@ export default {
     goBack: "Go back",
     endDateMessage:
       "Do you want to set the end date field for the book to today?",
+    searchByUsername: "Search by username",
+    discover: "Discover",
   },
   books: {
     statuses: {
@@ -165,6 +167,9 @@ export default {
     books: {
       booksNotFound: "We couldn't find any books.",
     },
+    profile: {
+      profileNotFound: "We couldn't find any profile.",
+    },
   },
   themes: {
     light: "Light",
@@ -172,5 +177,25 @@ export default {
     halloween: "Halloween",
     valentine: "Valentine's Day",
     coffee: "Coffee",
+  },
+  achievements: {
+    books_1_label: "New reader",
+    books_1_description: "Add your first book to your library",
+    books_20_label: "Mid reader",
+    books_20_description: "Add 20 books to your library",
+    books_40_label: "Super reader",
+    books_40_description: "Add 40 books to your library",
+    pages_count_5k_label: "Beginner reader",
+    pages_count_5k_description: "Read 5k pages",
+    pages_count_40k_label: "Skilled reader",
+    pages_count_40k_description: "Read 40k pages",
+    pages_count_100k_label: "Night owl reader",
+    pages_count_100k_description: "Read 100k pages",
+    member_since_now_label: "Welcome!",
+    member_since_now_description: "Welcome to MyBooks!",
+    member_since_1_label: "Veteran",
+    member_since_1_description: "You've been a member for a year",
+    member_since_2_label: "Librarian",
+    member_since_2_description: "You've been a member for two years",
   },
 };
