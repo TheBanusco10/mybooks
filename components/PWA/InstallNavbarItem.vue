@@ -5,7 +5,7 @@ const { installPWA, isPWAInstalled } = usePWAStore();
 <template>
   <NavbarItem
     v-if="!isPWAInstalled()"
-    name="Instalar aplicación"
+    :name="$t('pwa.install_application')"
     href="#"
     icon="mdi:download-outline"
     route=""

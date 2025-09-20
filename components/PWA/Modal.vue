@@ -32,16 +32,17 @@ onMounted(() => {
 <template>
   <GothamModal ref="pwaModalRef" id="pwa-modal" @onClose="handleCancel">
     <template v-slot:title>
-      <h2>¡Tenemos aplicación!</h2>
+      <h2>{{ $t("pwa.install_modal.title") }}</h2>
     </template>
     <template v-slot:content>
       <p>
-        MyBooks ya tiene aplicación, si deseas instalarla, solo tienes que hacer
-        clic en el botón "Instalar". ¡Pruébalo ya!
+        {{ $t("pwa.install_modal.description") }}
       </p>
     </template>
     <template v-slot:action>
-      <button class="btn btn-primary" @click="handleInstall">Instalar</button>
+      <button class="btn btn-primary" @click="handleInstall">
+        {{ $t("pwa.install_modal.install_button") }}
+      </button>
     </template>
   </GothamModal>
 </template>
