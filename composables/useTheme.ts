@@ -1,7 +1,16 @@
 import { ThemeEnum } from "~/enums/ThemeEnum";
+import { addYear } from "@formkit/tempo";
+import { getRgbColorFromOklch } from "~/utils/cssVariables";
+
+const DEFAULT_PRIMARY_COLOR = "#27cf80";
 
 export default (t: any) => {
   const currentTheme = useState("currentTheme", () => ThemeEnum.DEFAULT);
+
+  const currentPrimaryColor = useCookie("mybooks-primary-color", {
+    default: () => DEFAULT_PRIMARY_COLOR,
+    expires: addYear(new Date()),
+  });
 
   const themes = computed(() => [
     {
@@ -34,15 +43,15 @@ export default (t: any) => {
   const changeTheme = (theme: ThemeEnum) => {
     currentTheme.value = theme;
 
-    const $html = document.querySelector("html");
-
-    if (!$html) return;
-
-    $html.setAttribute("data-theme", currentTheme.value);
+    setTimeout(() => {
+      currentPrimaryColor.value =
+        getRgbColorFromOklch("--p") || DEFAULT_PRIMARY_COLOR;
+    }, 100);
   };
 
   return {
     currentTheme,
+    currentPrimaryColor,
     changeTheme,
     themes,
   };

@@ -1,12 +1,11 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-const { currentTheme } = useTheme(t);
+const { currentTheme, currentPrimaryColor } = useTheme(t);
 const config = useRuntimeConfig();
 
 useHead({
-  titleTemplate: (title) =>
-    !isEmpty(title) ? `${title} - MyBooks` : "MyBooks",
+  titleTemplate: (title) => (title ? `${title}` : "MyBooks"),
   link: [
     {
       rel: "apple-touch-icon",
@@ -35,7 +34,7 @@ useHead({
     { name: "apple-mobile-web-app-title", content: "MyBooks" },
     { name: "application-name", content: "MyBooks" },
     { name: "msapplication-TileColor", content: "#da532c" },
-    { name: "theme-color", content: "#ffffff" },
+    { name: "theme-color", content: () => currentPrimaryColor.value },
   ],
   htmlAttrs: {
     "data-theme": () => currentTheme.value,
@@ -45,6 +44,9 @@ useHead({
 
 <template>
   <GothamNavbar>
+    <ClientOnly>
+      <PWAModal />
+    </ClientOnly>
     <NuxtPage />
   </GothamNavbar>
 </template>

@@ -97,16 +97,18 @@ onMounted(() => {
         class="w-64 menu flex flex-col justify-between min-h-full px-3 py-4 overflow-y-auto bg-base-200"
       >
         <ul class="space-y-2 font-medium">
-          <div v-if="isUserLoggedIn">
-            <NavbarItem
-              v-for="(item, index) in mainMenuItems"
-              v-bind="{
-                ...item,
-                route: route.path,
-              }"
-              :key="index"
-            />
-          </div>
+          <NavbarItem
+            v-if="isUserLoggedIn"
+            v-for="(item, index) in mainMenuItems"
+            v-bind="{
+              ...item,
+              route: route.path,
+            }"
+            :key="index"
+          />
+          <ClientOnly>
+            <PWAInstallNavbarItem />
+          </ClientOnly>
         </ul>
         <ul class="space-y-2 font-medium">
           <GothamLanguageSwitcher />

@@ -7,6 +7,7 @@ interface Props {
 }
 
 defineProps<Props>();
+const emits = defineEmits(["onClick"]);
 
 const drawerInput = useState<HTMLInputElement | null>(
   "drawerToggleInput",
@@ -14,6 +15,8 @@ const drawerInput = useState<HTMLInputElement | null>(
 );
 
 const closeNavigationDrawer = () => {
+  emits("onClick");
+
   if (!drawerInput.value || !drawerInput.value.checked) return;
 
   drawerInput.value.checked = false;

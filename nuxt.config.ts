@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     "nuxt-lodash",
     "@nuxt/image",
     "@nuxtjs/i18n",
+    "@vite-pwa/nuxt",
   ],
 
   formkit: {

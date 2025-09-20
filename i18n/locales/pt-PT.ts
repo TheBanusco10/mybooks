@@ -199,4 +199,13 @@ export default {
     member_since_2_label: "Bibliotecário",
     member_since_2_description: "Você tem sido membro há dois anos",
   },
+  pwa: {
+    install_modal: {
+      title: "Temos uma aplicação!",
+      description:
+        "O MyBooks já tem aplicação. Se quiser instalá-la, basta clicar no botão 'Instalar'. Experimente já!",
+      install_button: "Instalar",
+    },
+    install_application: "Instalar aplicação",
+  },
 };
