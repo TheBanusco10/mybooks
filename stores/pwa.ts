@@ -11,7 +11,6 @@ export const usePWAStore = defineStore("pwa", () => {
 
   const hookIntoInstallPrompt = () => {
     window.addEventListener("beforeinstallprompt", (e) => {
-      console.log('here');
       e.preventDefault();
       deferredPrompt.value = e;
       canInstall.value = true;
@@ -36,13 +35,16 @@ export const usePWAStore = defineStore("pwa", () => {
   };
 
   const isPWAInstalled = () => {
-    return window.matchMedia("(display-mode: standalone)").matches;
+    return (
+      window.matchMedia("(display-mode: standalone)").matches ||
+      !canInstall.value
+    );
   };
 
   return {
     canInstall,
-    hookIntoInstallPrompt,
     modalConsent,
+    hookIntoInstallPrompt,
     installPWA,
     updateModalConsent,
     isPWAInstalled,

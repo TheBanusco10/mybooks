@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { usePWAStore } from "~/stores/pwa";
 import type { ModalRef } from "~/types/modals";
 
 const pwaStore = usePWAStore();

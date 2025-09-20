@@ -5,7 +5,7 @@ const { currentTheme, currentPrimaryColor } = useTheme(t);
 const config = useRuntimeConfig();
 
 useHead({
-  titleTemplate: (title) => (!isEmpty(title) ? `${title}` : "MyBooks"),
+  titleTemplate: (title) => (title ? `${title}` : "MyBooks"),
   link: [
     {
       rel: "apple-touch-icon",
