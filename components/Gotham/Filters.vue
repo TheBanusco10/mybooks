@@ -103,16 +103,18 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
 
 <template>
   <section>
-    <button
-      type="button"
-      class="btn text-base-content btn-outline btn-circle btn-sm p-2"
-      @click="mobileFiltersOpen = true"
-    >
-      <span class="sr-only">
-        {{ $t("app.filters") }}
-      </span>
-      <Icon name="mdi:filter" aria-hidden="true" />
-    </button>
+    <GothamTooltip tooltip="Filtrar libros" position="left">
+      <button
+        type="button"
+        class="btn text-base-content btn-outline btn-circle btn-sm p-2"
+        @click="mobileFiltersOpen = true"
+      >
+        <span class="sr-only">
+          {{ $t("app.filters") }}
+        </span>
+        <Icon name="mdi:filter" aria-hidden="true" />
+      </button>
+    </GothamTooltip>
     <button
       v-if="appliedFiltersLabels.length"
       class="btn btn-sm btn-link"
