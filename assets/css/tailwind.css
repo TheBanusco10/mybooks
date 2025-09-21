@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: dark --prefersdark, halloween, coffee, valentine, mybooks;
+}
+
+@plugin "daisyui/theme" {
+  name: "mybooks";
+  default: true; /* set as default */
+  prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
+  color-scheme: light; /* color of browser-provided UI */
+
+  --color-base-200: oklch(95% 0.03 240);
+  --color-base-300: oklch(92% 0.04 240);
+  --color-base-content: oklch(20% 0.05 240);
+  --color-primary-content: oklch(98% 0.01 240);
+  --color-secondary-content: oklch(98% 0.01 200);
+  --color-accent-content: oklch(98% 0.01 160);
+  --color-neutral-content: oklch(98% 0.01 240);
+  --color-info-content: oklch(98% 0.01 220);
+  --color-success-content: oklch(98% 0.01 140);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error-content: oklch(98% 0.01 30);
+
+  --color-primary: oklch(65% 0.2 160); /* #26cf80 */
+  --color-secondary: oklch(80% 0.1 200); /* #7dd3fc */
+  --color-accent: oklch(85% 0.08 270); /* #ddd6fe */
+  --color-neutral: oklch(25% 0.1 300); /* #291334 */
+  --color-base-100: oklch(100% 0 0); /* #ffffff */
+  --color-info: oklch(80% 0.1 200); /* #7dd3fc */
+  --color-success: oklch(85% 0.15 140); /* #86efac */
+  --color-warning: oklch(90% 0.15 90); /* #fde047 */
+  --color-error: oklch(65% 0.2 25); /* #ef4444 */
+
+  /* border radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* border size */
+  --border: 1px;
+
+  /* effects */
+  --depth: 1;
+  --noise: 0;
+}
+
+@font-face {
+  font-family: "Bungee Outline";
+  src: url("~/public/fonts/BungeeOutline-Regular.ttf");
+}
