@@ -103,7 +103,7 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
 
 <template>
   <section>
-    <GothamTooltip tooltip="Filtrar libros" position="left">
+    <GothamTooltip :tooltip="$t('app.filters')" position="left">
       <button
         type="button"
         class="btn text-base-content btn-outline btn-circle btn-sm p-2"
