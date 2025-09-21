@@ -10,7 +10,7 @@ defineProps<Props>();
 
 <template>
   <div
-    class="flex flex-wrap gap-4 justify-center items-center lg:justify-start"
+    class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 justify-center items-center lg:justify-start"
   >
     <ProfileTabsStatisticsTopCategoriesItem
       v-for="(category, index) in categories"
