@@ -51,6 +51,7 @@ export default defineNuxtConfig({
     defaultLocale: "es",
     lazy: true,
     strategy: "no_prefix",
+    types: "composition",
   },
 
   compatibilityDate: "2025-03-10",

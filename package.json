@@ -23,7 +23,6 @@
     "@formkit/vue": "^1.6.9",
     "@headlessui/vue": "^1.7.23",
     "@tailwindcss/postcss": "^4.1.13",
-    "colorjs.io": "^0.5.2",
     "nuxt": "^3.19.2",
     "tailwindcss": "^4.1.13",
     "vue": "^3.5.21",

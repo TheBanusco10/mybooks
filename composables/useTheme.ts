@@ -43,6 +43,8 @@ export default (t: any) => {
   const changeTheme = (theme: ThemeEnum) => {
     currentTheme.value = theme;
 
+    console.log(getRgbColorFromOklch("--p"));
+
     setTimeout(() => {
       currentPrimaryColor.value =
         getRgbColorFromOklch("--p") || DEFAULT_PRIMARY_COLOR;

@@ -1,12 +1,13 @@
-import Color from "colorjs.io";
-
 export const getRgbColorFromOklch = (varName: string) => {
   const rootStyles = getComputedStyle(document.documentElement);
   const oklchValue = rootStyles.getPropertyValue(varName).trim();
 
-  const color = new Color(`oklch(${oklchValue})`);
+  const testDiv = document.createElement("div");
+  testDiv.style.color = `oklch(${oklchValue})`;
+  document.body.appendChild(testDiv);
 
-  const rgb = color.to("srgb").toString();
+  const computedColor = getComputedStyle(testDiv).color;
+  document.body.removeChild(testDiv);
 
-  return rgb;
+  return computedColor;
 };

@@ -48,7 +48,7 @@ const handleTogglePanel = () => {
       ref="togglePanelInput"
     />
     <div
-      class="drawer-content bg-base-100 p-4 shadow flex justify-between items-center hover:bg-opacity-50 transition duration-300 hover:cursor-pointer"
+      class="drawer-content bg-base-100 p-4 shadow flex justify-between items-center hover:bg-base-200/50 transition duration-300 hover:cursor-pointer"
       @click="handleTogglePanel"
     >
       <section class="flex gap-4 w-[90%] md:w-auto">

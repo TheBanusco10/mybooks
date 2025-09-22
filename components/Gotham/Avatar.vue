@@ -35,7 +35,7 @@ const hasImage = computed(
 </script>
 
 <template>
-  <div class="avatar" :class="{ placeholder: !hasImage }">
+  <div class="avatar" :class="{ 'avatar-placeholder': !hasImage }">
     <div
       class="rounded-full"
       :class="[

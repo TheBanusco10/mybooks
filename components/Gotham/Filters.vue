@@ -139,7 +139,7 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
         leave-to="opacity-0"
         :unmount="false"
       >
-        <div class="fixed inset-0 bg-black bg-opacity-25" />
+        <div class="fixed inset-0 bg-black/25" />
       </TransitionChild>
 
       <div class="fixed inset-0 z-40 flex">

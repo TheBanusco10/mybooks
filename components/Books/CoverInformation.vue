@@ -12,7 +12,7 @@ const { getStatusBackgroundColor } = useBookStatus();
 
 <template>
   <div
-    class="absolute top-0 right-0 flex justify-between w-full items-center py-1 px-2 bg-black bg-opacity-30"
+    class="absolute top-0 right-0 flex justify-between w-full items-center py-1 px-2 bg-black/30"
   >
     <div
       class="w-3 h-3 rounded-full"
