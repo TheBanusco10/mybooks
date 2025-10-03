@@ -139,7 +139,7 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
         leave-to="opacity-0"
         :unmount="false"
       >
-        <div class="fixed inset-0 bg-black bg-opacity-25" />
+        <div class="fixed inset-0 bg-black/25" />
       </TransitionChild>
 
       <div class="fixed inset-0 z-40 flex">
@@ -154,7 +154,7 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
           :unmount="false"
         >
           <DialogPanel
-            class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-base-200 py-4 pb-12 shadow-xl"
+            class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-base-100 py-4 pb-12 shadow-xl"
           >
             <div class="flex items-center justify-between px-4 pb-2">
               <h2 class="text-lg font-medium text-base-content">
@@ -162,7 +162,7 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
               </h2>
               <button
                 type="button"
-                class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-base-200 p-2 text-base-content hover:bg-base-300"
+                class="btn btn-circle btn-outline btn-sm -mr-2 flex items-center justify-center cursor-pointer"
                 @click="mobileFiltersOpen = false"
               >
                 <span class="sr-only">Cerrar menú</span>
@@ -187,7 +187,7 @@ if (!isEmpty(useOmitBy(selectedFilters.value, isEmpty))) {
               >
                 <h3 class="-mx-2 -my-3 flow-root">
                   <DisclosureButton
-                    class="flex w-full items-center justify-between bg-base-200 px-2 py-3 text-base-content"
+                    class="flex w-full items-center justify-between bg-base-100 px-2 py-3 text-base-content cursor-pointer"
                   >
                     <span class="font-medium text-base-content">{{
                       section.name

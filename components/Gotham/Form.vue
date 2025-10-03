@@ -22,6 +22,6 @@ defineProps<Props>();
 
 <style>
 .formkit-asterisk {
-  @apply text-red-500;
+  color: red;
 }
 </style>

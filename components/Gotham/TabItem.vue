@@ -26,6 +26,6 @@ withDefaults(defineProps<Props>(), {
 
 <style lang="css" scoped>
 input[type="radio"] {
-  @apply whitespace-nowrap;
+  white-space: nowrap;
 }
 </style>

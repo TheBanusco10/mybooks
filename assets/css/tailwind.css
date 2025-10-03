@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: emerald --default, dark --prefersdark, halloween, coffee, valentine;
+}
+
+@theme {
+  --font-outline: "Bungee Outline";
+}
+
+@font-face {
+  font-family: "Bungee Outline";
+  src: url("/fonts/BungeeOutline-Regular.ttf");
+}

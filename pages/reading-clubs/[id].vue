@@ -56,6 +56,6 @@ async function checkUserAndReadingClubVisibility() {
 
 <style>
 #main-content:has(#club-detail) {
-  @apply p-0;
+  padding: 0 !important;
 }
 </style>

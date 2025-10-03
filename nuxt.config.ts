@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
-    "@nuxtjs/tailwindcss",
     "@formkit/nuxt",
     "@nuxtjs/supabase",
     "nuxt-icon",
@@ -13,6 +12,15 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@vite-pwa/nuxt",
   ],
+
+  postcss: {
+    plugins: {
+      "@tailwindcss/postcss": {},
+      autoprefixer: {},
+    },
+  },
+
+  css: ["~/assets/css/tailwind.css"],
 
   formkit: {
     // Experimental support for auto loading (see note):
@@ -33,10 +41,6 @@ export default defineNuxtConfig({
     },
   },
 
-  tailwindcss: {
-    cssPath: ["~/public/css/index.css", { injectPosition: "first" }],
-  },
-
   i18n: {
     locales: [
       { code: "es", language: "es-ES", name: "Español", file: "es-ES.ts" },
@@ -47,6 +51,7 @@ export default defineNuxtConfig({
     defaultLocale: "es",
     lazy: true,
     strategy: "no_prefix",
+    types: "composition",
   },
 
   compatibilityDate: "2025-03-10",
