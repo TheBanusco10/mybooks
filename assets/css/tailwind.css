@@ -4,7 +4,11 @@
   themes: emerald --default, dark --prefersdark, halloween, coffee, valentine;
 }
 
+@theme {
+  --font-outline: "Bungee Outline";
+}
+
 @font-face {
   font-family: "Bungee Outline";
-  src: url("~/public/fonts/BungeeOutline-Regular.ttf");
+  src: url("/fonts/BungeeOutline-Regular.ttf");
 }

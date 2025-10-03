@@ -1,11 +1,4 @@
 module.exports = {
-  theme: {
-    extend: {
-      fontFamily: {
-        outline: "Bungee Outline, sans-serif",
-      },
-    },
-  },
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
