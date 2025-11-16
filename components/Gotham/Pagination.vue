@@ -41,10 +41,11 @@ const handleNextPage = () => {
 <template>
   <div class="flex flex-col gap-8">
     <section>
-      <slot />
+      <slot v-if="isFetching" name="fetching" />
+      <slot v-if="!isFetching && totalItems > 0" />
     </section>
 
-    <div class="join justify-center m-auto">
+    <div v-if="totalItems > 0" class="join justify-center m-auto">
       <button
         class="join-item btn"
         :disabled="currentPage === 1 || isFetching"
@@ -63,7 +64,7 @@ const handleNextPage = () => {
         »
       </button>
     </div>
-    <div class="mb-4">
+    <div v-if="totalItems > 0" class="mb-4">
       <p class="text-xs text-center">
         {{ $t("app.total_results", { count: totalItems }) }}
       </p>

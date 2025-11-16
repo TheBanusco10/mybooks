@@ -34,7 +34,9 @@ useHead({
         <FiltersSearch class="flex-1" />
         <GothamFilters class="block md:hidden" />
       </section>
-      <BooksComponent />
+      <ClientOnly>
+        <BooksComponent />
+      </ClientOnly>
     </GothamContainer>
   </main>
 </template>

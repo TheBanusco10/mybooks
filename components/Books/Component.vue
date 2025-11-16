@@ -10,7 +10,7 @@ const { filteredBooks } = storeToRefs(filtersStore);
 const { currentPage, getRange, getFromQueryParam } = usePagination();
 
 const { from, to } = getFromQueryParam();
-const { data: books } = await useAsyncData(() =>
+const { data: books, status } = useAsyncData(() =>
   getBooks(from, to).catch(async (error: BooksError) => {
     if (error.code === BOOKS_RANGE_ERROR_CODE) {
       currentPage.value = DEFAULT_PAGE;
@@ -37,15 +37,24 @@ watch(currentPage, async () => {
 <template>
   <section v-if="isNull(filteredBooks)">
     <GothamPagination
-      v-if="books?.results.length"
       :current-page="currentPage"
       @on-page-changed="(newPage) => (currentPage = newPage)"
-      :is-fetching="isFetching"
+      :is-fetching="isFetching || status === 'pending'"
       :total-items="books?.total || 0"
     >
-      <BooksList :books="books?.results" />
+      <BooksList :books="books!.results" />
+      <!-- Fetching skeleton -->
+      <template v-slot:fetching>
+        <section class="flex flex-wrap gap-4 justify-center">
+          <article
+            v-for="index in 4"
+            :key="index"
+            class="skeleton w-36 h-52 md:w-40 md:h-60"
+          ></article>
+        </section>
+      </template>
     </GothamPagination>
-    <p v-else>
+    <p v-if="!books?.total && status === 'success'">
       {{ $t("app.libraryEmpty") }}
     </p>
   </section>
