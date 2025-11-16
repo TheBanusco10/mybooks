@@ -66,7 +66,7 @@ export default {
   url: textClassification,
   week: textClassification,
   toggle: {
-    input: "flex items-center toggle",
+    input: "toggle",
     wrapper: "flex gap-4 items-center",
   },
 };
