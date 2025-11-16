@@ -208,4 +208,8 @@ export default {
     },
     install_application: "Instalar aplicación",
   },
+  readingClubs: {
+    memberOfEmpty: "Aún no formas parte de ningún club de lectura.",
+    discover: "Descubre clubes",
+  },
 };

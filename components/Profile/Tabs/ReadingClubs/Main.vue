@@ -39,9 +39,9 @@ watch(currentPage, async () => {
     </GothamPagination>
   </section>
   <section v-else>
-    <p class="mb-4">Aún no eres miembro de ningún club de lectura.</p>
+    <p class="mb-4">{{ $t("readingClubs.memberOfEmpty") }}</p>
     <NuxtLink to="/reading-clubs" class="btn btn-primary"
-      >Descubrir clubes</NuxtLink
+      >{{ $t("readingClubs.discover") }}</NuxtLink
     >
   </section>
 </template>
