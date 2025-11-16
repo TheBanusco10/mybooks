@@ -207,4 +207,8 @@ export default {
     },
     install_application: "Install application",
   },
+  readingClubs: {
+    memberOfEmpty: "You are not a member of any reading club.",
+    discover: "Discover clubs",
+  },
 };
