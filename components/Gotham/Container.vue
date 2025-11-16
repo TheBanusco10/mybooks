@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
   <div class="container mx-auto">
     <section v-if="showBackButton">
-      <GothamFloatButton @on-click="$router.back()">
+      <GothamFloatButton @on-click="$router.back()" class="btn-lg md:btn-md">
         <template v-slot:icon>
           <Icon name="mdi:chevron-left" class="scale-150 md:scale-125" />
         </template>
