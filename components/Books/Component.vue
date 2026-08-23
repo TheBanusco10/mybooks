@@ -15,7 +15,7 @@ const { data: books, status } = useAsyncData(() =>
     if (error.code === BOOKS_RANGE_ERROR_CODE) {
       currentPage.value = DEFAULT_PAGE;
     }
-  })
+  }),
 );
 
 const isFetching = ref(false);
