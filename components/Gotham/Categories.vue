@@ -22,7 +22,7 @@ const emits = defineEmits(["onSelectCategory"]);
 const { categories, getCategory } = useCategories();
 
 const selectedCategories = ref<Category[]>(
-  props.defaultValues.map((value) => getCategory(value))
+  props.defaultValues.map((value) => getCategory(value)),
 );
 
 const query = ref("");
@@ -32,7 +32,7 @@ const filteredCategories = computed(() =>
     ? categories.value
     : categories.value.filter((category) => {
         return category.label.toLowerCase().includes(query.value.toLowerCase());
-      })
+      }),
 );
 
 if (props.defaultValues.length) {
@@ -51,7 +51,7 @@ watch(selectedCategories, () => {
     multiple
     class="flex flex-col gap-2"
   >
-    <ComboboxLabel id="category-label" class="label-text"
+    <ComboboxLabel id="category-label" class="text-sm"
       >{{ $t("app.categories") }}:</ComboboxLabel
     >
     <BooksCategoryBadgesList
@@ -60,7 +60,7 @@ watch(selectedCategories, () => {
     />
     <div class="join">
       <ComboboxInput
-        class="w-full input input-bordered rounded shadow p-2 join-item placeholder:text-base-content"
+        class="w-full input input-bordered rounded p-2 join-item placeholder:text-base-content"
         id="category-input"
         @change="query = $event.target.value"
         :placeholder="`${$t('app.searchByName')}…`"

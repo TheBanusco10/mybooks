@@ -61,6 +61,7 @@ export default {
       focus-within:input-info
       formkit-invalid:input-error
       `,
+    label: "$reset text-sm",
   },
   time: textClassification,
   url: textClassification,

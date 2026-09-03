@@ -76,7 +76,6 @@ onMounted(() => {
     type="form"
     form-class="flex flex-col md:flex-row gap-4 md:gap0 justify-center mt-4"
     :actions="false"
-    #default="{ disabled }"
     @submit="$emit('onFormSubmit', $event)"
   >
     <div>
@@ -124,16 +123,18 @@ onMounted(() => {
           type="number"
           name="score"
           :label="$t('app.rating')"
-          validation="required|min:0|max:10|number"
+          validation="required|number|min:0|max:10|matches:/^[0-9]+$/"
           :value="(book?.score || 0).toString()"
+          :validation-messages="{ matches: $t('forms.errors.onlyIntNumbers') }"
           outer-class="grow"
         />
         <FormKit
           type="number"
           name="number_pages"
           :label="$t('app.numberOfPages')"
-          validation="required|min:0|max:10000|number"
+          validation="required|number|min:0|max:10000|matches:/^[0-9]+$/"
           :value="(book?.number_pages || 0).toString()"
+          :validation-messages="{ matches: $t('forms.errors.onlyIntNumbers') }"
           outer-class="grow"
         />
         <FormKit
@@ -169,12 +170,7 @@ onMounted(() => {
         :default-values="book?.categories || []"
       />
       <FormKitMessages />
-      <FormKit
-        v-if="submitLabel"
-        type="submit"
-        :disabled="disabled as boolean"
-        wrapper-class="text-end mt-8"
-      >
+      <FormKit v-if="submitLabel" type="submit" wrapper-class="text-end mt-8">
         {{ submitLabel }}
       </FormKit>
     </div>
