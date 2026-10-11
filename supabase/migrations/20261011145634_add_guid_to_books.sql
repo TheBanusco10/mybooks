@@ -1,0 +1,1 @@
+alter table "public"."books" add column "guid" uuid not null default gen_random_uuid();
