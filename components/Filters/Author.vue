@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { FILTER_AUTHOR_ID } from "~/types/filters";
 const { getDistinctAuthors } = useAuthorsStore();
-const { data: authors } = await useAsyncData(() => getDistinctAuthors());
+const { data: authors } = await useLazyAsyncData(() => getDistinctAuthors());
 const { selectedFilters } = useFiltersStore();
 </script>
 

@@ -10,7 +10,7 @@ const { filteredBooks } = storeToRefs(filtersStore);
 const { currentPage, getRange, getFromQueryParam } = usePagination();
 
 const { from, to } = getFromQueryParam();
-const { data: books, status } = useAsyncData(() =>
+const { data: books, pending } = useLazyAsyncData(() =>
   getBooks(from, to).catch(async (error: BooksError) => {
     if (error.code === BOOKS_RANGE_ERROR_CODE) {
       currentPage.value = DEFAULT_PAGE;
@@ -39,7 +39,7 @@ watch(currentPage, async () => {
     <GothamPagination
       :current-page="currentPage"
       @on-page-changed="(newPage) => (currentPage = newPage)"
-      :is-fetching="isFetching || status === 'pending'"
+      :is-fetching="isFetching || pending"
       :total-items="books?.total || 0"
     >
       <BooksList :books="books!.results" />
@@ -54,7 +54,7 @@ watch(currentPage, async () => {
         </section>
       </template>
     </GothamPagination>
-    <p v-if="!books?.total && status === 'success'">
+    <p v-if="!books?.total && !pending">
       {{ $t("app.libraryEmpty") }}
     </p>
   </section>

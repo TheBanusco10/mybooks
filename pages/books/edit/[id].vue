@@ -14,8 +14,8 @@ const { getBookById } = useBooksStore();
 
 const route = useRoute();
 
-const { data: book } = await useAsyncData(() =>
-  getBookById(Number(route.params.id))
+const { data: book } = await useLazyAsyncData(() =>
+  getBookById(Number(route.params.id)),
 );
 
 if (!book.value) {
@@ -32,7 +32,7 @@ const selectedCategories = ref<Category[]>([]);
 const handleUpdateBook = async (values: Exclude<Row<"books">, "id">) => {
   try {
     values.categories = selectedCategories.value.map(
-      (category) => category.value
+      (category) => category.value,
     );
 
     if (isEmpty(values.end_date)) {

@@ -5,21 +5,9 @@ import { format } from "@formkit/tempo";
 const { getBookById } = useBooksStore();
 const route = useRoute();
 
-const { data: book } = await useAsyncData(() =>
-  getBookById(Number(route.params.id))
+const { data: book, pending } = await useLazyAsyncData(() =>
+  getBookById(Number(route.params.id)),
 );
-
-if (!book.value) {
-  throw createError({
-    statusCode: 404,
-    message: "not found",
-    fatal: true,
-  });
-}
-
-useHead({
-  title: book.value.title || "",
-});
 
 const { t } = useI18n();
 
@@ -46,13 +34,18 @@ const bookMetaInfo = computed(() => [
       : null,
   },
 ]);
+
+watch(pending, () => {
+  useHead({
+    title: book.value?.title || "Libro no encontrado",
+  });
+});
 </script>
 
 <template>
   <div>
     <GothamContainer>
-      <div class="flex flex-col lg:flex-row gap-4">
-
+      <div v-if="!pending && book" class="flex flex-col lg:flex-row gap-4">
         <section class="flex-[10%]">
           <div class="w-40 mx-auto relative">
             <NuxtImg
@@ -62,7 +55,10 @@ const bookMetaInfo = computed(() => [
               class="object-cover rounded shadow w-40 h-64 mx-auto lg:ml-auto"
               fetchpriority="high"
             />
-            <BooksCoverInformation :status="book?.status!" :type="book?.type!" />
+            <BooksCoverInformation
+              :status="book?.status!"
+              :type="book?.type!"
+            />
             <BooksCoverActions :id="book?.id!" :title="book?.title!" />
           </div>
           <p class="text-base-content text-center italic">
@@ -101,6 +97,28 @@ const bookMetaInfo = computed(() => [
             {{ book?.description }}
           </p>
         </section>
+      </div>
+      <div v-if="pending" class="flex flex-col lg:flex-row gap-4">
+        <section class="flex-[10%]">
+          <div class="w-40 mx-auto relative mb-4">
+            <article class="skeleton w-36 h-52"></article>
+          </div>
+          <span class="skeleton skeleton-text"
+            >Cargando información adicional</span
+          >
+        </section>
+        <section class="flex-[90%] text-base-content">
+          <h1 class="skeleton skeleton-text text-2xl md:text-3xl font-bold">
+            Cargando título del libro
+          </h1>
+          <div class="divider"></div>
+          <span class="skeleton skeleton-text"
+            >Cargando descripción del libro</span
+          >
+        </section>
+      </div>
+      <div v-if="!book">
+        <p>No hemos encontrado el libro que busca</p>
       </div>
     </GothamContainer>
   </div>

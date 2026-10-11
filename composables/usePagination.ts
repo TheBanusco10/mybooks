@@ -8,7 +8,7 @@ export default () => {
 
   const getRange = (
     page: number,
-    itemsPerPage: number = DEFAULT_ITEMS_PER_PAGE
+    itemsPerPage: number = DEFAULT_ITEMS_PER_PAGE,
   ): PaginationRange => {
     currentPage.value = validateCurrentPage(page);
 
@@ -19,7 +19,7 @@ export default () => {
   };
 
   const getFromQueryParam = (
-    itemsPerPage: number = DEFAULT_ITEMS_PER_PAGE
+    itemsPerPage: number = DEFAULT_ITEMS_PER_PAGE,
   ): PaginationRange => {
     const currentPageFromParam = getPageQueryParam();
 
